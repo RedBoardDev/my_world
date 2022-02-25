@@ -22,7 +22,7 @@ void main_menu(beginning_t *begin, spritesheet_t *spritesheet)
     draw_sprite(begin, &spritesheet[S_BACKGROUND]);
 
     if (begin->screen.main_menu) {
-        draw_sprite(begin, &spritesheet[S_CREATE_MAP]);
+        draw_sprite(begin, &spritesheet[S_CREATE_MAP);
     }
 
     draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
