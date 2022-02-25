@@ -23,11 +23,19 @@
     #define WIDTH 1920
     #define HEIGHT 1080
 
+typedef struct screen_s {
+    bool main_menu;
+    bool create_menu;
+    bool load_menu;
+    bool world;
+} screen_t;
+
 typedef struct beginning_s {
     sfRenderWindow *window;
     sfUint8 *framebuffer;
     sfTexture *texture;
     sfSprite *sprite;
+    screen_t screen;
 } beginning_t;
 
 typedef struct mouse_s {
@@ -92,5 +100,19 @@ typedef struct my_quad_s {
     point_t c;
     point_t d;
 } my_quad_t;
+
+typedef struct spritesheet_s {
+    bool active;
+    sfVector2f pos;
+    sfIntRect rect;
+    sfClock *clock;
+    sfSprite *sprite;
+    sfTexture *texture;
+} spritesheet_t;
+
+typedef struct init_sprite_s {
+    sfVector2f pos;
+    sfIntRect rect;
+} init_sprite_t;
 
 #endif

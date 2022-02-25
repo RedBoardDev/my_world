@@ -21,6 +21,7 @@ SRC_FILES	=	clean_window.c	\
 				transform_map.c	\
 				utils.c	\
 				interface/put_menu.c	\
+				interface/inits_spritesheet.c	\
 
 SRC	=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 

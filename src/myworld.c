@@ -194,13 +194,18 @@ void move_map(events_t *all_events, map_t *maps)
 
 }
 
-void big_loop(beginning_t *begin, events_t *all_events, map_t *maps)
+void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
+spritesheet_t *spritesheet)
 {
     sfColor color = sfBlack;
 
     color.a = 100;
     clean_window(begin, sfBlack);
     my_events(begin, all_events);
+
+    if (begin->screen.main_menu) {
+        main_menu(begin, spritesheet);
+    }
 
     // move_map(all_events, maps);
 
@@ -215,11 +220,7 @@ void big_loop(beginning_t *begin, events_t *all_events, map_t *maps)
     // my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
 
 
-    main_menu(begin);
-
-
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
-    sfRenderWindow_drawSprite(begin->window, begin->sprite, NULL);
     sfTexture_updateFromPixels(begin->texture,
         begin->framebuffer, WIDTH, HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(begin->window,
@@ -230,6 +231,7 @@ void big_loop(beginning_t *begin, events_t *all_events, map_t *maps)
 void my_world(bool map, sfVector2i size, char *filepath)
 {
     beginning_t begin;
+    spritesheet_t *spritesheet = malloc(sizeof(spritesheet_t) * NBR_SPRITE);
     events_t all_events = {.left = false, .right = false, .up = false, .down = false, .page_up = false, .page_down = false, .z = false, .s = false, .q = false, .d = false, .p = false, .m = false, .escape = false, .space = false, .ctrl = false, .mouse = {.left = false, .right = false, .move_x = 0, .move_y = 0, .pos = {0, 0}}, .mouse_wheel = {.up = false, .down = false, .click = false}};
     map_t maps = {.map_2d = NULL, .map_3d = NULL, .backup = NULL, .size = size, .angle = {0, 0}, .pos = {POS_X, POS_Y}, .zoom = ZOOM, .radius = 50};
 
@@ -241,11 +243,12 @@ void my_world(bool map, sfVector2i size, char *filepath)
     maps.backup = int_array_dup(maps.map_3d, maps.size);
 
     all_beginning(&begin);
+    inits_obj(spritesheet, &begin);
     if (!begin.window || !begin.framebuffer)
         exit(84);
     sfWindow_setFramerateLimit((sfWindow *)begin.window, 60);
     while (sfRenderWindow_isOpen(begin.window))
-        big_loop(&begin, &all_events, &maps);
+        big_loop(&begin, &all_events, &maps, spritesheet);
     destroy_all(&begin);
     for (int i = 0; i < maps.size.x; ++i)
         free(maps.map_2d[i]);

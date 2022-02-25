@@ -32,6 +32,9 @@
     #define POS_X WIDTH / 2
     #define POS_Y HEIGHT / 2
     #define ZOOM 10
+    #define NBR_BUTTON 8
+    #define NBR_BACKGROUND 1
+    #define NBR_SPRITE NBR_BUTTON + NBR_BACKGROUND 
 
 // create maps
 void create_3d_map(map_t *maps, sfVector2i size);
@@ -70,7 +73,8 @@ void all_beginning(beginning_t *beginning);
 void destroy_all(beginning_t *begin);
 int my_rand(int min, int max);
 
-//put_menu
-void main_menu(beginning_t *begin);
+// inits button
+void main_menu(beginning_t *begin, spritesheet_t *spritesheet);
+void inits_obj(spritesheet_t *spritesheet, beginning_t *begin);
 
 #endif
