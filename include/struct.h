@@ -112,6 +112,7 @@ typedef struct spritesheet_s {
 
 typedef struct init_sprite_s {
     sfVector2f pos;
+    sfVector2f scale;
     sfIntRect rect;
 } init_sprite_t;
 

@@ -32,19 +32,20 @@
     #define POS_X WIDTH / 2
     #define POS_Y HEIGHT / 2
     #define ZOOM 10
-    #define NBR_BUTTON 8
-    #define NBR_BACKGROUND 1
     #define NBR_SPRITE NBR_BUTTON + NBR_BACKGROUND
 
-    #define S_BACKGROUND 0
-    #define S_BACK_TO_MENU 1
-    #define S_EXIT 2
-    #define S_CREATE_MAP 3
-    #define S_LOAD_MAP 4
-    #define S_HAUTEUR_LARGEUR 5
-    #define S_DENSITY 6
-    #define S_SHUTDOWN 7
-
+enum a {
+    S_BACKGROUND,
+    S_BACK_TO_MENU,
+    S_EXIT,
+    S_CREATE_MAP,
+    S_LOAD_MAP,
+    S_HAUTEUR_LARGEUR,
+    S_DENSITY,
+    S_SHUTDOWN,
+    NBR_BUTTON = 8,
+    NBR_BACKGROUND = 1
+};
 // create maps
 void create_3d_map(map_t *maps, sfVector2i size);
 void open_map(map_t *maps, char *filepath);

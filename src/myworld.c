@@ -222,7 +222,7 @@ spritesheet_t *spritesheet)
     sfRenderWindow_drawSprite(begin->window,
         begin->sprite, NULL);
 
-    if (begin->screen.main_menu) {
+    if (!begin->screen.world) {
         main_menu(begin, spritesheet);
     }
 
