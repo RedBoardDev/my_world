@@ -70,4 +70,7 @@ void all_beginning(beginning_t *beginning);
 void destroy_all(beginning_t *begin);
 int my_rand(int min, int max);
 
+//put_menu
+void main_menu(beginning_t *begin);
+
 #endif

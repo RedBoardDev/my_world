@@ -161,7 +161,7 @@ void my_events(beginning_t *begin, events_t *all_events)
 {
     sfEvent event;
 
-    // all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);
+    all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);
 
     all_events->mouse_wheel.up = false;
     all_events->mouse_wheel.down = false;

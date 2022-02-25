@@ -201,23 +201,25 @@ void big_loop(beginning_t *begin, events_t *all_events, map_t *maps)
     color.a = 100;
     clean_window(begin, sfBlack);
     my_events(begin, all_events);
-    all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);
 
-    move_map(all_events, maps);
+    // move_map(all_events, maps);
 
-    create_2d_map(maps, maps->size);
-    // printf("%f, %f, %f\n", maps->map_2d[10][10].coords.z, maps->map_2d[11][11].coords.z, maps->map_2d[12][12].coords.z);
-    // printf("x = %d, y = %d\n", maps->modify.x, maps->modify.y);
-
+    // create_2d_map(maps, maps->size);
+    // // printf("%f, %f, %f\n", maps->map_2d[10][10].coords.z, maps->map_2d[11][11].coords.z, maps->map_2d[12][12].coords.z);
+    // // printf("x = %d, y = %d\n", maps->modify.x, maps->modify.y);
 
 
 
-    draw_2d_map(begin, maps);
-    my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
 
+    // draw_2d_map(begin, maps);
+    // my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
+
+
+    main_menu(begin);
 
 
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
+    sfRenderWindow_drawSprite(begin->window, begin->sprite, NULL);
     sfTexture_updateFromPixels(begin->texture,
         begin->framebuffer, WIDTH, HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(begin->window,

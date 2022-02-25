@@ -20,6 +20,7 @@ SRC_FILES	=	clean_window.c	\
 				myworld.c	\
 				transform_map.c	\
 				utils.c	\
+				interface/put_menu.c	\
 
 SRC	=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
