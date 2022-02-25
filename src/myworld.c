@@ -203,10 +203,6 @@ spritesheet_t *spritesheet)
     clean_window(begin, sfBlack);
     my_events(begin, all_events);
 
-    if (begin->screen.main_menu) {
-        main_menu(begin, spritesheet);
-    }
-
     // move_map(all_events, maps);
 
     // create_2d_map(maps, maps->size);
@@ -225,6 +221,11 @@ spritesheet_t *spritesheet)
         begin->framebuffer, WIDTH, HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(begin->window,
         begin->sprite, NULL);
+
+    if (begin->screen.main_menu) {
+        main_menu(begin, spritesheet);
+    }
+
     sfRenderWindow_display(begin->window);
 }
 
