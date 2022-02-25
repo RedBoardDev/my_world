@@ -1,0 +1,29 @@
+Terraformer program created with CSFML.
+
+USAGE
+	./my_world [OPTIONS]
+
+OPTIONS
+    map.txt     launch with a pre-generated map.
+    X Y         size on x and y of the map (it will be flat).
+    -h          print the usage and quit.
+
+USER INTERACTIONS
+    Affect terrain:
+        Left click          rise up terrain
+        Right click         rise down terrain
+        Scroll wheel        modify radius
+
+    Move view:
+        Arrows Left and Right       rotate x axis
+        Arrows Up and Down          rotate y axis
+        Click wheel + move          rotate x axis
+        Ctrl + Scroll wheel         affect zoom
+        Page Up                     zoom
+        Page Down                   dezoom
+        Ctrl + Click wheel + move   move terrain
+        ZQSD                        move terrain
+
+    Other:
+        Space       reset map
+        Escape      quit
