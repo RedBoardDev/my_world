@@ -194,6 +194,20 @@ void move_map(events_t *all_events, map_t *maps)
 
 }
 
+void check_click_button(events_t *all_events, spritesheet_t *spritesheet)
+{
+    sfFloatRect collision;
+
+    for (int i = 0; all_events->mouse.left && i < NBR_SPRITE; ++i) {
+        if (spritesheet[i].active) {
+            collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
+            if (all_events->mouse.pos.x > collision.left && all_events->mouse.pos.x < collision.left + collision.width
+            && all_events->mouse.pos.y > collision.top && all_events->mouse.pos.y < collision.top + collision.height)
+                printf("oui\n"); // FAIRE POINTEUR SUR FONCTION
+        }
+    }
+}
+
 void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
 spritesheet_t *spritesheet)
 {
@@ -208,6 +222,10 @@ spritesheet_t *spritesheet)
     // create_2d_map(maps, maps->size);
     // // printf("%f, %f, %f\n", maps->map_2d[10][10].coords.z, maps->map_2d[11][11].coords.z, maps->map_2d[12][12].coords.z);
     // // printf("x = %d, y = %d\n", maps->modify.x, maps->modify.y);
+
+
+
+    check_click_button(all_events, spritesheet);
 
 
 
