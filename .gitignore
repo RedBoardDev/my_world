@@ -1,0 +1,16 @@
+*~
+\#*#
+.#*
+*#
+.#*#
+a.out
+vgcore*
+test*
+*.a
+*.o
+.vscode/
+libmy.a
+map.txt
+my_world
+map2.txt
+images_all
