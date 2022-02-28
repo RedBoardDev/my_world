@@ -217,21 +217,13 @@ spritesheet_t *spritesheet)
     clean_window(begin, sfBlack);
     my_events(begin, all_events);
 
-    // move_map(all_events, maps);
-
-    // create_2d_map(maps, maps->size);
-    // // printf("%f, %f, %f\n", maps->map_2d[10][10].coords.z, maps->map_2d[11][11].coords.z, maps->map_2d[12][12].coords.z);
-    // // printf("x = %d, y = %d\n", maps->modify.x, maps->modify.y);
-
-
-
-    check_click_button(all_events, spritesheet);
-
-
-
-
-    // draw_2d_map(begin, maps);
-    // my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
+    if (begin->screen.world) {
+        move_map(all_events, maps);
+        create_2d_map(maps, maps->size);
+        draw_2d_map(begin, maps);
+        my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
+    } else
+        check_click_button(all_events, spritesheet);
 
 
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);

@@ -22,7 +22,7 @@ void all_beginning(beginning_t *begin)
     begin->texture = sfTexture_create(WIDTH, HEIGHT);
     begin->sprite = sfSprite_create();
     begin->screen.world = false;
-    begin->screen.main_menu = false;
+    begin->screen.main_menu = true;
     begin->screen.load_menu = false;
     begin->screen.create_menu = false;
 }

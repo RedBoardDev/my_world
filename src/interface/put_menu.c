@@ -23,13 +23,20 @@ void main_menu(beginning_t *begin, spritesheet_t *spritesheet)
 
     if (begin->screen.main_menu) {
         draw_sprite(begin, &spritesheet[S_CREATE_MAP]);
+        draw_sprite(begin, &spritesheet[S_LOAD_MAP]);
+        draw_sprite(begin, &spritesheet[S_EXIT]);
+    }
+    if (begin->screen.load_menu) {
+        draw_sprite(begin, &spritesheet[S_LOAD_MAP]);
+        draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
+    }
+    if (begin->screen.create_menu) {
+        draw_sprite(begin, &spritesheet[S_CREATE_MAP]);
+        draw_sprite(begin, &spritesheet[S_HAUTEUR_LARGEUR]);
+        draw_sprite(begin, &spritesheet[S_DENSITY]);
+        draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
     }
 
-    draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
-    draw_sprite(begin, &spritesheet[S_EXIT]);
-    draw_sprite(begin, &spritesheet[S_LOAD_MAP]);
-    draw_sprite(begin, &spritesheet[S_HAUTEUR_LARGEUR]);
-    draw_sprite(begin, &spritesheet[S_DENSITY]);
     // draw_sprite(begin, &spritesheet[6]);
     // if (begin->screen.main_menu) {
 
