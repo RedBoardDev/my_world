@@ -27,29 +27,22 @@ void put_text(beginning_t *begin, events_t *all_events)
 void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
 spritesheet_t *spritesheet)
 {
-    sfColor color = sfBlack;
-
-    color.a = 100;
     clean_window(begin, sfBlack);
     my_events(begin, all_events);
-
     if (begin->screen.world) {
         exec_events_map(all_events, maps);
         create_2d_map(maps, maps->size);
         draw_2d_map(begin, maps);
-        my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
+        my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, (sfColor){0, 0, 0, 100});
     }
     check_click_button(begin, all_events, spritesheet);
-
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
     sfTexture_updateFromPixels(begin->texture,
         begin->framebuffer, WIDTH, HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(begin->window,
         begin->sprite, NULL);
-
-    if (!begin->screen.world) {
+    if (!begin->screen.world)
         main_menu(begin, spritesheet);
-    }
     if (begin->screen.create_menu && begin->screen.largeur)
         put_text(begin, all_events);
     sfRenderWindow_display(begin->window);

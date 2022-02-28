@@ -96,7 +96,6 @@ clean:
 
 fclean:	clean
 	rm -f $(NAME)
-	rm -f *.o
 	make -C lib/my fclean
 	@echo -e "\033[1;33m\n=============== Full cleaning done ==============="
 	@echo -e "\033[0m"
