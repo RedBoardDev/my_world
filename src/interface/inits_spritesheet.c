@@ -34,5 +34,5 @@ void inits_obj(spritesheet_t *spritesheet, beginning_t *begin)
     set_sprite("ressources/img/load_map.png", &spritesheet[S_LOAD_MAP], begin, (init_sprite_t){{1400, HEIGHT / 2}, {0.2, 0.2}, {0, 0, 1783, 541}});
     set_sprite("ressources/img/hauteur_largeur.png", &spritesheet[S_HAUTEUR_LARGEUR], begin, (init_sprite_t){{1400, (HEIGHT / 4) * 2.3}, {0.2, 0.2}, {0, 0, 2000, 541}});
     set_sprite("ressources/img/density.png", &spritesheet[S_DENSITY], begin, (init_sprite_t){{1400, (HEIGHT / 4) * 1.7}, {0.2, 0.2}, {0, 0, 2000, 541}});
-    set_sprite("ressources/img/density.png", &spritesheet[S_SHUTDOWN], begin, (init_sprite_t){{1400, 0}, {0.2, 0.2}, {0, 0, 1920, 1080}});
+    set_sprite("ressources/img/shutdown.png", &spritesheet[S_SHUTDOWN], begin, (init_sprite_t){{WIDTH - 40, 40}, {0.5, 0.5}, {0, 0, 88, 88}});
 }

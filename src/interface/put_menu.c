@@ -36,6 +36,7 @@ void main_menu(beginning_t *begin, spritesheet_t *spritesheet)
         draw_sprite(begin, &spritesheet[S_DENSITY]);
         draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
     }
+    draw_sprite(begin, &spritesheet[S_SHUTDOWN]);
 
     // draw_sprite(begin, &spritesheet[6]);
     // if (begin->screen.main_menu) {
