@@ -212,6 +212,21 @@ void check_click_button(beginning_t *begin, events_t *all_events, spritesheet_t 
     }
 }
 
+void put_text(beginning_t *begin, events_t *all_events)
+{
+    sfText *text = sfText_create();
+    sfVector2f pos_hector = {30, 20};
+    sfColor color = {215, 215, 215, 255};
+    sfFont *font  = sfFont_createFromFile("ressources/fonts/text_text.ttf");
+
+    sfText_setFont(text, font);
+    sfText_setCharacterSize(text, 80);
+    sfText_setPosition(text, pos_hector);
+    sfText_setColor(text, color);
+    sfText_setString(text, all_events->largeur);
+    sfRenderWindow_drawText(begin->window, text, NULL);
+}
+
 void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
 spritesheet_t *spritesheet)
 {
@@ -229,7 +244,6 @@ spritesheet_t *spritesheet)
     }
     check_click_button(begin, all_events, spritesheet);
 
-
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
     sfTexture_updateFromPixels(begin->texture,
         begin->framebuffer, WIDTH, HEIGHT, 0, 0);
@@ -239,7 +253,8 @@ spritesheet_t *spritesheet)
     if (!begin->screen.world) {
         main_menu(begin, spritesheet);
     }
-
+    if (begin->screen.create_menu && begin->screen.largeur)
+        put_text(begin, all_events);
     sfRenderWindow_display(begin->window);
 }
 

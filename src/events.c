@@ -159,11 +159,8 @@ void event_mouse_moved(sfEvent event, events_t *all_events)
 
 void events_write_largeur(beginning_t *begin, sfEvent event, events_t *all_events)
 {
-    if (event.text.unicode >= 48 && event.text.unicode <= 57) {
+    if (event.text.unicode >= 48 && event.text.unicode <= 57)
         all_events->largeur = my_strcat(all_events->largeur, my_itoa(event.text.unicode - 48));
-        printf("%s\n", all_events->largeur);
-    }
-
 }
 
 void my_events(beginning_t *begin, events_t *all_events)
