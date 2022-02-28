@@ -32,7 +32,6 @@
     #define POS_X WIDTH / 2
     #define POS_Y HEIGHT / 2
     #define ZOOM 10
-    #define NBR_SPRITE NBR_BUTTON + NBR_BACKGROUND
 
 enum a {
     S_BACKGROUND,
@@ -43,12 +42,19 @@ enum a {
     S_HAUTEUR_LARGEUR,
     S_DENSITY,
     S_SHUTDOWN,
-    NBR_BUTTON = 8,
-    NBR_BACKGROUND = 1
+    NBR_SPRITE
 };
+
 // create maps
 void create_3d_map(map_t *maps, sfVector2i size);
 void open_map(map_t *maps, char *filepath);
+
+// functions pointers
+void button_create_map(beginning_t *begin, spritesheet_t *spritesheet);
+void button_load_map(beginning_t *begin, spritesheet_t *spritesheet);
+void button_exit(beginning_t *begin, spritesheet_t *spritesheet);
+void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet);
+void nothing(beginning_t *begin, spritesheet_t *spritesheet);
 
 // create quad
 void create_quad(beginning_t *begin, my_quad_t quad, int angle);
