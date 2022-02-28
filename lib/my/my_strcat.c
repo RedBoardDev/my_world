@@ -7,13 +7,16 @@
 
 #include "my.h"
 
-char *my_strcat(char *dest , char const *src)
+char *my_strcat(char *dest, char const *src)
 {
-    int destlen = my_strlen(dest);
     int i = 0;
-
-    for (i; src[i] != '\0'; ++i)
-        dest[destlen + i] = src[i];
-    dest[destlen + i] = '\0';
-    return (dest);
+    int dest_len = my_strlen(dest);
+    char *dest_ui = malloc(sizeof(char) * (dest_len + my_strlen(src) + 1));
+    
+    for (; dest[i] != '\0'; ++i)
+        dest_ui[i] = dest[i];
+    for (int j = 0; src[j] != '\0' ; ++i, ++j)
+        dest_ui[i] = src[j];
+    dest_ui[i] = '\0';
+    return (dest_ui);
 }

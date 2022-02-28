@@ -25,6 +25,7 @@ void all_beginning(beginning_t *begin)
     begin->screen.main_menu = true;
     begin->screen.load_menu = false;
     begin->screen.create_menu = false;
+    begin->screen.hauteur = false;
 }
 
 void destroy_all(beginning_t *begin)

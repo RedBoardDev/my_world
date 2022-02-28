@@ -39,8 +39,8 @@ enum a {
     S_EXIT,
     S_CREATE_MAP,
     S_LOAD_MAP,
-    S_HAUTEUR_LARGEUR,
-    S_DENSITY,
+    S_HAUTEUR,
+    S_LARGEUR,
     S_SHUTDOWN,
     NBR_SPRITE
 };
@@ -56,6 +56,8 @@ void button_exit(beginning_t *begin, spritesheet_t *spritesheet);
 void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet);
 void nothing(beginning_t *begin, spritesheet_t *spritesheet);
 void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet);
+void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet);
+void button_largeur(beginning_t *begin, spritesheet_t *spritesheet);
 
 // create quad
 void create_quad(beginning_t *begin, my_quad_t quad, int angle);

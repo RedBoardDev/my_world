@@ -197,7 +197,7 @@ void move_map(events_t *all_events, map_t *maps)
 void check_click_button(beginning_t *begin, events_t *all_events, spritesheet_t *spritesheet)
 {
     sfFloatRect collision;
-    static const void (*switch_flags[])(beginning_t *, spritesheet_t *) = {nothing, button_back_to_menu, button_exit, button_create_map, button_load_map, nothing, nothing, button_shutdown};
+    static const void (*switch_flags[])(beginning_t *, spritesheet_t *) = {nothing, button_back_to_menu, button_exit, button_create_map, button_load_map, button_hauteur, button_largeur, button_shutdown};
 
     for (int i = 1; all_events->mouse.left && i < NBR_SPRITE; ++i) {
         if (spritesheet[i].active) {
@@ -249,7 +249,8 @@ void my_world(bool map, sfVector2i size, char *filepath)
     spritesheet_t *spritesheet = malloc(sizeof(spritesheet_t) * NBR_SPRITE);
     events_t all_events = {.left = false, .right = false, .up = false, .down = false, .page_up = false, .page_down = false, .z = false, .s = false, .q = false, .d = false, .p = false, .m = false, .escape = false, .space = false, .ctrl = false, .mouse = {.left = false, .right = false, .move_x = 0, .move_y = 0, .pos = {0, 0}}, .mouse_wheel = {.up = false, .down = false, .click = false}};
     map_t maps = {.map_2d = NULL, .map_3d = NULL, .backup = NULL, .size = size, .angle = {0, 0}, .pos = {POS_X, POS_Y}, .zoom = ZOOM, .radius = 50};
-
+    
+    all_events.largeur = "";
     map ? open_map(&maps, filepath) : create_3d_map(&maps, size);
     maps.map_2d = malloc(sizeof(point_t *) * maps.size.x);
     for (int i = 0; i < maps.size.x; ++i)

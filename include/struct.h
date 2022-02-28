@@ -28,6 +28,8 @@ typedef struct screen_s {
     bool create_menu;
     bool load_menu;
     bool world;
+    bool hauteur;
+    bool largeur;
 } screen_t;
 
 typedef struct beginning_s {
@@ -70,6 +72,8 @@ typedef struct events_s {
     bool ctrl;
     mouse_t mouse;
     mouse_wheel_t mouse_wheel;
+    char *hauteur;
+    char *largeur;
 } events_t;
 
 typedef struct vector_3i_s {

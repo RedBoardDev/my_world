@@ -20,26 +20,14 @@ void draw_sprite(beginning_t *begin, spritesheet_t *spritesheet)
 void main_menu(beginning_t *begin, spritesheet_t *spritesheet)
 {
     draw_sprite(begin, &spritesheet[S_BACKGROUND]);
-
-    if (begin->screen.main_menu) {
-        draw_sprite(begin, &spritesheet[S_CREATE_MAP]);
-        draw_sprite(begin, &spritesheet[S_LOAD_MAP]);
-        draw_sprite(begin, &spritesheet[S_EXIT]);
-    }
-    if (begin->screen.load_menu) {
-        draw_sprite(begin, &spritesheet[S_LOAD_MAP]);
-        draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
-    }
-    if (begin->screen.create_menu) {
-        draw_sprite(begin, &spritesheet[S_CREATE_MAP]);
-        draw_sprite(begin, &spritesheet[S_HAUTEUR_LARGEUR]);
-        draw_sprite(begin, &spritesheet[S_DENSITY]);
-        draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]);
-    }
-    draw_sprite(begin, &spritesheet[S_SHUTDOWN]);
-
-    // draw_sprite(begin, &spritesheet[6]);
-    // if (begin->screen.main_menu) {
-
-    // }
+    spritesheet[S_CREATE_MAP].active ? draw_sprite(begin, &spritesheet[S_CREATE_MAP]) : 0;
+    spritesheet[S_LOAD_MAP].active ? draw_sprite(begin, &spritesheet[S_LOAD_MAP]) : 0;
+    spritesheet[S_EXIT].active ? draw_sprite(begin, &spritesheet[S_EXIT]) : 0;
+    spritesheet[S_LOAD_MAP].active ? draw_sprite(begin, &spritesheet[S_LOAD_MAP]) : 0;
+    spritesheet[S_BACK_TO_MENU].active ? draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]) : 0;
+    spritesheet[S_CREATE_MAP].active ? draw_sprite(begin, &spritesheet[S_CREATE_MAP]) : 0;
+    spritesheet[S_HAUTEUR].active ? draw_sprite(begin, &spritesheet[S_HAUTEUR]) : 0;
+    spritesheet[S_LARGEUR].active ? draw_sprite(begin, &spritesheet[S_LARGEUR]) : 0;
+    spritesheet[S_BACK_TO_MENU].active ? draw_sprite(begin, &spritesheet[S_BACK_TO_MENU]) : 0;
+    spritesheet[S_SHUTDOWN].active ? draw_sprite(begin, &spritesheet[S_SHUTDOWN]) : 0;
 }

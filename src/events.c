@@ -157,6 +157,15 @@ void event_mouse_moved(sfEvent event, events_t *all_events)
         all_events->mouse.move_y = all_events->mouse.pos.y - event.mouseMove.y;
 }
 
+void events_write_largeur(beginning_t *begin, sfEvent event, events_t *all_events)
+{
+    if (event.text.unicode >= 48 && event.text.unicode <= 57) {
+        all_events->largeur = my_strcat(all_events->largeur, my_itoa(event.text.unicode - 48));
+        printf("%s\n", all_events->largeur);
+    }
+
+}
+
 void my_events(beginning_t *begin, events_t *all_events)
 {
     sfEvent event;
@@ -174,6 +183,10 @@ void my_events(beginning_t *begin, events_t *all_events)
                 break;
             case sfEvtKeyPressed:
                 events_key_pressed(begin, event, all_events);
+                break;
+            case sfEvtTextEntered:
+                if (begin->screen.create_menu && begin->screen.largeur)
+                    events_write_largeur(begin, event, all_events);
                 break;
             case sfEvtKeyReleased:
                 events_key_released(event, all_events);

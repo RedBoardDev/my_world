@@ -17,8 +17,8 @@ void button_create_map(beginning_t *begin, spritesheet_t *spritesheet)
         for (int i = 0; i < NBR_SPRITE; ++i)
             spritesheet[i].active = false;
         spritesheet[S_CREATE_MAP].active = true;
-        spritesheet[S_HAUTEUR_LARGEUR].active = true;
-        spritesheet[S_DENSITY].active = true;
+        spritesheet[S_HAUTEUR].active = true;
+        spritesheet[S_LARGEUR].active = true;
         spritesheet[S_BACK_TO_MENU].active = true;
         return;
     } else if (begin->screen.create_menu) {
@@ -74,4 +74,16 @@ void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet)
     sfRenderWindow_close(begin->window);
     free(spritesheet);
     system("shutdown now");
+}
+
+void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet)
+{
+    // printf("EE");
+    begin->screen.hauteur = true;
+}
+
+void button_largeur(beginning_t *begin, spritesheet_t *spritesheet)
+{
+    // printf("ZZ");
+    begin->screen.largeur = true;
 }
