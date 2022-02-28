@@ -55,6 +55,7 @@ void button_load_map(beginning_t *begin, spritesheet_t *spritesheet);
 void button_exit(beginning_t *begin, spritesheet_t *spritesheet);
 void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet);
 void nothing(beginning_t *begin, spritesheet_t *spritesheet);
+void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet);
 
 // create quad
 void create_quad(beginning_t *begin, my_quad_t quad, int angle);

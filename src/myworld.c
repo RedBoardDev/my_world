@@ -197,15 +197,15 @@ void move_map(events_t *all_events, map_t *maps)
 void check_click_button(beginning_t *begin, events_t *all_events, spritesheet_t *spritesheet)
 {
     sfFloatRect collision;
-    static const void (*switch_flags[])(beginning_t *, spritesheet_t *) = {nothing, button_back_to_menu, button_exit, button_create_map, button_load_map, nothing, nothing, nothing};
+    static const void (*switch_flags[])(beginning_t *, spritesheet_t *) = {nothing, button_back_to_menu, button_exit, button_create_map, button_load_map, nothing, nothing, button_shutdown};
 
     for (int i = 1; all_events->mouse.left && i < NBR_SPRITE; ++i) {
         if (spritesheet[i].active) {
             collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
             if (all_events->mouse.pos.x > collision.left && all_events->mouse.pos.x < collision.left + collision.width
             && all_events->mouse.pos.y > collision.top && all_events->mouse.pos.y < collision.top + collision.height) {
-                sleep(1);
                 (*switch_flags[i])(begin, spritesheet);
+                all_events->mouse.left = false;
                 return;
             }
         }
@@ -226,8 +226,8 @@ spritesheet_t *spritesheet)
         create_2d_map(maps, maps->size);
         draw_2d_map(begin, maps);
         my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, color);
-    } else
-        check_click_button(begin, all_events, spritesheet);
+    }
+    check_click_button(begin, all_events, spritesheet);
 
 
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
