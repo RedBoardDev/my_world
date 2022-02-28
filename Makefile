@@ -9,27 +9,36 @@ NAME	=	my_world
 
 # src
 SRC_DIR	=	src/
+EXTENSION	=	.c
 
-SRC_FILES	=	clean_window.c	\
-				create_maps.c	\
-				create_quad.c	\
-				draw_simple.c	\
-				events.c	\
-				int_array_utils.c	\
-				main.c	\
-				myworld.c	\
-				transform_map.c	\
-				utils.c	\
-				interface/put_menu.c	\
-				interface/inits_spritesheet.c	\
-				functions_pointers/menu_buttons.c	\
+SRC_FILES	=	events/events	\
+				events/key	\
+				events/mouse	\
+				events/text	\
+				interface/menu/buttons	\
+				interface/menu/init_menu	\
+				interface/menu/put_menu	\
+				interface/check_click_buttons	\
+				interface/init_spritesheets	\
+				map/create_map_begin	\
+				map/create_quad	\
+				map/draw_map	\
+				map/events_map	\
+				map/re_create_map	\
+				map/transform_map	\
+				clean_window	\
+ 				draw_simple	\
+				int_array_utils	\
+ 				main	\
+ 				myworld	\
+				utils	\
 
-SRC	=	$(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 
 # no main
-SRC_FILES_NO_MAIN	=	$(filter-out main.c, $(SRC_FILES))
+SRC_FILES_NO_MAIN	=	$(filter-out main, $(SRC_FILES))
 
-SRC_NO_MAIN	=	$(addprefix $(SRC_DIR), $(SRC_FILES_NO_MAIN))
+SRC_NO_MAIN	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES_NO_MAIN)))
 
 # tests
 TESTS_DIR	=	tests/
@@ -87,6 +96,7 @@ clean:
 
 fclean:	clean
 	rm -f $(NAME)
+	rm -f *.o
 	make -C lib/my fclean
 	@echo -e "\033[1;33m\n=============== Full cleaning done ==============="
 	@echo -e "\033[0m"
@@ -107,3 +117,5 @@ tests_run:	fclean
 		make -C lib/my
 		gcc -o $(NAME_TESTS) $(SRC_NO_MAIN) $(TESTS) $(TESTS_FLAGS) $(FLAGS)
 		./$(NAME_TESTS)
+
+.PHONY:		all clean fclean re exec gcovr tests_run

@@ -5,7 +5,7 @@
 ** inits_main_menu.c
 */
 
-#include "../../include/my.h"
-#include "../../include/struct.h"
-#include "../../include/myworld.h"
+#include "../../../include/my.h"
+#include "../../../include/struct.h"
+#include "../../../include/myworld.h"
 

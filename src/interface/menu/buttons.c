@@ -5,9 +5,9 @@
 ** menu_buttons.c
 */
 
-#include "../../include/my.h"
-#include "../../include/struct.h"
-#include "../../include/myworld.h"
+#include "../../../include/my.h"
+#include "../../../include/struct.h"
+#include "../../../include/myworld.h"
 
 void button_create_map(beginning_t *begin, spritesheet_t *spritesheet)
 {
@@ -78,12 +78,10 @@ void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet)
 
 void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet)
 {
-    // printf("EE");
     begin->screen.hauteur = true;
 }
 
 void button_largeur(beginning_t *begin, spritesheet_t *spritesheet)
 {
-    // printf("ZZ");
     begin->screen.largeur = true;
 }

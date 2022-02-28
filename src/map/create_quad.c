@@ -5,20 +5,9 @@
 ** create_quad.c
 */
 
-#include "../include/my.h"
-#include "../include/struct.h"
-#include "../include/myworld.h"
-
-// void create_line(beginning_t *begin, sfVector2f *point1, sfVector2f *point2)
-// {
-//     sfVertexArray *vertex_array = sfVertexArray_create();
-//     sfVertex vertex1 = {.position = *point1, .color = sfWhite};
-//     sfVertex vertex2 = {.position = *point2, .color = sfWhite};
-//     sfVertexArray_append(vertex_array, vertex1);
-//     sfVertexArray_append(vertex_array, vertex2);
-//     sfVertexArray_setPrimitiveType(vertex_array, sfLinesStrip);
-//     sfRenderWindow_drawVertexArray(begin->window, vertex_array, NULL);
-// }
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 
 sfColor get_color_with_z(int z)
 {
@@ -74,9 +63,6 @@ sfColor get_color(my_quad_t quad, int angle)
 
 void create_quad(beginning_t *begin, my_quad_t quad, int angle)
 {
-    // sfColor green = {100, 190, 28, 255};
-    // sfColor lighter = {105, 200, 28, 255};
-    // sfColor light = {110, 210, 28, 255};
     sfColor color = get_color(quad, angle);
     sfVertexArray *vertex_array = sfVertexArray_create();
     sfVertex vertex1 = {.position = quad.a.iso, .color = color};

@@ -5,9 +5,9 @@
 ** put_menu.c
 */
 
-#include "../../include/my.h"
-#include "../../include/struct.h"
-#include "../../include/myworld.h"
+#include "../../../include/my.h"
+#include "../../../include/struct.h"
+#include "../../../include/myworld.h"
 
 void draw_sprite(beginning_t *begin, spritesheet_t *spritesheet)
 {
@@ -15,7 +15,6 @@ void draw_sprite(beginning_t *begin, spritesheet_t *spritesheet)
     sfSprite_setPosition(spritesheet->sprite, spritesheet->pos);
     sfRenderWindow_drawSprite(begin->window, spritesheet->sprite, NULL);
 }
-
 
 void main_menu(beginning_t *begin, spritesheet_t *spritesheet)
 {

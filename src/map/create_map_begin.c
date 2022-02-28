@@ -5,9 +5,9 @@
 ** create_maps.c
 */
 
-#include "../include/my.h"
-#include "../include/struct.h"
-#include "../include/myworld.h"
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 
 void create_3d_map(map_t *maps, sfVector2i size)
 {

@@ -5,9 +5,9 @@
 ** modify_maps.c
 */
 
-#include "../include/my.h"
-#include "../include/struct.h"
-#include "../include/myworld.h"
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 
 sfVector3f rotation(map_t *maps, sfVector3f point_3d)
 {
