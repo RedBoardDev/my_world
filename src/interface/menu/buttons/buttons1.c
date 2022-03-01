@@ -26,6 +26,7 @@ void button_create_map(beginning_t *begin, spritesheet_t *spritesheet)
         begin->screen.world = true;
         for (int i = 0; i < NBR_SPRITE; ++i)
             spritesheet[i].active = false;
+        begin->init_map = true;
     }
 }
 

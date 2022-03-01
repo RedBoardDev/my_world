@@ -18,7 +18,7 @@ void create_3d_map(map_t *maps, sfVector2i size)
     for (; i < size.x; ++i) {
         res[i] = malloc(sizeof(int) * size.y);
         for (; j < size.y; ++j) {
-            res[i][j] = my_rand(MIN, MAX);
+            res[i][j] = 0;
         }
     }
     res[i] = NULL;

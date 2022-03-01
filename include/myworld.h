@@ -76,6 +76,8 @@ void main_menu(beginning_t *begin, spritesheet_t *spritesheet);
 // check click button
 void check_click_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet);
+void check_mouse_on_buttons(beginning_t *begin, events_t *all_events,
+spritesheet_t *spritesheet);
 // init spritesheets
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 
@@ -115,6 +117,7 @@ void free_int_array(int **arr);
 
 // myworld
 void my_world(bool map, sfVector2i size, char *filepath);
+void init_map(events_t *all_events, map_t *maps);
 
 // utils
 void clean_window(beginning_t *begin, sfColor color);

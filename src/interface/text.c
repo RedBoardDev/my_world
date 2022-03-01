@@ -13,7 +13,7 @@ void put_text_largeur(beginning_t *begin, events_t *all_events)
 {
     sfText *text = sfText_create();
     sfVector2f pos = {1390, (HEIGHT / 4) * 1.58};
-    sfColor color = {150, 150, 150, 255};
+    sfColor color = {130, 130, 130, 255};
     sfFont *font  = sfFont_createFromFile("assets/fonts/droid-sans-bold.ttf");
 
     sfText_setFont(text, font);
@@ -28,7 +28,7 @@ void put_text_hauteur(beginning_t *begin, events_t *all_events)
 {
     sfText *text = sfText_create();
     sfVector2f pos = {1390, (HEIGHT / 4) * 2.18};
-    sfColor color = {150, 150, 150, 255};
+    sfColor color = {130, 130, 130, 255};
     sfFont *font  = sfFont_createFromFile("assets/fonts/droid-sans-bold.ttf");
 
     sfText_setFont(text, font);
@@ -41,7 +41,7 @@ void put_text_hauteur(beginning_t *begin, events_t *all_events)
 
 void put_text(beginning_t *begin, events_t *all_events)
 {
-    if (begin->screen.create_menu ) {
+    if (begin->screen.create_menu) {
         put_text_largeur(begin, all_events);
         put_text_hauteur(begin, all_events);
     }

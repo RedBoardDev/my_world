@@ -21,6 +21,7 @@ SRC_FILES	=	events/events	\
 				interface/menu/init_menu	\
 				interface/menu/put_menu	\
 				interface/check_click_buttons	\
+				interface/check_mouse_on_buttons	\
 				interface/init_spritesheets	\
 				map/create_map_begin	\
 				map/create_quad	\

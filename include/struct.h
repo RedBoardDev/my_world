@@ -40,6 +40,7 @@ typedef struct beginning_s {
     sfTexture *texture;
     sfSprite *sprite;
     screen_t screen;
+    bool init_map;
 } beginning_t;
 
 typedef struct mouse_s {

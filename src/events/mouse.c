@@ -15,6 +15,8 @@ events_t *all_events)
     if (sfMouseLeft == event.key.code) {
         all_events->mouse.left = true;
         all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);
+        begin->screen.largeur = false;
+        begin->screen.hauteur = false;
     }
     if (sfMouseRight == event.key.code) {
         all_events->mouse.right = true;

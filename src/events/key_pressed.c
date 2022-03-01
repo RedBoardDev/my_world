@@ -51,6 +51,12 @@ void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
         all_events->space = true;
     if (sfKeyLControl == event.key.code || sfKeyRControl == event.key.code)
         all_events->ctrl = true;
+    if (sfKeyBackspace == event.key.code) {
+        if (begin->screen.hauteur)
+            all_events->hauteur[my_strlen(all_events->hauteur) - 1] = '\0';
+        if (begin->screen.largeur)
+            all_events->largeur[my_strlen(all_events->largeur) - 1] = '\0';
+    }
     events_key_pressed_arrows(begin, event, all_events);
     events_key_pressed_letters(begin, event, all_events);
 }
