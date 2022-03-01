@@ -9,21 +9,6 @@
 #include "../include/struct.h"
 #include "../include/myworld.h"
 
-void put_text(beginning_t *begin, events_t *all_events)
-{
-    sfText *text = sfText_create();
-    sfVector2f pos = {1390, (HEIGHT / 4) * 1.58};
-    sfColor color = {215, 215, 215, 255};
-    sfFont *font  = sfFont_createFromFile("assets/fonts/Righteous-Regular.ttf");
-
-    sfText_setFont(text, font);
-    sfText_setCharacterSize(text, 50);
-    sfText_setPosition(text, pos);
-    sfText_setColor(text, sfBlack);
-    sfText_setString(text, all_events->largeur);
-    sfRenderWindow_drawText(begin->window, text, NULL);
-}
-
 bool check_mouse_on_one_button(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet, int i)
 {
@@ -72,8 +57,7 @@ spritesheet_t *spritesheet)
         begin->sprite, NULL);
     if (!begin->screen.world)
         main_menu(begin, spritesheet);
-    if (begin->screen.create_menu && begin->screen.largeur)
-        put_text(begin, all_events);
+    put_text(begin, all_events);
     sfRenderWindow_display(begin->window);
 }
 

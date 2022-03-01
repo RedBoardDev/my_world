@@ -36,6 +36,7 @@ SRC_FILES	=	events/events	\
 				main	\
 				myworld	\
 				utils	\
+				interface/text \
 
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 

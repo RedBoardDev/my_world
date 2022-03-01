@@ -23,6 +23,8 @@ spritesheet_t *spritesheet, int i)
         all_events->mouse.pos.x < collision.left + collision.width &&
         all_events->mouse.pos.y > collision.top &&
         all_events->mouse.pos.y < collision.top + collision.height) {
+            begin->screen.largeur = false;
+            begin->screen.hauteur = false;
             (*switch_flags[i])(begin, spritesheet);
             all_events->mouse.left = false;
             return (true);

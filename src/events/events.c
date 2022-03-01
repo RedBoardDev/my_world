@@ -21,6 +21,8 @@ void events_key_global(sfEvent event, beginning_t *begin, events_t *all_events)
         case sfEvtTextEntered:
             if (begin->screen.create_menu && begin->screen.largeur)
                 events_write_largeur(begin, event, all_events);
+            else if (begin->screen.create_menu && begin->screen.hauteur)
+                events_write_hauteur(begin, event, all_events);
             break;
         default:
             break;

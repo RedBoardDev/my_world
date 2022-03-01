@@ -122,4 +122,8 @@ void init_csfml(beginning_t *beginning);
 void destroy_all(beginning_t *begin);
 int my_rand(int min, int max);
 
+void put_text(beginning_t *begin, events_t *all_events);
+void events_write_hauteur(beginning_t *begin, sfEvent event,
+events_t *all_events);
+
 #endif
