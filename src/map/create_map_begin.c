@@ -56,13 +56,12 @@ void open_map(map_t *maps, char *filepath)
     char *buff = malloc(sizeof(char) * stat_buff.st_size);
     int fd = open(filepath, O_RDONLY);
     int r = read(fd, buff, stat_buff.st_size);
-    int index = 0;
     int **res;
 
     buff[stat_buff.st_size - 1] = '\0';
     maps->size = get_size(buff, maps);
     res = malloc_int_array(maps);
-    for (int i = 0, j = 0; buff[index] != '\0' && i < maps->size.x;) {
+    for (int i = 0, index = 0, j = 0; buff[index] != '\0' && i < maps->size.x;) {
         if (buff[index] == '\n') {
             ++i;
             j = 0;
@@ -70,42 +69,6 @@ void open_map(map_t *maps, char *filepath)
         } else
             res[i][j++] = buff[index++] - 48;
     }
-    res[19][1 + 1] = my_rand(-3, 0);
-    res[19][2 + 1] = my_rand(-3, 0);
-    res[19][3 + 1] = my_rand(-3, 0);
-    res[19][4 + 1] = my_rand(-3, 0);
-    res[19][5 + 1] = my_rand(-3, 0);
-    res[19][6 + 1] = my_rand(-3, 0);
-    res[19][7 + 1] = my_rand(-3, 0);
-    res[19][8 + 1] = my_rand(-3, 0);
-    res[19][9 + 1] = my_rand(-3, 0);
-    res[18][1 + 1] = my_rand(-3, 0);
-    res[18][2 + 1] = my_rand(-3, 0);
-    res[18][3 + 1] = my_rand(-3, 0);
-    res[18][4 + 1] = my_rand(-3, 0);
-    res[18][5 + 1] = my_rand(-3, 0);
-    res[18][6 + 1] = my_rand(-3, 0);
-    res[18][7 + 1] = my_rand(-3, 0);
-    res[18][8 + 1] = my_rand(-3, 0);
-
-    res[19 + 2][1 + 2] = my_rand(-3, -6);
-    res[19 + 2][2 + 2] = my_rand(-3, -6);
-    res[19 + 2][3 + 2] = my_rand(-3, -6);
-    res[19 + 2][4 + 2] = my_rand(-3, -6);
-    res[19 + 2][5 + 2] = my_rand(-3, -6);
-    res[19 + 2][6 + 2] = my_rand(-3, -6);
-    res[19 + 2][7 + 2] = my_rand(-3, -6);
-    res[19 + 2][8 + 2] = my_rand(-3, -6);
-    res[19 + 2][9 + 2] = my_rand(-3, -6);
-    res[18 + 2][1 + 2] = my_rand(-3, -6);
-    res[18 + 2][2 + 2] = my_rand(-3, -6);
-    res[18 + 2][3 + 2] = my_rand(-3, -6);
-    res[18 + 2][4 + 2] = my_rand(-3, -6);
-    res[18 + 2][5 + 2] = my_rand(-3, -6);
-    res[18 + 2][6 + 2] = my_rand(-3, -6);
-    res[18 + 2][7 + 2] = my_rand(-3, -6);
-    res[18 + 2][8 + 2] = my_rand(-3, -6);
-
     maps->map_3d = res;
     close(fd);
 }
