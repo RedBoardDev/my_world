@@ -12,16 +12,43 @@
 void put_text(beginning_t *begin, events_t *all_events)
 {
     sfText *text = sfText_create();
-    sfVector2f pos_hector = {30, 20};
+    sfVector2f pos = {1390, (HEIGHT / 4) * 1.58};
     sfColor color = {215, 215, 215, 255};
-    sfFont *font  = sfFont_createFromFile("assets/fonts/text_text.ttf");
+    sfFont *font  = sfFont_createFromFile("assets/fonts/Righteous-Regular.ttf");
 
     sfText_setFont(text, font);
-    sfText_setCharacterSize(text, 80);
-    sfText_setPosition(text, pos_hector);
-    sfText_setColor(text, color);
+    sfText_setCharacterSize(text, 50);
+    sfText_setPosition(text, pos);
+    sfText_setColor(text, sfBlack);
     sfText_setString(text, all_events->largeur);
     sfRenderWindow_drawText(begin->window, text, NULL);
+}
+
+bool check_mouse_on_one_button(beginning_t *begin, events_t *all_events,
+spritesheet_t *spritesheet, int i)
+{
+    sfFloatRect collision;
+
+    if (spritesheet[i].active) {
+        collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
+        if (all_events->mouse.pos.x > collision.left &&
+        all_events->mouse.pos.x < collision.left + collision.width &&
+        all_events->mouse.pos.y > collision.top &&
+        all_events->mouse.pos.y < collision.top + collision.height) {
+            spritesheet[i].rect.top = 541;
+            return (true);
+        } else
+            spritesheet[i].rect.top = 0;
+    }
+    return (false);
+}
+
+void check_mouse_on_buttons(beginning_t *begin, events_t *all_events,
+spritesheet_t *spritesheet)
+{
+    for (int i = 1; i < NBR_SPRITE; ++i)
+        if (check_mouse_on_one_button(begin, all_events, spritesheet, i))
+            return;
 }
 
 void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
@@ -36,6 +63,7 @@ spritesheet_t *spritesheet)
         my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius,
         (sfColor){0, 0, 0, 100});
     }
+    check_mouse_on_buttons(begin, all_events, spritesheet);
     check_click_buttons(begin, all_events, spritesheet);
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
     sfTexture_updateFromPixels(begin->texture,

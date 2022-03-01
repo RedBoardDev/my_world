@@ -12,7 +12,7 @@
 void events_write_largeur(beginning_t *begin, sfEvent event,
 events_t *all_events)
 {
-    if (event.text.unicode >= 48 && event.text.unicode <= 57)
+    if (event.text.unicode >= 48 && event.text.unicode <= 57 && my_strlen(all_events->largeur) < 4)
         all_events->largeur = my_strcat(all_events->largeur,
         my_itoa(event.text.unicode - 48));
 }
