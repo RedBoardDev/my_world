@@ -113,7 +113,7 @@ void my_putpixel(int x, int y, sfUint8 *framebuffer, sfColor color);
 // int array utils
 int **int_array_dup(int **arr, sfVector2i size);
 void print_int_array(int **arr, sfVector2i size);
-void free_int_array(int **arr);
+void free_int_array(int **arr, int size);
 
 // myworld
 void my_world(bool map, sfVector2i size, char *filepath);

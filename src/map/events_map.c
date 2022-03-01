@@ -82,7 +82,7 @@ void exec_events_map(events_t *all_events, map_t *maps)
     events_translate_map(all_events, maps);
     events_modify_points_map(all_events, maps);
     if (all_events->space) {
-        free_int_array(maps->map_3d);
+        free_int_array(maps->map_3d, maps->size.x);
         maps->map_3d = int_array_dup(maps->backup, maps->size);
     }
 }

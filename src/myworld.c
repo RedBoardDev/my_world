@@ -11,7 +11,7 @@
 
 void init_map(events_t *all_events, map_t *maps)
 {
-    sfVector2i size = {100, 100};
+    sfVector2i size = {my_atoi(all_events->hauteur) + 1, my_atoi(all_events->largeur) + 1};
 
     maps->size = size;
     create_3d_map(maps, maps->size);
@@ -19,18 +19,18 @@ void init_map(events_t *all_events, map_t *maps)
     for (int i = 0; i < maps->size.x; ++i)
         maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
     maps->backup = int_array_dup(maps->map_3d, maps->size);
-    // create_2d_map(maps, maps->size);
+    create_2d_map(maps, maps->size);
 }
 
 void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
 spritesheet_t *spritesheet)
 {
-    clean_window(begin, sfBlack);
-    my_events(begin, all_events);
     if (begin->init_map) {
         init_map(all_events, maps);
         begin->init_map = false;
     }
+    clean_window(begin, sfBlack);
+    my_events(begin, all_events);
     if (begin->screen.world) {
         exec_events_map(all_events, maps);
         create_2d_map(maps, maps->size);
@@ -53,11 +53,11 @@ spritesheet_t *spritesheet)
 
 void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet)
 {
-    create_3d_map(maps, maps->size);
-    maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
-    for (int i = 0; i < maps->size.x; ++i)
-        maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
-    maps->backup = int_array_dup(maps->map_3d, maps->size);
+    // create_3d_map(maps, maps->size);
+    // maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
+    // for (int i = 0; i < maps->size.x; ++i)
+    //     maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
+    // maps->backup = int_array_dup(maps->map_3d, maps->size);
     init_spritesheets(spritesheet, begin);
     spritesheet[S_CREATE_MAP].active = true;
     spritesheet[S_LOAD_MAP].active = true;
@@ -86,5 +86,5 @@ void my_world(bool map, sfVector2i size, char *filepath)
     for (int i = 0; i < maps.size.x; ++i)
         free(maps.map_2d[i]);
     free(maps.map_2d);
-    free_int_array(maps.map_3d);
+    free_int_array(maps.map_3d, maps.size.x);
 }

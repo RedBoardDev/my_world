@@ -24,7 +24,7 @@ int **int_array_dup(int **arr, sfVector2i size)
     int **new_arr = malloc(sizeof(int *) * (size.x + 1));
     int i = 0;
 
-    for (; arr[i] != NULL; ++i)
+    for (; i < size.x; ++i)
         new_arr[i] = int_dup(arr[i], size.y);
     new_arr[i] = NULL;
     return (new_arr);
@@ -40,9 +40,9 @@ void print_int_array(int **arr, sfVector2i size)
     }
 }
 
-void free_int_array(int **arr)
+void free_int_array(int **arr, int size)
 {
-    for (int i = 0; arr[i]; ++i)
+    for (int i = 0; i < size; ++i)
         free(arr[i]);
     free(arr);
 }

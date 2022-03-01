@@ -35,17 +35,12 @@ void help(void)
 
 int main(int ac, char **av)
 {
-    if (ac == 1)
-        return (84);
-    else if (ac == 2) {
+    if (ac == 2) {
         if (!my_strcmp("-h", av[1]))
             help();
         else
             my_world(true, (sfVector2i){0, 0}, av[1]);
     } else
-        if (str_isnum(av[1]) && str_isnum(av[2]))
-            my_world(false, (sfVector2i){my_atoi(av[1]), my_atoi(av[2])}, "");
-        else
-            return (84);
+        my_world(false, (sfVector2i){0, 0}, "");
     return (0);
 }
