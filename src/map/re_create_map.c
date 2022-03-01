@@ -17,25 +17,16 @@ sfVector3f rotation(map_t *maps, sfVector3f point_3d)
 
     point_3d.x = point_3d.x * cos(RADIAN(maps->angle.x)) - point_3d.y * sin(RADIAN(maps->angle.x));
     point_3d.y = point_3d.y * cos(RADIAN(maps->angle.x)) + backup_x * sin(RADIAN(maps->angle.x));
-
     backup_x = point_3d.x;
     backup_y = point_3d.y;
     backup_z = point_3d.z;
-
     point_3d.x = point_3d.x * cos(RADIAN(maps->angle.y)) - point_3d.z * sin(RADIAN(maps->angle.y));
     point_3d.z = point_3d.z * cos(RADIAN(maps->angle.y)) + backup_x * sin(RADIAN(maps->angle.y));
-
     backup_x = point_3d.x;
     backup_y = point_3d.y;
     backup_z = point_3d.z;
-
     point_3d.y = point_3d.y * cos(RADIAN(maps->angle.y)) - point_3d.z * sin(RADIAN(maps->angle.y));
     point_3d.z = point_3d.z * cos(RADIAN(maps->angle.y)) + backup_y * sin(RADIAN(maps->angle.y));
-
-// formule drunk
-    // point_3d.x = point_3d.x * cos(RADIAN(maps->angle.y)) - point_3d.z * sin(RADIAN(maps->angle.y));
-    // point_3d.y = point_3d.y * cos(RADIAN(maps->angle.y)) - point_3d.z * sin(RADIAN(maps->angle.y));
-    // point_3d.z = point_3d.z * cos(RADIAN(maps->angle.y)) + (backup_x * backup_y / 2) * sin(RADIAN(maps->angle.y));
     return (point_3d);
 }
 

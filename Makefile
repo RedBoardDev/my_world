@@ -12,10 +12,12 @@ SRC_DIR	=	src/
 EXTENSION	=	.c
 
 SRC_FILES	=	events/events	\
-				events/key	\
+				events/key_pressed	\
+				events/key_released	\
 				events/mouse	\
 				events/text	\
-				interface/menu/buttons	\
+				interface/menu/buttons/buttons1	\
+				interface/menu/buttons/buttons2	\
 				interface/menu/init_menu	\
 				interface/menu/put_menu	\
 				interface/check_click_buttons	\
@@ -24,13 +26,14 @@ SRC_FILES	=	events/events	\
 				map/create_quad	\
 				map/draw_map	\
 				map/events_map	\
+				map/get_color	\
 				map/re_create_map	\
 				map/transform_map	\
 				clean_window	\
- 				draw_simple	\
+				draw_simple	\
 				int_array_utils	\
- 				main	\
- 				myworld	\
+				main	\
+				myworld	\
 				utils	\
 
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))

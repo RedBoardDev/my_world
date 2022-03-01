@@ -5,9 +5,9 @@
 ** menu_buttons.c
 */
 
-#include "../../../include/my.h"
-#include "../../../include/struct.h"
-#include "../../../include/myworld.h"
+#include "../../../../include/my.h"
+#include "../../../../include/struct.h"
+#include "../../../../include/myworld.h"
 
 void button_create_map(beginning_t *begin, spritesheet_t *spritesheet)
 {
@@ -62,26 +62,4 @@ void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet)
     spritesheet[S_CREATE_MAP].active = true;
     spritesheet[S_LOAD_MAP].active = true;
     spritesheet[S_EXIT].active = true;
-}
-
-void nothing(beginning_t *begin, spritesheet_t *spritesheet)
-{
-    return;
-}
-
-void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet)
-{
-    sfRenderWindow_close(begin->window);
-    free(spritesheet);
-    system("shutdown now");
-}
-
-void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet)
-{
-    begin->screen.hauteur = true;
-}
-
-void button_largeur(beginning_t *begin, spritesheet_t *spritesheet)
-{
-    begin->screen.largeur = true;
 }

@@ -24,16 +24,18 @@
     #include <stdio.h>
     #include <math.h>
     #include "struct.h"
-    #define PI 3.14159265359
-    #define RADIAN(x) x * PI / 180
-    #define SIZE 100
-    #define MIN 0
-    #define MAX 1
+    #define RADIAN(x) x * 3.14159265359 / 180
     #define POS_X WIDTH / 2
     #define POS_Y HEIGHT / 2
-    #define ZOOM 10
 
-enum a {
+enum params {
+    MIN = 0,
+    MAX = 1,
+    ZOOM = 10,
+    SIZE = 100
+};
+
+enum sprites {
     S_BACKGROUND,
     S_BACK_TO_MENU,
     S_EXIT,
@@ -70,7 +72,7 @@ void main_menu(beginning_t *begin, spritesheet_t *spritesheet);
 // check click button
 void check_click_button(beginning_t *begin, events_t *all_events, spritesheet_t *spritesheet);
 // init spritesheets
-void inits_obj(spritesheet_t *spritesheet, beginning_t *begin);
+void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 
 // MAP
 // create map begin
@@ -82,11 +84,13 @@ void create_quad(beginning_t *begin, my_quad_t quad, int angle);
 void draw_2d_map(beginning_t *begin, map_t *maps);
 // events map
 void exec_events_map(events_t *all_events, map_t *maps);
+// get color
+sfColor get_color(my_quad_t quad, int angle);
 // re create map
 void create_2d_map(map_t *maps, sfVector2i size);
 // transform map
 bool check_incidence(map_t *maps, events_t *all_events);
-void parse_to_get_point(map_t *maps, sfVector2i pos, bool up);
+void parse_points_up_or_down(map_t *maps, sfVector2i pos, bool up);
 
 // draw simple
 void my_draw_circle(sfUint8 *framebuffer, sfVector2i center, int radius,
@@ -108,7 +112,7 @@ void my_world(bool map, sfVector2i size, char *filepath);
 
 // utils
 void clean_window(beginning_t *begin, sfColor color);
-void all_beginning(beginning_t *beginning);
+void init_csfml(beginning_t *beginning);
 void destroy_all(beginning_t *begin);
 int my_rand(int min, int max);
 

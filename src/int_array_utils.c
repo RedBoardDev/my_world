@@ -34,9 +34,9 @@ void print_int_array(int **arr, sfVector2i size)
 {
     for (int i = 0; i < size.x; ++i) {
         for (int j = 0; j < size.y; ++j) {
-            printf("%d", arr[i][j]);
+            my_put_nbr(arr[i][j]);
         }
-        printf("\n");
+        my_putchar('\n');
     }
 }
 

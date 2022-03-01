@@ -38,6 +38,17 @@ sfVector2i get_size(char *file, map_t *maps)
     return (size);
 }
 
+int **malloc_int_array(map_t *maps)
+{
+    int **res = malloc(sizeof(int *) * (maps->size.x + 1));
+    int i_alloc = 0;
+
+    for (; i_alloc < maps->size.x; ++i_alloc)
+        res[i_alloc] = malloc(sizeof(int) * maps->size.y);
+    res[i_alloc] = NULL;
+    return (res);
+}
+
 void open_map(map_t *maps, char *filepath)
 {
     struct stat stat_buff;
@@ -46,15 +57,11 @@ void open_map(map_t *maps, char *filepath)
     int fd = open(filepath, O_RDONLY);
     int r = read(fd, buff, stat_buff.st_size);
     int index = 0;
-    int i_alloc = 0;
     int **res;
 
     buff[stat_buff.st_size - 1] = '\0';
     maps->size = get_size(buff, maps);
-    res = malloc(sizeof(int *) * (maps->size.x + 1));
-    for (; i_alloc < maps->size.x; ++i_alloc)
-        res[i_alloc] = malloc(sizeof(int) * maps->size.y);
-    res[i_alloc] = NULL;
+    res = malloc_int_array(maps);
     for (int i = 0, j = 0; buff[index] != '\0' && i < maps->size.x;) {
         if (buff[index] == '\n') {
             ++i;

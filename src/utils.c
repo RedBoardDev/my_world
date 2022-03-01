@@ -13,7 +13,7 @@ sfUint8 *my_framebuffer_create(void)
     return (framebuffer);
 }
 
-void all_beginning(beginning_t *begin)
+void init_csfml(beginning_t *begin)
 {
     sfVideoMode mode = {WIDTH, HEIGHT, 32};
     begin->window = sfRenderWindow_create(mode, "My world",

@@ -20,8 +20,10 @@
     #include <stdio.h>
     #include <math.h>
 
-    #define WIDTH 1920
-    #define HEIGHT 1080
+enum size_window {
+    WIDTH = 1920,
+    HEIGHT = 1080
+};
 
 typedef struct screen_s {
     bool main_menu;
