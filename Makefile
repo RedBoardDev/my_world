@@ -26,6 +26,7 @@ SRC_FILES	=	events/events	\
 				map/create_quad	\
 				map/draw_map	\
 				map/events_map	\
+				map/get_color_with_z	\
 				map/get_color	\
 				map/re_create_map	\
 				map/transform_map	\

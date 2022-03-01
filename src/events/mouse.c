@@ -9,7 +9,8 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-void events_mouse_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
+void events_mouse_pressed(beginning_t *begin, sfEvent event,
+events_t *all_events)
 {
     if (sfMouseLeft == event.key.code) {
         all_events->mouse.left = true;
@@ -23,7 +24,8 @@ void events_mouse_pressed(beginning_t *begin, sfEvent event, events_t *all_event
         all_events->mouse_wheel.click = true;
 }
 
-void events_mouse_released(beginning_t *begin, sfEvent event, events_t *all_events)
+void events_mouse_released(beginning_t *begin, sfEvent event,
+events_t *all_events)
 {
     if (sfMouseLeft == event.key.code) {
         all_events->mouse.left = false;
@@ -43,7 +45,6 @@ void events_scroll_wheel(sfEvent event, events_t *all_events)
         all_events->mouse_wheel.up = true;
     else
         all_events->mouse_wheel.up = false;
-
     if (event.mouseWheelScroll.delta < 0)
         all_events->mouse_wheel.down = true;
     else

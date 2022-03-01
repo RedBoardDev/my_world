@@ -14,7 +14,7 @@ void put_text(beginning_t *begin, events_t *all_events)
     sfText *text = sfText_create();
     sfVector2f pos_hector = {30, 20};
     sfColor color = {215, 215, 215, 255};
-    sfFont *font  = sfFont_createFromFile("ressources/fonts/text_text.ttf");
+    sfFont *font  = sfFont_createFromFile("assets/fonts/text_text.ttf");
 
     sfText_setFont(text, font);
     sfText_setCharacterSize(text, 80);
@@ -33,9 +33,10 @@ spritesheet_t *spritesheet)
         exec_events_map(all_events, maps);
         create_2d_map(maps, maps->size);
         draw_2d_map(begin, maps);
-        my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius, (sfColor){0, 0, 0, 100});
+        my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius,
+        (sfColor){0, 0, 0, 100});
     }
-    check_click_button(begin, all_events, spritesheet);
+    check_click_buttons(begin, all_events, spritesheet);
     sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
     sfTexture_updateFromPixels(begin->texture,
         begin->framebuffer, WIDTH, HEIGHT, 0, 0);

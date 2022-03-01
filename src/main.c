@@ -20,7 +20,7 @@ bool str_isnum(char *str)
 
 void help(void)
 {
-    char *filepath = "misc/help.txt";
+    char *filepath = "assets/help.txt";
     struct stat stat_buff;
     int s = stat(filepath, &stat_buff);
     char *buff = malloc(sizeof(char) * stat_buff.st_size);

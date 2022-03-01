@@ -19,7 +19,7 @@ void button_create_map(beginning_t *begin, spritesheet_t *spritesheet)
         spritesheet[S_CREATE_MAP].active = true;
         spritesheet[S_HAUTEUR].active = true;
         spritesheet[S_LARGEUR].active = true;
-        spritesheet[S_BACK_TO_MENU].active = true;
+        spritesheet[S_BACK_MENU].active = true;
         return;
     } else if (begin->screen.create_menu) {
         begin->screen.create_menu = false;
@@ -37,7 +37,7 @@ void button_load_map(beginning_t *begin, spritesheet_t *spritesheet)
         for (int i = 0; i < NBR_SPRITE; ++i)
             spritesheet[i].active = false;
         spritesheet[S_LOAD_MAP].active = true;
-        spritesheet[S_BACK_TO_MENU].active = true;
+        spritesheet[S_BACK_MENU].active = true;
     } else if (begin->screen.load_menu) {
         begin->screen.load_menu = false;
         begin->screen.world = true;

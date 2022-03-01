@@ -19,8 +19,10 @@ void draw_2d_map_1(beginning_t *begin, map_t *maps)
             quad.a = (j < maps->size.y - 1) ? maps->map_2d[i][j] : buff;
             quad.b = (j < maps->size.y - 1) ? maps->map_2d[i][j + 1] : buff;
             quad.c = (i < maps->size.x - 1) ? maps->map_2d[i + 1][j] : buff;
-            quad.d = (i < maps->size.x - 1 && j < maps->size.y - 1) ? maps->map_2d[i + 1][j + 1] : buff;
-            (i < maps->size.x - 1 && j < maps->size.y - 1) ? create_quad(begin, quad, maps->angle.x) : 0;
+            quad.d = (i < maps->size.x - 1 && j < maps->size.y - 1) ?
+            maps->map_2d[i + 1][j + 1] : buff;
+            (i < maps->size.x - 1 && j < maps->size.y - 1) ?
+            create_quad(begin, quad, maps->angle.x) : 0;
         }
 }
 
@@ -34,8 +36,10 @@ void draw_2d_map_2(beginning_t *begin, map_t *maps)
             quad.a = (j > 0) ? maps->map_2d[i][j] : buff;
             quad.b = (j > 0) ? maps->map_2d[i][j - 1] : buff;
             quad.c = (i < maps->size.x - 1) ? maps->map_2d[i + 1][j] : buff;
-            quad.d = (i < maps->size.x - 1 && j > 0) ? maps->map_2d[i + 1][j - 1] : buff;
-            (i < maps->size.x - 1 && j > 0) ? create_quad(begin, quad, maps->angle.x) : 0;
+            quad.d = (i < maps->size.x - 1 && j > 0) ?
+            maps->map_2d[i + 1][j - 1] : buff;
+            (i < maps->size.x - 1 && j > 0) ?
+            create_quad(begin, quad, maps->angle.x) : 0;
         }
 }
 
@@ -64,8 +68,10 @@ void draw_2d_map_4(beginning_t *begin, map_t *maps)
             quad.a = (j < maps->size.y - 1) ? maps->map_2d[i][j] : buff;
             quad.b = (j < maps->size.y - 1) ? maps->map_2d[i][j + 1] : buff;
             quad.c = (i > 0) ? maps->map_2d[i - 1][j] : buff;
-            quad.d = (i > 0 && j < maps->size.y - 1) ? maps->map_2d[i - 1][j + 1] : buff;
-            (i > 0 && j < maps->size.y - 1) ? create_quad(begin, quad, maps->angle.x) : 0;
+            quad.d = (i > 0 && j < maps->size.y - 1) ?
+            maps->map_2d[i - 1][j + 1] : buff;
+            (i > 0 && j < maps->size.y - 1) ?
+            create_quad(begin, quad, maps->angle.x) : 0;
         }
 }
 
@@ -73,7 +79,8 @@ void draw_2d_map(beginning_t *begin, map_t *maps)
 {
     if (maps->angle.x < 0)
         maps->angle.x = 360;
-    if (maps->angle.x % 360 >= 315 && maps->angle.x % 360 <= 360 || maps->angle.x % 360 >= 0 && maps->angle.x % 360 < 45)
+    if ((maps->angle.x % 360 >= 315 && maps->angle.x % 360 <= 360) ||
+    (maps->angle.x % 360 >= 0 && maps->angle.x % 360 < 45))
         draw_2d_map_1(begin, maps);
     if (maps->angle.x % 360 >= 45 && maps->angle.x % 360 < 135)
         draw_2d_map_2(begin, maps);

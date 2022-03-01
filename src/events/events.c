@@ -27,7 +27,8 @@ void events_key_global(sfEvent event, beginning_t *begin, events_t *all_events)
     }
 }
 
-void events_mouse_global(sfEvent event, beginning_t *begin, events_t *all_events)
+void events_mouse_global(sfEvent event, beginning_t *begin,
+events_t *all_events)
 {
     switch (event.type) {
         case sfEvtMouseButtonPressed:
@@ -58,9 +59,12 @@ void my_events(beginning_t *begin, events_t *all_events)
     while (sfRenderWindow_pollEvent(begin->window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(begin->window);
-        if (event.type == sfEvtKeyPressed || event.type == sfEvtKeyReleased || event.type == sfEvtTextEntered)
+        if (event.type == sfEvtKeyPressed || event.type == sfEvtKeyReleased ||
+        event.type == sfEvtTextEntered)
             events_key_global(event, begin, all_events);
-        if (event.type == sfEvtMouseButtonPressed || event.type == sfEvtMouseButtonReleased || event.type == sfEvtMouseWheelScrolled || event.type == sfEvtMouseMoved)
+        if (event.type == sfEvtMouseButtonPressed || event.type ==
+        sfEvtMouseButtonReleased || event.type == sfEvtMouseWheelScrolled ||
+        event.type == sfEvtMouseMoved)
             events_mouse_global(event, begin, all_events);
     }
     all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);

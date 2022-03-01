@@ -19,7 +19,8 @@ void events_rotate_map(events_t *all_events, map_t *maps)
         --maps->angle.y;
     if (all_events->up)
         ++maps->angle.y;
-    if (all_events->ctrl && all_events->mouse.move_x && all_events->mouse_wheel.click)
+    if (all_events->ctrl && all_events->mouse.move_x &&
+    all_events->mouse_wheel.click)
         maps->angle.x += all_events->mouse.move_x / 2;
 }
 
@@ -53,9 +54,11 @@ void events_translate_map(events_t *all_events, map_t *maps)
         maps->pos.x -= 5;
     if (all_events->d)
         maps->pos.x += 5;
-    if (!all_events->ctrl && all_events->mouse.move_x && all_events->mouse_wheel.click)
+    if (!all_events->ctrl && all_events->mouse.move_x &&
+    all_events->mouse_wheel.click)
         maps->pos.x -= all_events->mouse.move_x;
-    if (!all_events->ctrl && all_events->mouse.move_y && all_events->mouse_wheel.click)
+    if (!all_events->ctrl && all_events->mouse.move_y &&
+    all_events->mouse_wheel.click)
         maps->pos.y -= all_events->mouse.move_y;
 }
 

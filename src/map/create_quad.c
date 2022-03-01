@@ -74,7 +74,8 @@ void create_quad(beginning_t *begin, my_quad_t quad, int angle)
     sfColor color = get_color(quad, angle);
     sfVertexArray *vertex_array;
 
-    if (angle % 360 >= 315 && angle % 360 <= 360 || angle % 360 >= 0 && angle % 360 < 45)
+    if ((angle % 360 >= 315 && angle % 360 <= 360) ||
+    (angle % 360 >= 0 && angle % 360 < 45))
         vertex_array = append_array1(color, quad);
     if (angle % 360 >= 45 && angle % 360 < 135)
         vertex_array = append_array2(color, quad);

@@ -37,7 +37,7 @@ enum params {
 
 enum sprites {
     S_BACKGROUND,
-    S_BACK_TO_MENU,
+    S_BACK_MENU,
     S_EXIT,
     S_CREATE_MAP,
     S_LOAD_MAP,
@@ -49,13 +49,17 @@ enum sprites {
 
 // EVENTS
 void my_events(beginning_t *begin, events_t *all_events);
-void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events);
+void events_key_pressed(beginning_t *begin, sfEvent event,
+events_t *all_events);
 void events_key_released(sfEvent event, events_t *all_events);
-void events_mouse_pressed(beginning_t *begin, sfEvent event, events_t *all_events);
-void events_mouse_released(beginning_t *begin, sfEvent event, events_t *all_events);
+void events_mouse_pressed(beginning_t *begin, sfEvent event,
+events_t *all_events);
+void events_mouse_released(beginning_t *begin, sfEvent event,
+events_t *all_events);
 void events_scroll_wheel(sfEvent event, events_t *all_events);
 void event_mouse_moved(sfEvent event, events_t *all_events);
-void events_write_largeur(beginning_t *begin, sfEvent event, events_t *all_events);
+void events_write_largeur(beginning_t *begin, sfEvent event,
+events_t *all_events);
 
 // INTERFACE
 // functions pointers
@@ -70,7 +74,8 @@ void button_largeur(beginning_t *begin, spritesheet_t *spritesheet);
 // put menu
 void main_menu(beginning_t *begin, spritesheet_t *spritesheet);
 // check click button
-void check_click_button(beginning_t *begin, events_t *all_events, spritesheet_t *spritesheet);
+void check_click_buttons(beginning_t *begin, events_t *all_events,
+spritesheet_t *spritesheet);
 // init spritesheets
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 
@@ -86,6 +91,7 @@ void draw_2d_map(beginning_t *begin, map_t *maps);
 void exec_events_map(events_t *all_events, map_t *maps);
 // get color
 sfColor get_color(my_quad_t quad, int angle);
+sfColor get_color_with_z(int z);
 // re create map
 void create_2d_map(map_t *maps, sfVector2i size);
 // transform map

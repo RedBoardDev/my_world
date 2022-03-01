@@ -9,7 +9,8 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-void events_key_pressed_arrows(beginning_t *begin, sfEvent event, events_t *all_events)
+void events_key_pressed_arrows(beginning_t *begin, sfEvent event,
+events_t *all_events)
 {
     if (sfKeyRight == event.key.code)
         all_events->right = true;
@@ -25,7 +26,8 @@ void events_key_pressed_arrows(beginning_t *begin, sfEvent event, events_t *all_
         all_events->page_down = true;
 }
 
-void events_key_pressed_letters(beginning_t *begin, sfEvent event, events_t *all_events)
+void events_key_pressed_letters(beginning_t *begin, sfEvent event,
+events_t *all_events)
 {
     if (sfKeyZ == event.key.code)
         all_events->z = true;
