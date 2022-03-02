@@ -41,6 +41,7 @@ SRC_FILES	=	events/events	\
 				interface/text \
 
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
+SRC	+=	bonus/buttons.c	\
 
 # no main
 SRC_FILES_NO_MAIN	=	$(filter-out main, $(SRC_FILES))

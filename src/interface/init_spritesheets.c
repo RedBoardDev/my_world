@@ -43,5 +43,5 @@ void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin)
     set_sprite("assets/img/largeur.png", &spritesheet[S_LARGEUR], begin,
     (init_sprite_t){{1400, (HEIGHT / 4) * 1.7}, {0.2, 0.2}, {0, 0, 2000, 541}});
     set_sprite("assets/img/shutdown.png", &spritesheet[S_SHUTDOWN], begin,
-    (init_sprite_t){{WIDTH - 40, 40}, {0.5, 0.5}, {0, 0, 88, 88}});
+    (init_sprite_t){{WIDTH - 40, 40}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
