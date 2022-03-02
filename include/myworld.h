@@ -110,6 +110,11 @@ sfColor color);
 void my_draw_square(sfUint8 *framebuffer, unsigned int size, sfColor color);
 void my_putpixel(int x, int y, sfUint8 *framebuffer, sfColor color);
 
+// init all
+void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet);
+events_t init_all_events(void);
+map_t init_maps_begin(sfVector2i size);
+
 // int array utils
 int **int_array_dup(int **arr, sfVector2i size);
 void print_int_array(int **arr, sfVector2i size);

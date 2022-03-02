@@ -31,6 +31,7 @@ events_t *all_events)
 {
     if (sfMouseLeft == event.key.code) {
         all_events->mouse.left = false;
+        all_events->mouse.left_released = true;
         all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);
     }
     if (sfMouseRight == event.key.code) {

@@ -20,7 +20,7 @@ spritesheet_t *spritesheet, int i)
         all_events->mouse.pos.x < collision.left + collision.width &&
         all_events->mouse.pos.y > collision.top &&
         all_events->mouse.pos.y < collision.top + collision.height) {
-            spritesheet[i].rect.top = 541;
+            spritesheet[i].rect.top = (all_events->mouse.left) ? (541 * 2) : 541;
             return (true);
         } else
             spritesheet[i].rect.top = 0;

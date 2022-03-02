@@ -12,7 +12,8 @@
 void events_write_largeur(beginning_t *begin, sfEvent event,
 events_t *all_events)
 {
-    if (event.text.unicode >= 48 && event.text.unicode <= 57 && my_strlen(all_events->largeur) < 4)
+    if (event.text.unicode >= 48 && event.text.unicode <= 57 &&
+    my_strlen(all_events->largeur) < 4)
         all_events->largeur = my_strcat(all_events->largeur,
         my_itoa(event.text.unicode - 48));
 }
@@ -20,7 +21,8 @@ events_t *all_events)
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events)
 {
-    if (event.text.unicode >= 48 && event.text.unicode <= 57 && my_strlen(all_events->hauteur) < 4)
+    if (event.text.unicode >= 48 && event.text.unicode <= 57 &&
+    my_strlen(all_events->hauteur) < 4)
         all_events->hauteur = my_strcat(all_events->hauteur,
         my_itoa(event.text.unicode - 48));
 }

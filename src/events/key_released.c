@@ -47,6 +47,10 @@ void events_key_released(sfEvent event, events_t *all_events)
         all_events->space = false;
     if (sfKeyLControl == event.key.code || sfKeyRControl == event.key.code)
         all_events->ctrl = false;
+    if (sfKeyTab == event.key.code)
+        all_events->tab = false;
+    if (sfKeyEnter == event.key.code)
+        all_events->enter = false;
     events_key_released_arrows(event, all_events);
     events_key_released_letters(event, all_events);
 }

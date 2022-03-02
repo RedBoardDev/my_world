@@ -57,6 +57,10 @@ void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
         if (begin->screen.largeur)
             all_events->largeur[my_strlen(all_events->largeur) - 1] = '\0';
     }
+    if (sfKeyTab == event.key.code)
+        all_events->tab = true;
+    if (sfKeyEnter == event.key.code)
+        all_events->enter = true;
     events_key_pressed_arrows(begin, event, all_events);
     events_key_pressed_letters(begin, event, all_events);
 }

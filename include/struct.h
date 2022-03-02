@@ -45,6 +45,7 @@ typedef struct beginning_s {
 
 typedef struct mouse_s {
     bool left;
+    bool left_released;
     bool right;
     int move_x;
     int move_y;
@@ -73,6 +74,8 @@ typedef struct events_s {
     bool escape;
     bool space;
     bool ctrl;
+    bool tab;
+    bool enter;
     mouse_t mouse;
     mouse_wheel_t mouse_wheel;
     char *hauteur;

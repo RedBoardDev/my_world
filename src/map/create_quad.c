@@ -85,4 +85,5 @@ void create_quad(beginning_t *begin, my_quad_t quad, int angle)
         vertex_array = append_array4(color, quad);
     sfVertexArray_setPrimitiveType(vertex_array, sfQuads);
     sfRenderWindow_drawVertexArray(begin->window, vertex_array, NULL);
+    sfVertexArray_destroy(vertex_array);
 }

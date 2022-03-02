@@ -56,6 +56,7 @@ void my_events(beginning_t *begin, events_t *all_events)
 
     all_events->mouse_wheel.up = false;
     all_events->mouse_wheel.down = false;
+    all_events->mouse.left_released = false;
     all_events->mouse.move_x = 0;
     all_events->mouse.move_y = 0;
     while (sfRenderWindow_pollEvent(begin->window, &event)) {

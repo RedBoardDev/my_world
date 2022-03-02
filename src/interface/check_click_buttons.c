@@ -36,7 +36,9 @@ spritesheet_t *spritesheet, int i)
 void check_click_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet)
 {
-    for (int i = 1; all_events->mouse.left && i < NBR_SPRITE; ++i)
+    if (!all_events->mouse.left_released)
+        return;
+    for (int i = 1; i < NBR_SPRITE; ++i)
         if (check_click_one_button(begin, all_events, spritesheet, i))
             return;
 }

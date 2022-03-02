@@ -9,22 +9,6 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-// void create_3d_map(map_t *maps, sfVector2i size)
-// {
-//     int **res = malloc(sizeof(int *) * (size.x + 1));
-//     int i = 0;
-//     int j = 0;
-
-//     for (; i < size.x; ++i) {
-//         res[i] = malloc(sizeof(int) * size.y);
-//         for (; j < size.y; ++j) {
-//             res[i][j] = 0;
-//         }
-//     }
-//     res[i] = NULL;
-//     maps->map_3d = res;
-// }
-
 void create_3d_map(map_t *maps, sfVector2i size)
 {
     int **res = malloc(sizeof(int *) * size.x);
@@ -74,13 +58,13 @@ void open_map(map_t *maps, char *filepath)
     buff[stat_buff.st_size - 1] = '\0';
     maps->size = get_size(buff, maps);
     res = malloc_int_array(maps);
-    for (int i = 0, index = 0, j = 0; buff[index] != '\0' && i < maps->size.x;) {
-        if (buff[index] == '\n') {
+    for (int i = 0, ind = 0, j = 0; buff[ind] != '\0' && i < maps->size.x;) {
+        if (buff[ind] == '\n') {
             ++i;
             j = 0;
-            ++index;
+            ++ind;
         } else
-            res[i][j++] = buff[index++] - 48;
+            res[i][j++] = buff[ind++] - 48;
     }
     maps->map_3d = res;
     close(fd);

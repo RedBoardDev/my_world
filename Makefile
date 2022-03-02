@@ -33,6 +33,7 @@ SRC_FILES	=	events/events	\
 				map/transform_map	\
 				clean_window	\
 				draw_simple	\
+				init_all	\
 				int_array_utils	\
 				main	\
 				myworld	\
