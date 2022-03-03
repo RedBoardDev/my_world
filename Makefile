@@ -18,8 +18,8 @@ SRC_FILES	=	events/events	\
 				events/text	\
 				interface/menu/buttons/buttons1	\
 				interface/menu/buttons/buttons2	\
-				interface/menu/init_menu	\
 				interface/menu/put_menu	\
+				interface/menu/load_file \
 				interface/check_click_buttons	\
 				interface/check_mouse_on_buttons	\
 				interface/init_spritesheets	\

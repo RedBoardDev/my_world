@@ -72,7 +72,8 @@ void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet);
 void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet);
 void button_largeur(beginning_t *begin, spritesheet_t *spritesheet);
 // put menu
-void main_menu(beginning_t *begin, spritesheet_t *spritesheet);
+void main_menu(beginning_t *begin, spritesheet_t *spritesheet,
+load_button_t *load_button);
 // check click button
 void check_click_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet);
@@ -139,5 +140,6 @@ int my_rand(int min, int max);
 void put_text(beginning_t *begin, events_t *all_events);
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events);
+load_button_t *init_load_file(beginning_t *begin);
 
 #endif

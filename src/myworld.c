@@ -27,9 +27,9 @@ void init_map(events_t *all_events, map_t *maps)
     create_2d_map(maps, maps->size);
 }
 
-void load_map_loop(events_t *all_events, map_t *maps)
+void load_map_loop(char *filepath, events_t *all_events, map_t *maps)
 {
-    load_file("maps/map.myw", maps);
+    load_file(filepath, maps);
     maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
     for (int i = 0; i < maps->size.x; ++i)
         maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
@@ -50,50 +50,58 @@ void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
     (sfColor){0, 0, 0, 100});
 }
 
-void big_loop(beginning_t *begin, events_t *all_events, map_t *maps,
-spritesheet_t *spritesheet)
+void big_loop(world_t *world)
 {
-    if (begin->init_map) {
-        init_map(all_events, maps);
-        begin->init_map = false;
+    if (world->begin.init_map) {
+        init_map(&world->all_events, &world->maps);
+        world->begin.init_map = false;
     }
-    if (begin->load_map) {
-        load_map_loop(all_events, maps);
-        begin->load_map = false;
+    if (world->begin.load_map) {
+        load_map_loop("test", &world->all_events, &world->maps);
+        world->begin.load_map = false;
     }
-    clean_window(begin, sfBlack);
-    my_events(begin, all_events);
-    if (begin->screen.world)
-        draw_map_all(begin, all_events, maps);
-    check_click_buttons(begin, all_events, spritesheet);
-    check_mouse_on_buttons(begin, all_events, spritesheet);
-    sfSprite_setTexture(begin->sprite, begin->texture, sfFalse);
-    sfTexture_updateFromPixels(begin->texture,
-    begin->framebuffer, WIDTH, HEIGHT, 0, 0);
-    sfRenderWindow_drawSprite(begin->window,
-    begin->sprite, NULL);
-    // if (!begin->screen.world)
-    main_menu(begin, spritesheet);
-    put_text(begin, all_events);
-    sfRenderWindow_display(begin->window);
+    clean_window(&world->begin, sfBlack);
+    my_events(&world->begin, &world->all_events);
+    if (world->begin.screen.world)
+        draw_map_all(&world->begin, &world->all_events, &world->maps);
+    check_click_buttons(&world->begin, &world->all_events, world->spritesheet);
+
+    if (world->begin.get_file) {
+        free(world->load_button);
+        world->load_button = init_load_file(&world->begin);
+        world->begin.get_file = false;
+    }
+    check_mouse_on_buttons(&world->begin, &world->all_events, world->spritesheet);
+    sfSprite_setTexture(world->begin.sprite, world->begin.texture, sfFalse);
+    sfTexture_updateFromPixels(world->begin.texture,
+    world->begin.framebuffer, WIDTH, HEIGHT, 0, 0);
+    sfRenderWindow_drawSprite(world->begin.window,
+    world->begin.sprite, NULL);
+    main_menu(&world->begin, world->spritesheet, world->load_button);
+    put_text(&world->begin, &world->all_events);
+    sfRenderWindow_display(world->begin.window);
 }
 
 void my_world(bool map, sfVector2i size, char *filepath)
 {
-    beginning_t begin;
+    world_t world;
     spritesheet_t *spritesheet = malloc(sizeof(spritesheet_t) * NBR_SPRITE);
     events_t all_events = init_all_events();
-    map_t maps = init_maps_begin(size);
 
-    init_all(&begin, &maps, spritesheet, (size.x == -1 && size.y == -1) ? false : true);
-    if (!begin.window || !begin.framebuffer)
+    world.load_button = NULL;
+    world.maps = init_maps_begin(size);
+    world.all_events = all_events;
+    world.spritesheet = spritesheet;
+    init_all(&world.begin, &world.maps, spritesheet, (size.x == -1 && size.y == -1) ? false : true);
+    if (!world.begin.window || !world.begin.framebuffer)
         exit(84);
-    sfWindow_setFramerateLimit((sfWindow *)begin.window, 60);
-    while (sfRenderWindow_isOpen(begin.window))
-        big_loop(&begin, &all_events, &maps, spritesheet);
-    destroy_all(&begin);
-    for (int i = 0; i < maps.size.x; ++i)
-        free(maps.map_2d[i]);
-    free(maps.map_2d);
-    free_int_array(maps.map_3d, maps.size.x);
+    sfWindow_setFramerateLimit((sfWindow *)world.begin.window, 60);
+    while (sfRenderWindow_isOpen(world.begin.window)) {
+        big_loop(&world);
+    }
+    destroy_all(&world.begin);
+    for (int i = 0; i < world.maps.size.x; ++i)
+        free(world.maps.map_2d[i]);
+    free(world.maps.map_2d);
+    free_int_array(world.maps.map_3d, world.maps.size.x);
 }

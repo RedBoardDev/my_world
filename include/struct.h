@@ -42,6 +42,7 @@ typedef struct beginning_s {
     screen_t screen;
     bool init_map;
     bool load_map;
+    bool get_file;
 } beginning_t;
 
 typedef struct mouse_s {
@@ -117,15 +118,32 @@ typedef struct spritesheet_s {
     bool active;
     sfVector2f pos;
     sfIntRect rect;
-    sfClock *clock;
     sfSprite *sprite;
     sfTexture *texture;
 } spritesheet_t;
+
+typedef struct load_button_s {
+    bool active;
+    char *name_file;
+    int count;
+    sfVector2f pos;
+    sfIntRect rect;
+    sfSprite *sprite;
+    sfTexture *texture;
+} load_button_t;
 
 typedef struct init_sprite_s {
     sfVector2f pos;
     sfVector2f scale;
     sfIntRect rect;
 } init_sprite_t;
+
+typedef struct world_s {
+    map_t maps;
+    beginning_t begin;
+    events_t all_events;
+    spritesheet_t *spritesheet;
+    load_button_t *load_button;
+} world_t;
 
 #endif

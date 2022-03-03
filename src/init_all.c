@@ -32,6 +32,7 @@ bool init_map)
     spritesheet[S_SHUTDOWN].active = init_map ? false : true;
     begin->init_map = false;
     begin->load_map = false;
+    begin->get_file = false;
     begin->screen.largeur = false;
     begin->screen.hauteur = false;
 
