@@ -45,8 +45,13 @@ events_t *all_events)
 
 void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
 {
-    if (sfKeyEscape == event.key.code)
-        sfRenderWindow_close(begin->window);
+    if (sfKeyEscape == event.key.code) {
+        if (begin->screen.world) {
+            begin->screen.world = false;
+            begin->screen.main_menu = true;
+        } else
+            sfRenderWindow_close(begin->window);
+    }
     if (sfKeySpace == event.key.code)
         all_events->space = true;
     if (sfKeyLControl == event.key.code || sfKeyRControl == event.key.code)

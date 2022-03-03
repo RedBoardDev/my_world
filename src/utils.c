@@ -21,11 +21,6 @@ void init_csfml(beginning_t *begin)
     begin->framebuffer = my_framebuffer_create();
     begin->texture = sfTexture_create(WIDTH, HEIGHT);
     begin->sprite = sfSprite_create();
-    begin->screen.world = false;
-    begin->screen.main_menu = true;
-    begin->screen.load_menu = false;
-    begin->screen.create_menu = false;
-    begin->screen.hauteur = false;
 }
 
 void destroy_all(beginning_t *begin)

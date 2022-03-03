@@ -18,30 +18,33 @@ void draw_one_sprite(beginning_t *begin, spritesheet_t *spritesheet)
 
 void draw_buttons(beginning_t *begin, spritesheet_t *spritesheet)
 {
-    spritesheet[S_CREATE_MAP].active ?
-    draw_one_sprite(begin, &spritesheet[S_CREATE_MAP]) : 0;
-    spritesheet[S_LOAD_MAP].active ?
-    draw_one_sprite(begin, &spritesheet[S_LOAD_MAP]) : 0;
-    spritesheet[S_EXIT].active ?
-    draw_one_sprite(begin, &spritesheet[S_EXIT]) : 0;
-    spritesheet[S_LOAD_MAP].active ?
-    draw_one_sprite(begin, &spritesheet[S_LOAD_MAP]) : 0;
-    spritesheet[S_BACK_MENU].active ?
-    draw_one_sprite(begin, &spritesheet[S_BACK_MENU]) : 0;
-    spritesheet[S_CREATE_MAP].active ?
-    draw_one_sprite(begin, &spritesheet[S_CREATE_MAP]) : 0;
-    spritesheet[S_HAUTEUR].active ?
-    draw_one_sprite(begin, &spritesheet[S_HAUTEUR]) : 0;
-    spritesheet[S_LARGEUR].active ?
-    draw_one_sprite(begin, &spritesheet[S_LARGEUR]) : 0;
-    spritesheet[S_BACK_MENU].active ?
-    draw_one_sprite(begin, &spritesheet[S_BACK_MENU]) : 0;
-    spritesheet[S_SHUTDOWN].active ?
-    draw_one_sprite(begin, &spritesheet[S_SHUTDOWN]) : 0;
+    for (int i = 0; i < NBR_SPRITE; ++i)
+        if (spritesheet[i].active)
+            draw_one_sprite(begin, &spritesheet[i]);
 }
 
 void main_menu(beginning_t *begin, spritesheet_t *spritesheet)
 {
-    draw_one_sprite(begin, &spritesheet[S_BACKGROUND]);
+    for (int i = 0; i < NBR_SPRITE; ++i)
+        spritesheet[i].active = false;
+    spritesheet[S_SHUTDOWN].active = true;
+    if (begin->screen.main_menu) {
+        spritesheet[S_BACKGROUND].active = true;
+        spritesheet[S_CREATE_MAP].active = true;
+        spritesheet[S_LOAD_MAP].active = true;
+        spritesheet[S_EXIT].active = true;
+    }
+    if (begin->screen.create_menu) {
+        spritesheet[S_BACKGROUND].active = true;
+        spritesheet[S_CREATE_MAP].active = true;
+        spritesheet[S_HAUTEUR].active = true;
+        spritesheet[S_LARGEUR].active = true;
+        spritesheet[S_BACK_MENU].active = true;
+    }
+    if (begin->screen.load_menu) {
+        spritesheet[S_BACKGROUND].active = true;
+        spritesheet[S_LOAD_MAP].active = true;
+        spritesheet[S_BACK_MENU].active = true;
+    }
     draw_buttons(begin, spritesheet);
 }

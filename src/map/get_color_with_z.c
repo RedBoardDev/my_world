@@ -13,7 +13,7 @@ sfColor get_grey(int z)
 {
     sfColor grey = {105, 105, 105, 255};
 
-    for (int buff = 8; buff <= z && grey.r < 255; ++buff) {
+    for (int buff = 20; buff <= z && grey.r < 255; ++buff) {
         grey.r += 3;
         grey.g += 3;
         grey.b += 3;
@@ -43,9 +43,11 @@ sfColor get_blue(int z)
 
 sfColor get_color_with_z(int z)
 {
-    if (z >= 8)
+    if (z == -100)
+        return ((sfColor){135, 81, 23, 255});
+    if (z >= 20)
         return (get_grey(z));
-    if (z < 8 && z >= 0)
+    if (z < 20 && z >= 0)
         return (get_green(z));
     if (z < 0)
         return (get_blue(z));

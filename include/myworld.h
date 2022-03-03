@@ -85,6 +85,7 @@ void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 // create map begin
 void create_3d_map(map_t *maps, sfVector2i size);
 void open_map(map_t *maps, char *filepath);
+int **malloc_int_array(map_t *maps);
 // create quad
 void create_quad(beginning_t *begin, my_quad_t quad, int angle);
 // draw map
@@ -111,7 +112,8 @@ void my_draw_square(sfUint8 *framebuffer, unsigned int size, sfColor color);
 void my_putpixel(int x, int y, sfUint8 *framebuffer, sfColor color);
 
 // init all
-void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet);
+void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet,
+bool init_map);
 events_t init_all_events(void);
 map_t init_maps_begin(sfVector2i size);
 
@@ -119,6 +121,10 @@ map_t init_maps_begin(sfVector2i size);
 int **int_array_dup(int **arr, sfVector2i size);
 void print_int_array(int **arr, sfVector2i size);
 void free_int_array(int **arr, int size);
+
+// load / save file
+void save_file(char *filepath, map_t *maps);
+void load_file(char *filepath, map_t *maps);
 
 // myworld
 void my_world(bool map, sfVector2i size, char *filepath);

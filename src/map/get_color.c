@@ -9,11 +9,33 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
+int get_highest_point(int a, int b, int c, int d)
+{
+    if (a >= b && a >= c && a >= d)
+        return (a);
+    if (b >= a && b >= c && b >= d)
+        return (b);
+    if (c >= a && c >= b && c >= d)
+        return (c);
+    if (d >= a && d >= b && d >= c)
+        return (d);
+    return (-1);
+}
+
 sfColor get_color1(my_quad_t quad)
 {
     sfColor color;
+    int z = 0;
 
-    color = get_color_with_z(quad.a.coords.z);
+    if (quad.a.coords.z == -100 || quad.b.coords.z == -100 ||
+    quad.c.coords.z == -100 || quad.d.coords.z == -100)
+        z = -100;
+    else {
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        if (z == -1)
+            z = quad.a.coords.z;
+    }
+    color = get_color_with_z(z);
     color.a = (quad.a.coords.x % 2 == 0 && quad.a.coords.y % 2 == 0) ?
     color.a - 6 : (quad.a.coords.x % 2 == 1 && quad.a.coords.y % 2 == 1) ?
     color.a - 3 : color.a;
@@ -23,8 +45,17 @@ sfColor get_color1(my_quad_t quad)
 sfColor get_color2(my_quad_t quad)
 {
     sfColor color;
+    int z = 0;
 
-    color = get_color_with_z(quad.b.coords.z);
+    if (quad.a.coords.z == -100 || quad.b.coords.z == -100 ||
+    quad.c.coords.z == -100 || quad.d.coords.z == -100)
+        z = -100;
+    else {
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        if (z == -1)
+            z = quad.b.coords.z;
+    }
+    color = get_color_with_z(z);
     color.a = (quad.b.coords.x % 2 == 0 && quad.b.coords.y % 2 == 0) ?
     color.a - 6 : (quad.b.coords.x % 2 == 1 && quad.b.coords.y % 2 == 1) ?
     color.a - 3 : color.a;
@@ -34,8 +65,17 @@ sfColor get_color2(my_quad_t quad)
 sfColor get_color3(my_quad_t quad)
 {
     sfColor color;
+    int z = 0;
 
-    color = get_color_with_z(quad.d.coords.z);
+    if (quad.a.coords.z == -100 || quad.b.coords.z == -100 ||
+    quad.c.coords.z == -100 || quad.d.coords.z == -100)
+        z = -100;
+    else {
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        if (z == -1)
+            z = quad.d.coords.z;
+    }
+    color = get_color_with_z(z);
     color.a = (quad.d.coords.x % 2 == 0 && quad.d.coords.y % 2 == 0) ?
     color.a - 6 : (quad.d.coords.x % 2 == 1 && quad.d.coords.y % 2 == 1) ?
     color.a - 3 : color.a;
@@ -45,8 +85,17 @@ sfColor get_color3(my_quad_t quad)
 sfColor get_color4(my_quad_t quad)
 {
     sfColor color;
+    int z = 0;
 
-    color = get_color_with_z(quad.c.coords.z);
+    if (quad.a.coords.z == -100 || quad.b.coords.z == -100 ||
+    quad.c.coords.z == -100 || quad.d.coords.z == -100)
+        z = -100;
+    else {
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        if (z == -1)
+            z = quad.c.coords.z;
+    }
+    color = get_color_with_z(z);
     color.a = (quad.c.coords.x % 2 == 0 && quad.c.coords.y % 2 == 0) ?
     color.a - 6 : (quad.c.coords.x % 2 == 1 && quad.c.coords.y % 2 == 1) ?
     color.a - 3 : color.a;

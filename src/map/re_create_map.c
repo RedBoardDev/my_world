@@ -59,4 +59,14 @@ void create_2d_map(map_t *maps, sfVector2i size)
             maps->map_2d[i][j].iso.y += maps->pos.y;
         }
     }
+    for (int i = 0; i < size.x; ++i) {
+        for (int j = 0; j < size.y; ++j) {
+            maps->backup_2d[i][j] =
+            project_iso_point(i, j, maps->backup_3d[i][j], maps);
+            maps->backup_2d[i][j].iso.x *= maps->zoom;
+            maps->backup_2d[i][j].iso.y *= maps->zoom;
+            maps->backup_2d[i][j].iso.x += maps->pos.x;
+            maps->backup_2d[i][j].iso.y += maps->pos.y;
+        }
+    }
 }

@@ -35,8 +35,10 @@ SRC_FILES	=	events/events	\
 				draw_simple	\
 				init_all	\
 				int_array_utils	\
+				load_file	\
 				main	\
 				myworld	\
+				save_file	\
 				utils	\
 				interface/text \
 

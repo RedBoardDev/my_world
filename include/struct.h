@@ -41,6 +41,7 @@ typedef struct beginning_s {
     sfSprite *sprite;
     screen_t screen;
     bool init_map;
+    bool load_map;
 } beginning_t;
 
 typedef struct mouse_s {
@@ -95,8 +96,9 @@ typedef struct point_s {
 
 typedef struct map_s {
     point_t **map_2d;
+    point_t **backup_2d;
     int **map_3d;
-    int **backup;
+    int **backup_3d;
     sfVector2i size;
     sfVector2i angle;
     sfVector2i pos;

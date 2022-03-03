@@ -11,15 +11,32 @@
 
 void init_map(events_t *all_events, map_t *maps)
 {
-    sfVector2i size = {my_atoi(all_events->hauteur) + 1,
-    my_atoi(all_events->largeur) + 1};
+    sfVector2i size = {my_atoi(all_events->hauteur) + 3,
+    my_atoi(all_events->largeur) + 3};
 
     maps->size = size;
     create_3d_map(maps, maps->size);
     maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
     for (int i = 0; i < maps->size.x; ++i)
         maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
-    maps->backup = int_array_dup(maps->map_3d, maps->size);
+    maps->backup_2d = malloc(sizeof(point_t *) * maps->size.x);
+    for (int i = 0; i < maps->size.x; ++i)
+        maps->backup_2d[i] = malloc(sizeof(point_t) * maps->size.y);
+
+    maps->backup_3d = int_array_dup(maps->map_3d, maps->size);
+    create_2d_map(maps, maps->size);
+}
+
+void load_map_loop(events_t *all_events, map_t *maps)
+{
+    load_file("maps/map.myw", maps);
+    maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
+    for (int i = 0; i < maps->size.x; ++i)
+        maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
+    maps->backup_2d = malloc(sizeof(point_t *) * maps->size.x);
+    for (int i = 0; i < maps->size.x; ++i)
+        maps->backup_2d[i] = malloc(sizeof(point_t) * maps->size.y);
+    maps->backup_3d = int_array_dup(maps->map_3d, maps->size);
     create_2d_map(maps, maps->size);
 }
 
@@ -39,6 +56,10 @@ spritesheet_t *spritesheet)
         init_map(all_events, maps);
         begin->init_map = false;
     }
+    if (begin->load_map) {
+        load_map_loop(all_events, maps);
+        begin->load_map = false;
+    }
     clean_window(begin, sfBlack);
     my_events(begin, all_events);
     if (begin->screen.world)
@@ -50,8 +71,8 @@ spritesheet_t *spritesheet)
     begin->framebuffer, WIDTH, HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(begin->window,
     begin->sprite, NULL);
-    if (!begin->screen.world)
-        main_menu(begin, spritesheet);
+    // if (!begin->screen.world)
+    main_menu(begin, spritesheet);
     put_text(begin, all_events);
     sfRenderWindow_display(begin->window);
 }
@@ -63,7 +84,7 @@ void my_world(bool map, sfVector2i size, char *filepath)
     events_t all_events = init_all_events();
     map_t maps = init_maps_begin(size);
 
-    init_all(&begin, &maps, spritesheet);
+    init_all(&begin, &maps, spritesheet, (size.x == -1 && size.y == -1) ? false : true);
     if (!begin.window || !begin.framebuffer)
         exit(84);
     sfWindow_setFramerateLimit((sfWindow *)begin.window, 60);
