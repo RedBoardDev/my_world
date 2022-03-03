@@ -82,28 +82,27 @@ void check_limit_translation_map(map_t *maps, events_t *all_events)
         if ((maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x > WIDTH))
             all_events->d = false;
     }
-
-
 }
 
 void events_translate_map(events_t *all_events, map_t *maps)
 {
-    check_limit_translation_map(maps, all_events);
+    events_t backup_events = *all_events;
+    check_limit_translation_map(maps, &backup_events);
 
-    if (!all_events->ctrl && all_events->z)
+    if (!backup_events.ctrl && backup_events.z)
         maps->pos.y -= 5;
-    if (!all_events->ctrl && all_events->s)
+    if (!backup_events.ctrl && backup_events.s)
         maps->pos.y += 5;
-    if (!all_events->ctrl && all_events->q)
+    if (!backup_events.ctrl && backup_events.q)
             maps->pos.x -= 5;
-    if (!all_events->ctrl && all_events->d)
+    if (!backup_events.ctrl && backup_events.d)
             maps->pos.x += 5;
-    if (!all_events->ctrl && all_events->mouse.move_x &&
-    all_events->mouse_wheel.click)
-        maps->pos.x -= all_events->mouse.move_x;
-    if (!all_events->ctrl && all_events->mouse.move_y &&
-    all_events->mouse_wheel.click)
-        maps->pos.y -= all_events->mouse.move_y;
+    if (!backup_events.ctrl && backup_events.mouse.move_x &&
+    backup_events.mouse_wheel.click)
+        maps->pos.x -= backup_events.mouse.move_x;
+    if (!backup_events.ctrl && backup_events.mouse.move_y &&
+    backup_events.mouse_wheel.click)
+        maps->pos.y -= backup_events.mouse.move_y;
 }
 
 void check_one_point_other(map_t *maps, sfVector2i pos_mouse, bool up,
