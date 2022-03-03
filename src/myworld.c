@@ -56,15 +56,11 @@ void big_loop(world_t *world)
         init_map(&world->all_events, &world->maps);
         world->begin.init_map = false;
     }
-    if (world->begin.load_map) {
-        load_map_loop("test", &world->all_events, &world->maps);
-        world->begin.load_map = false;
-    }
     clean_window(&world->begin, sfBlack);
     my_events(&world->begin, &world->all_events);
     if (world->begin.screen.world)
         draw_map_all(&world->begin, &world->all_events, &world->maps);
-    check_click_buttons(&world->begin, &world->all_events, world->spritesheet);
+    check_click_buttons(world);
 
     if (world->begin.get_file) {
         free(world->load_button);

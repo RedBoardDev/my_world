@@ -75,8 +75,7 @@ void button_largeur(beginning_t *begin, spritesheet_t *spritesheet);
 void main_menu(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button);
 // check click button
-void check_click_buttons(beginning_t *begin, events_t *all_events,
-spritesheet_t *spritesheet);
+void check_click_buttons(world_t *world);
 void check_mouse_on_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet);
 // init spritesheets
@@ -87,6 +86,7 @@ void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 void create_3d_map(map_t *maps, sfVector2i size);
 void open_map(map_t *maps, char *filepath);
 int **malloc_int_array(map_t *maps);
+void load_map_loop(char *filepath, events_t *all_events, map_t *maps);
 // create quad
 void create_quad(beginning_t *begin, my_quad_t quad, int angle);
 // draw map
@@ -138,6 +138,8 @@ void destroy_all(beginning_t *begin);
 int my_rand(int min, int max);
 
 void put_text(beginning_t *begin, events_t *all_events);
+void write_text(beginning_t *begin, char *str, sfVector2f pos, sfColor color,
+int character_size);
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events);
 load_button_t *init_load_file(beginning_t *begin);

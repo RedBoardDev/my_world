@@ -40,7 +40,6 @@ sfVector2f pos)
     sfIntRect rect = {0, 0, 3620, 541};
     sfVector2f scale = {0.2, 0.2};
 
-    load_button->active = true;
     load_button->pos = pos;
     load_button->rect = rect;
     load_button->sprite = sfSprite_create();
@@ -69,11 +68,10 @@ load_button_t *init_load_file(beginning_t *begin)
     dirp = readdir(dp);
     while (dirp != NULL) {
         if (dirp->d_name[0] != '.') {
-            printf("%s", dirp->d_name);
             load_button[i].name_file = dirp->d_name;
             pos.y = 130 + (150 * i);
             load_button[i].count = len;
-            set_load_button("assets/img/load_maps.png", &load_button[i], begin, pos);
+            set_load_button("assets/img/menu/maps_list.png", &load_button[i], begin, pos);
             ++i;
         }
         dirp = readdir(dp);

@@ -123,9 +123,8 @@ typedef struct spritesheet_s {
 } spritesheet_t;
 
 typedef struct load_button_s {
-    bool active;
-    char *name_file;
     int count;
+    char *name_file;
     sfVector2f pos;
     sfIntRect rect;
     sfSprite *sprite;
