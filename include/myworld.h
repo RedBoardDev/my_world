@@ -44,6 +44,16 @@ enum sprites {
     S_HAUTEUR,
     S_LARGEUR,
     S_SHUTDOWN,
+    S_ARROW_DOWN,
+    S_ARROW_LEFT,
+    S_ARROW_RIGHT,
+    S_ARROW_UP,
+    S_CHANGE_PAINTER,
+    S_HOME,
+    S_ROTATE_360,
+    S_SAVE,
+    S_TOGGLE_MOVE,
+    S_TOGGLE_ROTATE,
     NBR_SPRITE
 };
 

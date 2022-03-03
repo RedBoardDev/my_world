@@ -14,6 +14,12 @@ void init_map(events_t *all_events, map_t *maps)
     sfVector2i size = {my_atoi(all_events->hauteur) + 3,
     my_atoi(all_events->largeur) + 3};
 
+    maps->angle.x = 0;
+    maps->angle.y = 0;
+    maps->zoom = ZOOM;
+    maps->pos.x = POS_X;
+    maps->pos.y = POS_Y;
+    maps->radius = 50;
     maps->size = size;
     create_3d_map(maps, maps->size);
     maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
@@ -61,13 +67,20 @@ void big_loop(world_t *world)
     if (world->begin.screen.world)
         draw_map_all(&world->begin, &world->all_events, &world->maps);
     check_click_buttons(world);
-
     if (world->begin.get_file) {
         free(world->load_button);
         world->load_button = init_load_file(&world->begin);
         world->begin.get_file = false;
+        world->maps.angle.x = 0;
+        world->maps.angle.y = 0;
+        world->maps.zoom = ZOOM;
+        world->maps.pos.x = POS_X;
+        world->maps.pos.y = POS_Y;
+        world->maps.radius = 50;
     }
     check_mouse_on_buttons(&world->begin, &world->all_events, world->spritesheet, world->load_button);
+    if (world->begin.screen.world)
+        my_draw_rectangle(world->begin.framebuffer, 740, 105, (sfColor){150, 150, 150, 150});
     sfSprite_setTexture(world->begin.sprite, world->begin.texture, sfFalse);
     sfTexture_updateFromPixels(world->begin.texture,
     world->begin.framebuffer, WIDTH, HEIGHT, 0, 0);
