@@ -26,7 +26,7 @@ int fc_count_file(void)
     dp = opendir("maps");
     dirp = readdir(dp);
     while (dirp != NULL) {
-        if (dirp->d_name[0] != '.')
+        if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4]))
             len++;
         dirp = readdir(dp);
     }
@@ -67,8 +67,9 @@ load_button_t *init_load_file(beginning_t *begin)
     dp = opendir("maps");
     dirp = readdir(dp);
     while (dirp != NULL) {
-        if (dirp->d_name[0] != '.') {
+        if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4])) {
             load_button[i].name_file = dirp->d_name;
+            load_button[i].mouse_on = false;
             pos.y = 130 + (150 * i);
             load_button[i].count = len;
             set_load_button("assets/img/menu/maps_list.png", &load_button[i], begin, pos);

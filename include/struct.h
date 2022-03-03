@@ -129,6 +129,7 @@ typedef struct load_button_s {
     sfIntRect rect;
     sfSprite *sprite;
     sfTexture *texture;
+    bool mouse_on;
 } load_button_t;
 
 typedef struct init_sprite_s {

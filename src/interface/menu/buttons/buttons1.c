@@ -28,10 +28,6 @@ void button_load_map(beginning_t *begin, spritesheet_t *spritesheet)
         begin->screen.main_menu = false;
         begin->screen.load_menu = true;
         begin->get_file = true;
-    } else if (begin->screen.load_menu) {
-        begin->screen.load_menu = false;
-        begin->screen.world = true;
-        begin->load_map = true;
     }
 }
 

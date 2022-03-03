@@ -77,7 +77,7 @@ load_button_t *load_button);
 // check click button
 void check_click_buttons(world_t *world);
 void check_mouse_on_buttons(beginning_t *begin, events_t *all_events,
-spritesheet_t *spritesheet);
+spritesheet_t *spritesheet, load_button_t *load_button);
 // init spritesheets
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 

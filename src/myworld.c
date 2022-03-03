@@ -67,7 +67,7 @@ void big_loop(world_t *world)
         world->load_button = init_load_file(&world->begin);
         world->begin.get_file = false;
     }
-    check_mouse_on_buttons(&world->begin, &world->all_events, world->spritesheet);
+    check_mouse_on_buttons(&world->begin, &world->all_events, world->spritesheet, world->load_button);
     sfSprite_setTexture(world->begin.sprite, world->begin.texture, sfFalse);
     sfTexture_updateFromPixels(world->begin.texture,
     world->begin.framebuffer, WIDTH, HEIGHT, 0, 0);

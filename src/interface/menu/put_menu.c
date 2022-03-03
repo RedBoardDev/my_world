@@ -34,7 +34,7 @@ void draw_buttons_load(beginning_t *begin, load_button_t *load_button)
             load_button[i].pos);
         pos.x = load_button[i].pos.x - 200;
         pos.y = load_button[i].pos.y - 18;
-        write_text(begin, load_button[i].name_file, pos, sfWhite, 30);
+        write_text(begin, load_button[i].name_file, pos, (load_button[i].mouse_on ? sfBlack : sfWhite), 30);
     }
 }
 
@@ -48,7 +48,7 @@ load_button_t *load_button)
         spritesheet[S_BACKGROUND].active = true;
         spritesheet[S_CREATE_MAP].active = true;
         spritesheet[S_LOAD_MAP].active = true;
-        spritesheet[S_EXIT].active = true;        
+        spritesheet[S_EXIT].active = true;
     }
     if (begin->screen.create_menu) {
         spritesheet[S_BACKGROUND].active = true;
@@ -59,7 +59,6 @@ load_button_t *load_button)
     }
     if (begin->screen.load_menu) {
         spritesheet[S_BACKGROUND].active = true;
-        spritesheet[S_LOAD_MAP].active = true;
         spritesheet[S_BACK_MENU].active = true;
     }
     draw_buttons(begin, spritesheet);

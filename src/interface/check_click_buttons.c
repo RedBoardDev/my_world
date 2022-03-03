@@ -63,7 +63,7 @@ void check_click_buttons(world_t *world)
         if (check_click_one_button(&world->begin, &world->all_events,
         world->spritesheet, i))
             return;
-    if (!&world->begin.screen.load_menu)
+    if (!world->begin.screen.load_menu)
         return;
     for (int i = 0; i < world->load_button[0].count; ++i)
         if (check_click_load_buttons(world, i))
