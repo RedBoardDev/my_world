@@ -44,7 +44,7 @@ void events_zoom_and_selector_map(events_t *all_events, map_t *maps)
         maps->radius += 8;
 }
 
-void check_translation_map(map_t *maps, events_t *all_events)
+void check_limit_translation_map(map_t *maps, events_t *all_events)
 {
     if ((maps->angle.x % 360 >= 315 && maps->angle.x % 360 <= 360) ||
     (maps->angle.x % 360 >= 0 && maps->angle.x % 360 < 45)) {
@@ -88,8 +88,7 @@ void check_translation_map(map_t *maps, events_t *all_events)
 
 void events_translate_map(events_t *all_events, map_t *maps)
 {
-    check_translation_map(maps, all_events);
-
+    check_limit_translation_map(maps, all_events);
 
     if (!all_events->ctrl && all_events->z)
         maps->pos.y -= 5;
