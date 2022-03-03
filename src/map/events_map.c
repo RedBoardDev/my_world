@@ -44,16 +44,61 @@ void events_zoom_and_selector_map(events_t *all_events, map_t *maps)
         maps->radius += 8;
 }
 
+void check_translation_map(map_t *maps, events_t *all_events)
+{
+    if ((maps->angle.x % 360 >= 315 && maps->angle.x % 360 <= 360) ||
+    (maps->angle.x % 360 >= 0 && maps->angle.x % 360 < 45)) {
+        if (maps->backup_2d[0][maps->size.y - 1].iso.x < 0 && maps->backup_2d[maps->size.x - 1][0].iso.x > WIDTH)
+            return;
+        if ((maps->backup_2d[0][maps->size.y - 1].iso.x < 0))
+            all_events->q = false;
+        if ((maps->backup_2d[maps->size.x - 1][0].iso.x > WIDTH))
+            all_events->d = false;
+    }
+
+    if (maps->angle.x % 360 >= 45 && maps->angle.x % 360 < 135) {
+        if (maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x < 0 && maps->backup_2d[0][0].iso.x > WIDTH)
+            return;
+        if ((maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x < 0))
+            all_events->q = false;
+        if ((maps->backup_2d[0][0].iso.x > WIDTH))
+            all_events->d = false;
+    }
+
+    if (maps->angle.x % 360 >= 135 && maps->angle.x % 360 < 225) {
+        if (maps->backup_2d[maps->size.x - 1][0].iso.x < 0 && maps->backup_2d[0][maps->size.y - 1].iso.x > WIDTH)
+            return;
+        if ((maps->backup_2d[maps->size.x - 1][0].iso.x < 0))
+            all_events->q = false;
+        if ((maps->backup_2d[0][maps->size.y - 1].iso.x > WIDTH))
+            all_events->d = false;
+    }
+
+    if (maps->angle.x % 360 >= 225 && maps->angle.x % 360 < 315) {
+        if (maps->backup_2d[0][0].iso.x < 0 && maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x > WIDTH)
+            return;
+        if ((maps->backup_2d[0][0].iso.x < 0))
+            all_events->q = false;
+        if ((maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x > WIDTH))
+            all_events->d = false;
+    }
+
+
+}
+
 void events_translate_map(events_t *all_events, map_t *maps)
 {
+    check_translation_map(maps, all_events);
+
+
     if (!all_events->ctrl && all_events->z)
         maps->pos.y -= 5;
     if (!all_events->ctrl && all_events->s)
         maps->pos.y += 5;
     if (!all_events->ctrl && all_events->q)
-        maps->pos.x -= 5;
+            maps->pos.x -= 5;
     if (!all_events->ctrl && all_events->d)
-        maps->pos.x += 5;
+            maps->pos.x += 5;
     if (!all_events->ctrl && all_events->mouse.move_x &&
     all_events->mouse_wheel.click)
         maps->pos.x -= all_events->mouse.move_x;
@@ -119,15 +164,15 @@ void events_modify_points_map(events_t *all_events, map_t *maps)
 
 void exec_events_map(events_t *all_events, map_t *maps)
 {
-
-    events_rotate_map(all_events, maps);
-    events_zoom_and_selector_map(all_events, maps);
-    events_translate_map(all_events, maps);
-    events_modify_points_map(all_events, maps);
     if (all_events->ctrl && all_events->s)
         save_file("maps/map.myw", maps);
     if (all_events->space) {
         free_int_array(maps->map_3d, maps->size.x);
         maps->map_3d = int_array_dup(maps->backup_3d, maps->size);
     }
+
+    events_rotate_map(all_events, maps);
+    events_zoom_and_selector_map(all_events, maps);
+    events_modify_points_map(all_events, maps);
+    events_translate_map(all_events, maps);
 }

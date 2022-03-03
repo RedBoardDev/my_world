@@ -44,6 +44,7 @@ void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
 {
     exec_events_map(all_events, maps);
     create_2d_map(maps, maps->size);
+    // maps->map_2d[maps->size.x - 2][0].iso.x = WIDTH;
     draw_2d_map(begin, maps);
     my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius,
     (sfColor){0, 0, 0, 100});
