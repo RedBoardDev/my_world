@@ -9,24 +9,23 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-bool check_click_one_button(beginning_t *begin, events_t *all_events,
-spritesheet_t *spritesheet, int i)
+bool check_click_one_button(world_t *world, int i)
 {
-    static const void (*switch_flags[])(beginning_t *, spritesheet_t *) =
-    {nothing, button_back_to_menu, button_exit, button_create_map,
-    button_load_map, button_hauteur, button_largeur, button_shutdown};
+    static const void (*switch_flags[])(beginning_t *, spritesheet_t *, map_t *)
+    = {nothing, button_back_to_menu, button_exit, button_create_map,
+    button_load_map, button_hauteur, button_largeur, button_shutdown, button_arrow_down, button_arrow_left, button_arrow_right, button_arrow_up, button_painter, button_home, button_rotate_360, button_save, button_toggle_move, button_toggle_rotate, button_rotate_left, button_rotate_right};
     sfFloatRect collision;
 
-    if (spritesheet[i].active) {
-        collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
-        if (all_events->mouse.pos.x > collision.left &&
-        all_events->mouse.pos.x < collision.left + collision.width &&
-        all_events->mouse.pos.y > collision.top &&
-        all_events->mouse.pos.y < collision.top + collision.height) {
-            begin->screen.largeur = false;
-            begin->screen.hauteur = false;
-            (*switch_flags[i])(begin, spritesheet);
-            all_events->mouse.left = false;
+    if (world->spritesheet[i].active) {
+        collision = sfSprite_getGlobalBounds(world->spritesheet[i].sprite);
+        if (world->all_events.mouse.pos.x > collision.left &&
+        world->all_events.mouse.pos.x < collision.left + collision.width &&
+        world->all_events.mouse.pos.y > collision.top &&
+        world->all_events.mouse.pos.y < collision.top + collision.height) {
+            world->begin.screen.largeur = false;
+            world->begin.screen.hauteur = false;
+            (*switch_flags[i])(&world->begin, world->spritesheet, &world->maps);
+            world->all_events.mouse.left = false;
             return (true);
         }
     }
@@ -60,8 +59,7 @@ void check_click_buttons(world_t *world)
     if (!world->all_events.mouse.left_released)
         return;
     for (int i = 1; i < NBR_SPRITE; ++i)
-        if (check_click_one_button(&world->begin, &world->all_events,
-        world->spritesheet, i))
+        if (check_click_one_button(world, i))
             return;
     if (!world->begin.screen.load_menu)
         return;

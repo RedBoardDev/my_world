@@ -9,10 +9,29 @@
 #include "../include/struct.h"
 #include "../include/myworld.h"
 
-void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet,
-bool init_map)
+void init_screens(beginning_t *begin, bool init_map_bool)
 {
-    if (init_map) {
+    begin->screen.largeur = false;
+    begin->screen.hauteur = false;
+    begin->screen.main_menu = init_map_bool ? false : true;
+    begin->screen.world = init_map_bool ? true : false;
+    begin->screen.load_menu = false;
+    begin->screen.create_menu = false;
+    begin->screen.hauteur = false;
+}
+
+void init_guiworld(beginning_t *begin)
+{
+    begin->guiworld.painter = false;
+    begin->guiworld.rotate_360 = false;
+    begin->guiworld.toggle_move = false;
+    begin->guiworld.toggle_rotate = false;
+}
+
+void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet,
+bool init_map_bool)
+{
+    if (init_map_bool) {
         create_3d_map(maps, maps->size);
         maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
         for (int i = 0; i < maps->size.x; ++i)
@@ -26,22 +45,15 @@ bool init_map)
         create_2d_map(maps, maps->size);
     }
     init_spritesheets(spritesheet, begin);
-    spritesheet[S_CREATE_MAP].active = init_map ? false : true;
-    spritesheet[S_LOAD_MAP].active = init_map ? false : true;
-    spritesheet[S_EXIT].active = init_map ? false : true;
-    spritesheet[S_SHUTDOWN].active = init_map ? false : true;
+    spritesheet[S_CREATE_MAP].active = init_map_bool ? false : true;
+    spritesheet[S_LOAD_MAP].active = init_map_bool ? false : true;
+    spritesheet[S_EXIT].active = init_map_bool ? false : true;
+    spritesheet[S_SHUTDOWN].active = init_map_bool ? false : true;
     begin->init_map = false;
     begin->load_map = false;
     begin->get_file = false;
-    begin->screen.largeur = false;
-    begin->screen.hauteur = false;
-
-    begin->screen.main_menu = init_map ? false : true;
-    begin->screen.world = init_map ? true : false;
-    begin->screen.load_menu = false;
-    begin->screen.create_menu = false;
-    begin->screen.hauteur = false;
-
+    init_screens(begin, init_map_bool);
+    init_guiworld(begin);
     init_csfml(begin);
 }
 
@@ -60,5 +72,5 @@ map_t init_maps_begin(sfVector2i size)
 {
     return ((map_t){.map_2d = NULL, .backup_2d = NULL, .map_3d = NULL, .backup_3d = NULL,
     .size = size, .angle = {0, 0}, .pos = {POS_X, POS_Y},
-    .zoom = ZOOM, .radius = 50});
+    .zoom = ZOOM, .radius = 50, .painter = false});
 }

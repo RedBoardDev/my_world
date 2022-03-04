@@ -34,12 +34,20 @@ typedef struct screen_s {
     bool largeur;
 } screen_t;
 
+typedef struct gui_world_s {
+    bool painter;
+    bool toggle_move;
+    bool toggle_rotate;
+    bool rotate_360;
+} gui_world_t;
+
 typedef struct beginning_s {
     sfRenderWindow *window;
     sfUint8 *framebuffer;
     sfTexture *texture;
     sfSprite *sprite;
     screen_t screen;
+    gui_world_t guiworld;
     bool init_map;
     bool load_map;
     bool get_file;
@@ -105,6 +113,7 @@ typedef struct map_s {
     sfVector2i pos;
     int zoom;
     int radius;
+    bool painter;
 } map_t;
 
 typedef struct my_quad_s {

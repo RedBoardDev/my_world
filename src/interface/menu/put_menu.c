@@ -62,10 +62,16 @@ load_button_t *load_button)
         spritesheet[S_BACK_MENU].active = true;
     }
     if (begin->screen.world) {
-        spritesheet[S_ARROW_DOWN].active = true;
-        spritesheet[S_ARROW_LEFT].active = true;
-        spritesheet[S_ARROW_RIGHT].active = true;
-        spritesheet[S_ARROW_UP].active = true;
+        if (begin->guiworld.toggle_move) {
+            spritesheet[S_ARROW_DOWN].active = true;
+            spritesheet[S_ARROW_LEFT].active = true;
+            spritesheet[S_ARROW_RIGHT].active = true;
+            spritesheet[S_ARROW_UP].active = true;
+        }
+        if (begin->guiworld.toggle_rotate) {
+            spritesheet[S_ROTATE_LEFT].active = true;
+            spritesheet[S_ROTATE_RIGHT].active = true;
+        }
         spritesheet[S_CHANGE_PAINTER].active = true;
         spritesheet[S_HOME].active = true;
         spritesheet[S_ROTATE_360].active = true;

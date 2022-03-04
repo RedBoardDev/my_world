@@ -16,6 +16,7 @@ SRC_FILES	=	events/events	\
 				events/key_released	\
 				events/mouse	\
 				events/text	\
+				interface/menu/buttons/buttons_gui_world	\
 				interface/menu/buttons/buttons1	\
 				interface/menu/buttons/buttons2	\
 				interface/menu/put_menu	\

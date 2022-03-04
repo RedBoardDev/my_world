@@ -151,11 +151,15 @@ void events_modify_points_map(events_t *all_events, map_t *maps)
     bool incidence = true;
 
     if (all_events->mouse.left)
-        test_modify_by_zero(maps, all_events->mouse.pos, true);
-        // parse_points_up_or_down(maps, all_events->mouse.pos, true);
+        if (maps->painter)
+            test_modify_by_zero(maps, all_events->mouse.pos, true);
+        else
+            parse_points_up_or_down(maps, all_events->mouse.pos, true);
     if (all_events->mouse.right)
-        test_modify_by_zero(maps, all_events->mouse.pos, false);
-        // parse_points_up_or_down(maps, all_events->mouse.pos, false);
+        if (maps->painter)
+            test_modify_by_zero(maps, all_events->mouse.pos, false);
+        else
+            parse_points_up_or_down(maps, all_events->mouse.pos, false);
     while (incidence)
         incidence = check_incidence(maps, all_events);
 }

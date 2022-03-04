@@ -48,6 +48,8 @@ void load_map_loop(char *filepath, events_t *all_events, map_t *maps)
 
 void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
 {
+    if (begin->guiworld.rotate_360)
+        ++maps->angle.x;
     exec_events_map(all_events, maps);
     create_2d_map(maps, maps->size);
     // maps->map_2d[maps->size.x - 2][0].iso.x = WIDTH;
@@ -105,6 +107,7 @@ void my_world(bool map, sfVector2i size, char *filepath)
     if (!world.begin.window || !world.begin.framebuffer)
         exit(84);
     sfWindow_setFramerateLimit((sfWindow *)world.begin.window, 60);
+    // world.begin.screen.world = false;
     while (sfRenderWindow_isOpen(world.begin.window)) {
         big_loop(&world);
     }
