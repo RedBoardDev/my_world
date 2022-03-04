@@ -7,9 +7,9 @@
 
 #include <sys/types.h>
 #include <dirent.h>
-#include "../../../include/my.h"
-#include "../../../include/struct.h"
-#include "../../../include/myworld.h"
+#include "../include/my.h"
+#include "../include/struct.h"
+#include "../include/myworld.h"
 
 int fc_count_file(void)
 {

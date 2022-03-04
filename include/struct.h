@@ -131,6 +131,13 @@ typedef struct spritesheet_s {
     sfTexture *texture;
 } spritesheet_t;
 
+typedef struct text_s {
+    char *str;
+    int size;
+    sfVector2f pos;
+    sfColor color;
+} text_t;
+
 typedef struct load_button_s {
     int count;
     char *name_file;

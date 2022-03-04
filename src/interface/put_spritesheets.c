@@ -5,19 +5,11 @@
 ** put_menu.c
 */
 
-#include "../../../include/my.h"
-#include "../../../include/struct.h"
-#include "../../../include/myworld.h"
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 
-void draw_one_sprite(beginning_t *begin, sfSprite *sprite, sfIntRect rect,
-sfVector2f pos)
-{
-    sfSprite_setTextureRect(sprite, rect);
-    sfSprite_setPosition(sprite, pos);
-    sfRenderWindow_drawSprite(begin->window, sprite, NULL);
-}
-
-void draw_buttons(beginning_t *begin, spritesheet_t *spritesheet)
+void draw_buttons_spritesheets(beginning_t *begin, spritesheet_t *spritesheet)
 {
     for (int i = 0; i < NBR_SPRITE; ++i)
         if (spritesheet[i].active)
@@ -34,16 +26,15 @@ void draw_buttons_load(beginning_t *begin, load_button_t *load_button)
             load_button[i].pos);
         pos.x = load_button[i].pos.x - 200;
         pos.y = load_button[i].pos.y - 18;
-        write_text(begin, load_button[i].name_file, pos, (load_button[i].mouse_on ? sfBlack : sfWhite), 30);
+        write_text(begin, (text_t){load_button[i].name_file, 30, pos,
+        (load_button[i].mouse_on ? sfBlack : sfWhite)});
     }
 }
 
-void main_menu(beginning_t *begin, spritesheet_t *spritesheet,
-load_button_t *load_button)
+void toggle_spritesheets_menu(beginning_t *begin, spritesheet_t *spritesheet)
 {
     for (int i = 0; i < NBR_SPRITE; ++i)
         spritesheet[i].active = false;
-    spritesheet[S_SHUTDOWN].active = true;
     if (begin->screen.main_menu) {
         spritesheet[S_BACKGROUND].active = true;
         spritesheet[S_CREATE_MAP].active = true;
@@ -61,6 +52,10 @@ load_button_t *load_button)
         spritesheet[S_BACKGROUND].active = true;
         spritesheet[S_BACK_MENU].active = true;
     }
+}
+
+void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet)
+{
     if (begin->screen.world) {
         if (begin->guiworld.toggle_move) {
             spritesheet[S_ARROW_DOWN].active = true;
@@ -79,8 +74,15 @@ load_button_t *load_button)
         spritesheet[S_TOGGLE_MOVE].active = true;
         spritesheet[S_TOGGLE_ROTATE].active = true;
     }
+}
 
-    draw_buttons(begin, spritesheet);
+void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
+load_button_t *load_button)
+{
+    toggle_spritesheets_menu(begin, spritesheet);
+    toggle_spritesheets_world(begin, spritesheet);
+    spritesheet[S_SHUTDOWN].active = true;
+    draw_buttons_spritesheets(begin, spritesheet);
     if (begin->screen.load_menu)
         draw_buttons_load(begin, load_button);
 }

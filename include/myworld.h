@@ -96,14 +96,17 @@ void button_toggle_rotate(beginning_t *begin, spritesheet_t *spritesheet, map_t 
 void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
 void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
 // put menu
-void main_menu(beginning_t *begin, spritesheet_t *spritesheet,
+void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button);
 // check click button
 void check_click_buttons(world_t *world);
-void check_mouse_on_buttons(beginning_t *begin, events_t *all_events,
+void check_mouse_on_all_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet, load_button_t *load_button);
 // init spritesheets
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
+// utils spritesheets
+void set_one_sprite(char *filename, spritesheet_t *spritesheet, beginning_t *begin,
+init_sprite_t init_sprite);
 
 // MAP
 // create map begin
@@ -124,7 +127,7 @@ sfColor get_color_with_z(int z);
 void create_2d_map(map_t *maps, sfVector2i size);
 // transform map
 bool check_incidence(map_t *maps, events_t *all_events);
-void parse_points_up_or_down(map_t *maps, sfVector2i pos, bool up);
+void increase_decrease_points_mouse(map_t *maps, sfVector2i pos, bool up);
 
 // draw simple
 void my_draw_circle(sfUint8 *framebuffer, sfVector2i center, int radius,
@@ -160,10 +163,12 @@ void clean_window(beginning_t *begin, sfColor color);
 void init_csfml(beginning_t *beginning);
 void destroy_all(beginning_t *begin);
 int my_rand(int min, int max);
+bool check_mouse_on_one_button(sfVector2i pos, sfFloatRect collision);
+void draw_one_sprite(beginning_t *begin, sfSprite *sprite, sfIntRect rect,
+sfVector2f pos);
 
-void put_text(beginning_t *begin, events_t *all_events);
-void write_text(beginning_t *begin, char *str, sfVector2f pos, sfColor color,
-int character_size);
+void put_text_imput(beginning_t *begin, events_t *all_events);
+void write_text(beginning_t *begin, text_t struct_text);
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events);
 load_button_t *init_load_file(beginning_t *begin);

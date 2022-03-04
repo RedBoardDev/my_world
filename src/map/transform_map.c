@@ -73,7 +73,7 @@ sfVector2i index)
             maps->map_3d[i][j] > -49 ? --maps->map_3d[i][j] : 0;
 }
 
-void parse_points_up_or_down(map_t *maps, sfVector2i pos_mouse, bool up)
+void increase_decrease_points_mouse(map_t *maps, sfVector2i pos_mouse, bool up)
 {
     for (int i = 0; i < maps->size.x; ++i)
         for (int j = 0; j < maps->size.y; ++j)

@@ -24,6 +24,8 @@ events_t *all_events)
         all_events->page_up = true;
     if (sfKeyPageDown == event.key.code)
         all_events->page_down = true;
+    if (sfKeyTab == event.key.code)
+        all_events->tab = true;
 }
 
 void events_key_pressed_letters(beginning_t *begin, sfEvent event,
@@ -41,15 +43,14 @@ events_t *all_events)
         all_events->p = true;
     if (sfKeyM == event.key.code)
         all_events->m = true;
+    if (sfKeySpace == event.key.code)
+        all_events->space = true;
+    if (sfKeySpace == event.key.code)
+        all_events->space = true;
 }
 
-// void events_key_pressed_not_letters(beginning_t *begin, sfEvent event,
-// events_t *all_events)
-// {
-
-// }
-
-void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
+void events_key_pressed_not_letters(beginning_t *begin, sfEvent event,
+events_t *all_events)
 {
     if (sfKeyEscape == event.key.code) {
         if (begin->screen.world) {
@@ -58,8 +59,6 @@ void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
         } else
             sfRenderWindow_close(begin->window);
     }
-    if (sfKeySpace == event.key.code)
-        all_events->space = true;
     if (sfKeyLControl == event.key.code || sfKeyRControl == event.key.code)
         all_events->ctrl = true;
     if (sfKeyBackspace == event.key.code) {
@@ -68,10 +67,13 @@ void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
         if (begin->screen.largeur)
             all_events->largeur[my_strlen(all_events->largeur) - 1] = '\0';
     }
-    if (sfKeyTab == event.key.code)
-        all_events->tab = true;
     if (sfKeyEnter == event.key.code)
         all_events->enter = true;
+}
+
+void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
+{
+    events_key_pressed_not_letters(begin, event, all_events);
     events_key_pressed_arrows(begin, event, all_events);
     events_key_pressed_letters(begin, event, all_events);
 }

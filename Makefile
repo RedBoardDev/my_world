@@ -16,14 +16,17 @@ SRC_FILES	=	events/events	\
 				events/key_released	\
 				events/mouse	\
 				events/text	\
-				interface/menu/buttons/buttons_gui_world	\
 				interface/menu/buttons/buttons1	\
 				interface/menu/buttons/buttons2	\
-				interface/menu/put_menu	\
-				interface/menu/load_file \
+				interface/world/buttons/arrows	\
+				interface/world/buttons/rotate_save_home	\
+				interface/world/buttons/toggle	\
 				interface/check_click_buttons	\
 				interface/check_mouse_on_buttons	\
 				interface/init_spritesheets	\
+				interface/put_spritesheets	\
+				interface/text_input_load_map	\
+				interface/utils_sprites	\
 				map/create_map_begin	\
 				map/create_quad	\
 				map/draw_map	\
@@ -41,10 +44,11 @@ SRC_FILES	=	events/events	\
 				myworld	\
 				save_file	\
 				utils	\
-				interface/text \
 
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
+
 SRC	+=	bonus/buttons.c	\
+		bonus/load_file.c	\
 
 # no main
 SRC_FILES_NO_MAIN	=	$(filter-out main, $(SRC_FILES))

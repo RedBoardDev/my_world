@@ -80,7 +80,7 @@ void big_loop(world_t *world)
         world->maps.pos.y = POS_Y;
         world->maps.radius = 50;
     }
-    check_mouse_on_buttons(&world->begin, &world->all_events, world->spritesheet, world->load_button);
+    check_mouse_on_all_buttons(&world->begin, &world->all_events, world->spritesheet, world->load_button);
     if (world->begin.screen.world)
         my_draw_rectangle(world->begin.framebuffer, 740, 105, (sfColor){150, 150, 150, 150});
     sfSprite_setTexture(world->begin.sprite, world->begin.texture, sfFalse);
@@ -88,8 +88,8 @@ void big_loop(world_t *world)
     world->begin.framebuffer, WIDTH, HEIGHT, 0, 0);
     sfRenderWindow_drawSprite(world->begin.window,
     world->begin.sprite, NULL);
-    main_menu(&world->begin, world->spritesheet, world->load_button);
-    put_text(&world->begin, &world->all_events);
+    put_all_spritesheets(&world->begin, world->spritesheet, world->load_button);
+    put_text_imput(&world->begin, &world->all_events);
     sfRenderWindow_display(world->begin.window);
 }
 

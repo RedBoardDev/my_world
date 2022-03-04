@@ -9,7 +9,8 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void button_create_map(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_create_map(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps)
 {
     if (begin->screen.main_menu) {
         begin->screen.main_menu = false;
@@ -22,7 +23,8 @@ void button_create_map(beginning_t *begin, spritesheet_t *spritesheet, map_t *ma
     }
 }
 
-void button_load_map(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_load_map(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps)
 {
     if (begin->screen.main_menu) {
         begin->screen.main_menu = false;
@@ -36,7 +38,8 @@ void button_exit(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
     sfRenderWindow_close(begin->window);
 }
 
-void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps)
 {
     begin->screen.create_menu = false;
     begin->screen.load_menu = false;

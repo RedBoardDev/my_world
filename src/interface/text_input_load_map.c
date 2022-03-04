@@ -39,24 +39,10 @@ void put_text_hauteur(beginning_t *begin, events_t *all_events)
     sfRenderWindow_drawText(begin->window, text, NULL);
 }
 
-void put_text(beginning_t *begin, events_t *all_events)
+void put_text_imput(beginning_t *begin, events_t *all_events)
 {
     if (begin->screen.create_menu) {
         put_text_largeur(begin, all_events);
         put_text_hauteur(begin, all_events);
     }
-}
-
-void write_text(beginning_t *begin, char *str, sfVector2f pos, sfColor color,
-int character_size)
-{
-    sfText *text = sfText_create();
-    sfFont *font  = sfFont_createFromFile("assets/fonts/droid-sans-bold.ttf");
-
-    sfText_setFont(text, font);
-    sfText_setCharacterSize(text, character_size);
-    sfText_setPosition(text, pos);
-    sfText_setColor(text, color);
-    sfText_setString(text, str);
-    sfRenderWindow_drawText(begin->window, text, NULL);
 }

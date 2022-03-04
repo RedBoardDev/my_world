@@ -55,7 +55,6 @@ void check_limit_translation_map(map_t *maps, events_t *all_events)
         if ((maps->backup_2d[maps->size.x - 1][0].iso.x > WIDTH))
             all_events->d = false;
     }
-
     if (maps->angle.x % 360 >= 45 && maps->angle.x % 360 < 135) {
         if (maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x < 0 && maps->backup_2d[0][0].iso.x > WIDTH)
             return;
@@ -64,7 +63,6 @@ void check_limit_translation_map(map_t *maps, events_t *all_events)
         if ((maps->backup_2d[0][0].iso.x > WIDTH))
             all_events->d = false;
     }
-
     if (maps->angle.x % 360 >= 135 && maps->angle.x % 360 < 225) {
         if (maps->backup_2d[maps->size.x - 1][0].iso.x < 0 && maps->backup_2d[0][maps->size.y - 1].iso.x > WIDTH)
             return;
@@ -73,7 +71,6 @@ void check_limit_translation_map(map_t *maps, events_t *all_events)
         if ((maps->backup_2d[0][maps->size.y - 1].iso.x > WIDTH))
             all_events->d = false;
     }
-
     if (maps->angle.x % 360 >= 225 && maps->angle.x % 360 < 315) {
         if (maps->backup_2d[0][0].iso.x < 0 && maps->backup_2d[maps->size.x - 1][maps->size.y - 1].iso.x > WIDTH)
             return;
@@ -122,7 +119,7 @@ sfVector2i index)
     }
 }
 
-void test_modify_by_zero(map_t *maps, sfVector2i pos_mouse, bool up)
+void increase_decrease_points_zero(map_t *maps, sfVector2i pos_mouse, bool up)
 {
     if ((maps->angle.x % 360 >= 315 && maps->angle.x % 360 <= 360) ||
     (maps->angle.x % 360 >= 0 && maps->angle.x % 360 < 45))
@@ -152,14 +149,14 @@ void events_modify_points_map(events_t *all_events, map_t *maps)
 
     if (all_events->mouse.left)
         if (maps->painter)
-            test_modify_by_zero(maps, all_events->mouse.pos, true);
+            increase_decrease_points_zero(maps, all_events->mouse.pos, true);
         else
-            parse_points_up_or_down(maps, all_events->mouse.pos, true);
+            increase_decrease_points_mouse(maps, all_events->mouse.pos, true);
     if (all_events->mouse.right)
         if (maps->painter)
-            test_modify_by_zero(maps, all_events->mouse.pos, false);
+            increase_decrease_points_zero(maps, all_events->mouse.pos, false);
         else
-            parse_points_up_or_down(maps, all_events->mouse.pos, false);
+            increase_decrease_points_mouse(maps, all_events->mouse.pos, false);
     while (incidence)
         incidence = check_incidence(maps, all_events);
 }
