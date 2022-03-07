@@ -8,17 +8,16 @@
 #include "../include/struct.h"
 #include "../include/myworld.h"
 
-void my_draw_rectangle(sfUint8 *framebuffer, unsigned int x, unsigned int y,
-sfColor color)
+void my_draw_rectangle(sfUint8 *framebuffer, sfIntRect rect, sfColor color)
 {
-    for (unsigned int i = 0; x > i; ++i)
-        for (unsigned int j = 0; y > j; ++j)
+    for (unsigned int i = rect.left; rect.width > i; ++i)
+        for (unsigned int j = rect.top; rect.height > j; ++j)
             *(sfColor *)(4 * (j * WIDTH + i) + framebuffer) = color;
 }
 
 void my_clear_framebuffer(sfUint8 *framebuffer, sfColor color)
 {
-    my_draw_rectangle(framebuffer, WIDTH, HEIGHT, sfTransparent);
+    my_draw_rectangle(framebuffer, (sfIntRect){0, 0, WIDTH, HEIGHT}, sfTransparent);
 }
 
 void clean_window(beginning_t *begin, sfColor color)

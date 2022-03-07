@@ -40,8 +40,7 @@ bool check_click_load_buttons(world_t *world, int i)
     collision = sfSprite_getGlobalBounds(world->load_button[i].sprite);
     if (check_mouse_on_one_button(world->all_events.mouse.pos, collision)) {
         path = my_strcat(path, world->load_button[i].name_file);
-        load_map_loop(path, &world->all_events,
-        &world->maps);
+        load_map_runtime(path, &world->all_events, &world->maps);
         world->begin.load_map = false;
         world->begin.screen.world = true;
         world->all_events.mouse.left = false;

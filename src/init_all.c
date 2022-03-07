@@ -28,22 +28,20 @@ void init_guiworld(beginning_t *begin)
     begin->guiworld.toggle_rotate = false;
 }
 
+    // if (init_map_bool) {
+    //     create_3d_map(maps, maps->size);
+    //     maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
+    //     for (int i = 0; i < maps->size.x; ++i)
+    //         maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
+    //     maps->backup_2d = malloc(sizeof(point_t *) * maps->size.x);
+    //     for (int i = 0; i < maps->size.x; ++i)
+    //         maps->backup_2d[i] = malloc(sizeof(point_t) * maps->size.y);
+    //     maps->backup_3d = int_array_dup(maps->map_3d, maps->size);
+    //     create_2d_map(maps, maps->size);
+    // }
 void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet,
 bool init_map_bool)
 {
-    if (init_map_bool) {
-        create_3d_map(maps, maps->size);
-        maps->map_2d = malloc(sizeof(point_t *) * maps->size.x);
-        for (int i = 0; i < maps->size.x; ++i)
-            maps->map_2d[i] = malloc(sizeof(point_t) * maps->size.y);
-
-        maps->backup_2d = malloc(sizeof(point_t *) * maps->size.x);
-        for (int i = 0; i < maps->size.x; ++i)
-            maps->backup_2d[i] = malloc(sizeof(point_t) * maps->size.y);
-
-        maps->backup_3d = int_array_dup(maps->map_3d, maps->size);
-        create_2d_map(maps, maps->size);
-    }
     init_spritesheets(spritesheet, begin);
     spritesheet[S_CREATE_MAP].active = init_map_bool ? false : true;
     spritesheet[S_LOAD_MAP].active = init_map_bool ? false : true;

@@ -1,81 +1,38 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-MUL-200-MLH-2-1-myworld-martin.d-herouville
+** myworld
 ** File description:
-** load_list.c
+** load_file.c
 */
 
-#include <sys/types.h>
-#include <dirent.h>
 #include "../include/my.h"
 #include "../include/struct.h"
 #include "../include/myworld.h"
 
-int fc_count_file(void)
+sfVector2i get_size_int_array(int *file)
 {
-    DIR *dp;
-    int len = 0;
-    struct dirent *dirp;
-    struct stat stats;
-    load_button_t *load_button;
-
-    if (stat("maps", &stats) == -1) {
-        my_putstr("': No such file or director\n");
-    }
-    stat("maps", &stats);
-    dp = opendir("maps");
-    dirp = readdir(dp);
-    while (dirp != NULL) {
-        if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4]))
-            len++;
-        dirp = readdir(dp);
-    }
-    closedir(dp);
-    return (len);
+    return ((sfVector2i){file[0], file[1]});
 }
 
-void set_load_button(char *filename, load_button_t *load_button, beginning_t *begin,
-sfVector2f pos)
+void load_file(char *filepath, map_t *maps)
 {
-    sfIntRect rect = {0, 0, 3620, 541};
-    sfVector2f scale = {0.2, 0.2};
+    struct stat stat_buff;
+    int s = stat(filepath, &stat_buff);
+    int *buff = malloc(sizeof(int) * stat_buff.st_size);
+    int fd = open(filepath, O_RDONLY);
+    int r = read(fd, buff, stat_buff.st_size);
+    int **res;
 
-    load_button->pos = pos;
-    load_button->rect = rect;
-    load_button->sprite = sfSprite_create();
-    load_button->texture = sfTexture_createFromFile(filename, NULL);
-    sfSprite_setScale(load_button->sprite, scale);
-    sfSprite_setTexture(load_button->sprite, load_button->texture, sfFalse);
-    sfSprite_setTextureRect(load_button->sprite, load_button->rect);
-    sfSprite_setPosition(load_button->sprite, load_button->pos);
-    sfSprite_setOrigin(load_button->sprite, (sfVector2f){rect.width
-    / 2, rect.height / 2});
-}
-
-load_button_t *init_load_file(beginning_t *begin)
-{
-    DIR *dp;
-    int i = 0;
-    int len = fc_count_file();
-    struct dirent *dirp;
-    struct stat stats;
-    sfVector2f pos = {500, 130};
-    load_button_t *load_button;
-
-    load_button = malloc(sizeof(load_button_t) * len);
-    stat("maps", &stats);
-    dp = opendir("maps");
-    dirp = readdir(dp);
-    while (dirp != NULL) {
-        if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4])) {
-            load_button[i].name_file = dirp->d_name;
-            load_button[i].mouse_on = false;
-            pos.y = 130 + (150 * i);
-            load_button[i].count = len;
-            set_load_button("assets/img/menu/maps_list.png", &load_button[i], begin, pos);
+    maps->size = get_size_int_array(buff);
+    res = malloc_int_array(maps);
+    for (int i = 0, ind = 2, j = 0; ind < stat_buff.st_size && i < maps->size.x;) {
+        if (buff[ind] == -1000) {
             ++i;
-        }
-        dirp = readdir(dp);
+            ++ind;
+            j = 0;
+        } else
+            res[i][j++] = buff[ind++];
     }
-    return (load_button);
+    maps->map_3d = res;
+    close(fd);
 }

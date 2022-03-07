@@ -113,7 +113,8 @@ init_sprite_t init_sprite);
 void create_3d_map(map_t *maps, sfVector2i size);
 void open_map(map_t *maps, char *filepath);
 int **malloc_int_array(map_t *maps);
-void load_map_loop(char *filepath, events_t *all_events, map_t *maps);
+void load_map_runtime(char *filepath, events_t *all_events, map_t *maps);
+void check_limit_translation_map(map_t *maps, events_t *all_events);
 // create quad
 void create_quad(beginning_t *begin, my_quad_t quad, int angle);
 // draw map
@@ -128,12 +129,15 @@ void create_2d_map(map_t *maps, sfVector2i size);
 // transform map
 bool check_incidence(map_t *maps, events_t *all_events);
 void increase_decrease_points_mouse(map_t *maps, sfVector2i pos, bool up);
+void increase_decrease_points_zero(map_t *maps, sfVector2i pos_mouse, bool up);
+int get_highest_point(int a, int b, int c, int d);
+void init_empty_map_with_size(events_t *all_events, map_t *maps);
+void init_display_folder_with_maps(world_t *world);
 
 // draw simple
 void my_draw_circle(sfUint8 *framebuffer, sfVector2i center, int radius,
 sfColor color);
-void my_draw_rectangle(sfUint8 *framebuffer, unsigned int x, unsigned int y,
-sfColor color);
+void my_draw_rectangle(sfUint8 *framebuffer, sfIntRect rect, sfColor color);
 void my_draw_line(sfUint8 *framebuffer, sfVector2i point_a, sfVector2i point_b,
 sfColor color);
 void my_draw_square(sfUint8 *framebuffer, unsigned int size, sfColor color);
@@ -171,6 +175,6 @@ void put_text_imput(beginning_t *begin, events_t *all_events);
 void write_text(beginning_t *begin, text_t struct_text);
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events);
-load_button_t *init_load_file(beginning_t *begin);
+load_button_t *init_open_folder_maps(beginning_t *begin);
 
 #endif

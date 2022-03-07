@@ -27,19 +27,22 @@ SRC_FILES	=	events/events	\
 				interface/put_spritesheets	\
 				interface/text_input_load_map	\
 				interface/utils_sprites	\
+				map/transform_map/check_incidence	\
+				map/transform_map/transform_map	\
+				map/check_limits_translation	\
 				map/create_map_begin	\
 				map/create_quad	\
 				map/draw_map	\
 				map/events_map	\
 				map/get_color_with_z	\
 				map/get_color	\
+				map/get_highest_point	\
+				map/init_maps_runtime	\
 				map/re_create_map	\
-				map/transform_map	\
 				clean_window	\
 				draw_simple	\
 				init_all	\
 				int_array_utils	\
-				load_file	\
 				main	\
 				myworld	\
 				save_file	\
@@ -48,6 +51,7 @@ SRC_FILES	=	events/events	\
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 
 SRC	+=	bonus/buttons.c	\
+		bonus/open_folder_with_maps.c	\
 		bonus/load_file.c	\
 
 # no main

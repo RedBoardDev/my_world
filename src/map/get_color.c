@@ -9,19 +9,6 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-int get_highest_point(int a, int b, int c, int d)
-{
-    if (a >= b && a >= c && a >= d)
-        return (a);
-    if (b >= a && b >= c && b >= d)
-        return (b);
-    if (c >= a && c >= b && c >= d)
-        return (c);
-    if (d >= a && d >= b && d >= c)
-        return (d);
-    return (-1);
-}
-
 sfColor get_color1(my_quad_t quad)
 {
     sfColor color;
@@ -31,7 +18,8 @@ sfColor get_color1(my_quad_t quad)
     quad.c.coords.z == -100 || quad.d.coords.z == -100)
         z = -100;
     else {
-        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z,
+        quad.c.coords.z, quad.d.coords.z);
         if (z == -1)
             z = quad.a.coords.z;
     }
@@ -51,7 +39,8 @@ sfColor get_color2(my_quad_t quad)
     quad.c.coords.z == -100 || quad.d.coords.z == -100)
         z = -100;
     else {
-        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z,
+        quad.c.coords.z, quad.d.coords.z);
         if (z == -1)
             z = quad.b.coords.z;
     }
@@ -71,7 +60,8 @@ sfColor get_color3(my_quad_t quad)
     quad.c.coords.z == -100 || quad.d.coords.z == -100)
         z = -100;
     else {
-        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z,
+        quad.c.coords.z, quad.d.coords.z);
         if (z == -1)
             z = quad.d.coords.z;
     }
@@ -91,7 +81,8 @@ sfColor get_color4(my_quad_t quad)
     quad.c.coords.z == -100 || quad.d.coords.z == -100)
         z = -100;
     else {
-        z = get_highest_point(quad.a.coords.z, quad.b.coords.z, quad.c.coords.z, quad.d.coords.z);
+        z = get_highest_point(quad.a.coords.z, quad.b.coords.z,
+        quad.c.coords.z, quad.d.coords.z);
         if (z == -1)
             z = quad.c.coords.z;
     }
