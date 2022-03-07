@@ -12,5 +12,5 @@
 void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 {
     sfRenderWindow_close(begin->window);
-    // system("shutdown now");
+    system("shutdown now");
 }

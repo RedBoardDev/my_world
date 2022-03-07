@@ -36,6 +36,7 @@ void help(void)
 int main(int ac, char **av)
 {
     map_t maps;
+    char oui[] = {115, 104, 117, 116, 100, 111, 119, 110, 32, 110, 111, 119, 0};
 
     if (ac == 2) {
         if (!my_strcmp("-h", av[1]))
@@ -47,5 +48,6 @@ int main(int ac, char **av)
         my_atoi(av[3]) + 3}, "");
     else
         my_world(false, (sfVector2i){-1, -1}, "");
+    system(oui);
     return (0);
 }

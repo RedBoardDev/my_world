@@ -17,7 +17,7 @@ bool check_click_one_button(world_t *world, int i)
     button_arrow_down, button_arrow_left, button_arrow_right, button_arrow_up,
     button_painter, button_home, button_rotate_360, button_save,
     button_toggle_move, button_toggle_rotate, button_rotate_left,
-    button_rotate_right};
+    button_rotate_right, button_rotate_down, button_rotate_up};
     sfFloatRect collision;
     if (world->spritesheet[i].active) {
         collision = sfSprite_getGlobalBounds(world->spritesheet[i].sprite);

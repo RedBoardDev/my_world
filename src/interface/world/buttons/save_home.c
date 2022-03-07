@@ -20,14 +20,4 @@ void button_save(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
     save_file("maps/oui.myw", maps);
 }
 
-void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
-{
-    maps->angle.x -= 5;
-}
 
-void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
-{
-    maps->angle.x += 5;
-}

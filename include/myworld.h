@@ -56,6 +56,8 @@ enum sprites {
     S_TOGGLE_ROTATE,
     S_ROTATE_LEFT,
     S_ROTATE_RIGHT,
+    S_ROTATE_DOWN,
+    S_ROTATE_UP,
     NBR_SPRITE
 };
 
@@ -95,6 +97,10 @@ void button_toggle_move(beginning_t *begin, spritesheet_t *spritesheet, map_t *m
 void button_toggle_rotate(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
 void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
 void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
+void button_rotate_up(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_rotate_down(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
 // put menu
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button);

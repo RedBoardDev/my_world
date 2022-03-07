@@ -19,7 +19,8 @@ SRC_FILES	=	events/events	\
 				interface/menu/buttons/buttons1	\
 				interface/menu/buttons/buttons2	\
 				interface/world/buttons/arrows	\
-				interface/world/buttons/rotate_save_home	\
+				interface/world/buttons/rotate	\
+				interface/world/buttons/save_home	\
 				interface/world/buttons/toggle	\
 				interface/check_click_buttons	\
 				interface/check_mouse_on_buttons	\

@@ -49,6 +49,22 @@ void init_spritesheets_arrows(spritesheet_t *spritesheet, beginning_t *begin)
     (init_sprite_t){{WIDTH - 120, HEIGHT - 120}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
 
+void init_spritesheets_rotate(spritesheet_t *spritesheet, beginning_t *begin)
+{
+    set_one_sprite("assets/img/interface_world/rotate_x_left.png",
+    &spritesheet[S_ROTATE_LEFT], begin,
+    (init_sprite_t){{WIDTH - 190, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/rotate_x_right.png",
+    &spritesheet[S_ROTATE_RIGHT], begin,
+    (init_sprite_t){{WIDTH - 50, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/rotate_y_down.png",
+    &spritesheet[S_ROTATE_DOWN], begin,
+    (init_sprite_t){{WIDTH - 120, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/rotate_y_up.png",
+    &spritesheet[S_ROTATE_UP], begin,
+    (init_sprite_t){{WIDTH - 120, HEIGHT - 120}, {0.1, 0.1}, {0, 0, 541, 541}});
+}
+
 void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
 {
     set_one_sprite("assets/img/interface_world/toggle_move.png",
@@ -70,14 +86,9 @@ void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin)
     init_spritesheets_menu(spritesheet, begin);
     init_spritesheets_arrows(spritesheet, begin);
     init_spritesheets_toggle(spritesheet, begin);
+    init_spritesheets_rotate(spritesheet, begin);
     set_one_sprite("assets/img/interface_world/home.png", &spritesheet[S_HOME],
     begin, (init_sprite_t){{400 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
     set_one_sprite("assets/img/interface_world/save.png", &spritesheet[S_SAVE],
     begin, (init_sprite_t){{540 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/toggle_rotate.png",
-    &spritesheet[S_ROTATE_LEFT], begin,
-    (init_sprite_t){{WIDTH - 120, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/toggle_rotate.png",
-    &spritesheet[S_ROTATE_RIGHT], begin,
-    (init_sprite_t){{WIDTH - 50, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
 }

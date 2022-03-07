@@ -66,6 +66,8 @@ void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet)
         if (begin->guiworld.toggle_rotate) {
             spritesheet[S_ROTATE_LEFT].active = true;
             spritesheet[S_ROTATE_RIGHT].active = true;
+            spritesheet[S_ROTATE_DOWN].active = true;
+            spritesheet[S_ROTATE_UP].active = true;
         }
         spritesheet[S_CHANGE_PAINTER].active = true;
         spritesheet[S_HOME].active = true;
