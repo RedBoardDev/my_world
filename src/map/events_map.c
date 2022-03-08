@@ -44,11 +44,17 @@ void events_rotate_map(events_t *all_events, map_t *maps)
         maps->angle.x += all_events->mouse.move_x / 2;
 }
 
-void events_modify_points_map(events_t *all_events, map_t *maps)
+void events_modify_points_map(events_t *all_events, map_t *maps,
+beginning_t *begin)
 {
     bool incidence = true;
+    sfFloatRect collision_top = {0, 0, 470, 105};
+    sfFloatRect collision_bottom = {1670, 908, 1920, 1080};
 
-    if (all_events->mouse.left)
+    if (all_events->mouse.left &&
+    !check_mouse_on_one_button(all_events->mouse.pos, collision_top) &&
+    ((begin->guiworld.toggle_move || begin->guiworld.toggle_rotate) ?
+    !check_mouse_on_one_button(all_events->mouse.pos, collision_bottom) : 1))
         if (maps->painter)
             increase_decrease_points_zero(maps, all_events->mouse.pos, true);
         else
@@ -83,7 +89,7 @@ void events_translate_map(events_t *all_events, map_t *maps)
         maps->pos.y -= backup_events.mouse.move_y;
 }
 
-void exec_events_map(events_t *all_events, map_t *maps)
+void exec_events_map(events_t *all_events, map_t *maps, beginning_t *begin)
 {
     if (all_events->ctrl && all_events->s)
         save_file("maps/map.myw", maps);
@@ -91,9 +97,8 @@ void exec_events_map(events_t *all_events, map_t *maps)
         free_int_array(maps->map_3d, maps->size.x);
         maps->map_3d = int_array_dup(maps->backup_3d, maps->size);
     }
-
     events_rotate_map(all_events, maps);
     events_zoom_and_selector_map(all_events, maps);
-    events_modify_points_map(all_events, maps);
+    events_modify_points_map(all_events, maps, begin);
     events_translate_map(all_events, maps);
 }

@@ -16,7 +16,7 @@ void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
     } else {
         play_sound(begin->sound.gngngn);
     }
-    exec_events_map(all_events, maps);
+    exec_events_map(all_events, maps, begin);
     create_2d_map(maps, maps->size);
     draw_2d_map(begin, maps);
     my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius,

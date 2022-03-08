@@ -146,7 +146,7 @@ void create_quad(beginning_t *begin, my_quad_t quad, int angle);
 // draw map
 void draw_2d_map(beginning_t *begin, map_t *maps);
 // events map
-void exec_events_map(events_t *all_events, map_t *maps);
+void exec_events_map(events_t *all_events, map_t *maps, beginning_t *begin);
 // get color
 sfColor get_color(my_quad_t quad, int angle);
 sfColor get_color_with_z(int z);

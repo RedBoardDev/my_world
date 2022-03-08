@@ -53,4 +53,12 @@ spritesheet_t *spritesheet, load_button_t *load_button)
     if (begin->screen.load_menu)
         for (int i = 0; i < load_button[0].count; ++i)
             check_mouse_on_one_file(begin, all_events, load_button, i);
+    if (begin->guiworld.painter)
+        spritesheet[S_CHANGE_PAINTER].rect.top = 541;
+    if (begin->guiworld.rotate_360)
+        spritesheet[S_ROTATE_360].rect.top = 541;
+    if (begin->guiworld.toggle_move)
+        spritesheet[S_TOGGLE_MOVE].rect.top = 541;
+    if (begin->guiworld.toggle_rotate)
+        spritesheet[S_TOGGLE_ROTATE].rect.top = 541;
 }
