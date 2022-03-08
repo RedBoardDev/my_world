@@ -58,7 +58,7 @@ enum sprites {
     S_ROTATE_RIGHT,
     S_ROTATE_DOWN,
     S_ROTATE_UP,
-    NBR_SPRITE
+    NBR_SPRITE,
 };
 
 // EVENTS
@@ -182,5 +182,11 @@ void write_text(beginning_t *begin, text_t struct_text);
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events);
 load_button_t *init_open_folder_maps(beginning_t *begin);
+
+// lib sound
+void stop_sound(sfSound *sound);
+void play_sound(sfSound *sound);
+void destroy_sound(sfSound *sound);
+sfSound *create_sound(char *filepath);
 
 #endif

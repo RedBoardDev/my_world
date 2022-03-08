@@ -9,20 +9,6 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-void check_one_button(beginning_t *begin, events_t *all_events,
-spritesheet_t *spritesheet, int i)
-{
-    sfFloatRect collision;
-
-    if (spritesheet[i].active) {
-        collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
-        if (check_mouse_on_one_button(all_events->mouse.pos, collision)) {
-            spritesheet[i].rect.top = (all_events->mouse.left) ? (1082) : 541;
-        } else
-            spritesheet[i].rect.top = 0;
-    }
-}
-
 void check_mouse_on_one_file(beginning_t *begin, events_t *all_events,
 load_button_t *load_button, int i)
 {
@@ -38,6 +24,20 @@ load_button_t *load_button, int i)
     } else {
         load_button[i].rect.top = 0;
         load_button[i].mouse_on = false;
+    }
+}
+
+void check_one_button(beginning_t *begin, events_t *all_events,
+spritesheet_t *spritesheet, int i)
+{
+    sfFloatRect collision;
+
+    if (spritesheet[i].active) {
+        collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
+        if (check_mouse_on_one_button(all_events->mouse.pos, collision)) {
+            spritesheet[i].rect.top = (all_events->mouse.left) ? (1082) : 541;
+        } else
+            spritesheet[i].rect.top = 0;
     }
 }
 

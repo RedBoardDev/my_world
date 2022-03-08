@@ -11,8 +11,11 @@
 
 void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
 {
-    if (begin->guiworld.rotate_360)
+    if (begin->guiworld.rotate_360) {
         ++maps->angle.x;
+    } else {
+        play_sound(begin->sound.gngngn);
+    }
     exec_events_map(all_events, maps);
     create_2d_map(maps, maps->size);
     // maps->map_2d[maps->size.x - 2][0].iso.x = WIDTH;
@@ -36,6 +39,7 @@ void draw_all(world_t *world)
 void big_loop(world_t *world)
 {
     if (world->begin.init_map) {
+        play_sound(world->begin.sound.launch_maps);
         init_empty_map_with_size(&world->all_events, &world->maps);
         world->begin.init_map = false;
     }

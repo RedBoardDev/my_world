@@ -9,16 +9,13 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-sfColor get_grey(int z)
+sfColor get_blue(int z)
 {
-    sfColor grey = {105, 105, 105, 255};
+    sfColor blue = {0, 150, 255, 255};
 
-    for (int buff = 20; buff <= z && grey.r < 255; ++buff) {
-        grey.r += 3;
-        grey.g += 3;
-        grey.b += 3;
-    }
-    return (grey);
+    for (int buff = 0; buff >= z; --buff)
+        blue.g -= 3;
+    return (blue);
 }
 
 sfColor get_green(int z)
@@ -32,13 +29,16 @@ sfColor get_green(int z)
     return (green);
 }
 
-sfColor get_blue(int z)
+sfColor get_grey(int z)
 {
-    sfColor blue = {0, 150, 255, 255};
+    sfColor grey = {105, 105, 105, 255};
 
-    for (int buff = 0; buff >= z; --buff)
-        blue.g -= 3;
-    return (blue);
+    for (int buff = 20; buff <= z && grey.r < 255; ++buff) {
+        grey.r += 3;
+        grey.g += 3;
+        grey.b += 3;
+    }
+    return (grey);
 }
 
 sfColor get_color_with_z(int z)

@@ -41,6 +41,12 @@ typedef struct gui_world_s {
     bool rotate_360;
 } gui_world_t;
 
+typedef struct sound_s {
+    sfSound *click;
+    sfSound *launch_maps;
+    sfSound *gngngn;
+} sound_t;
+
 typedef struct beginning_s {
     sfRenderWindow *window;
     sfUint8 *framebuffer;
@@ -51,6 +57,7 @@ typedef struct beginning_s {
     bool init_map;
     bool load_map;
     bool get_file;
+    sound_t sound;
 } beginning_t;
 
 typedef struct mouse_s {

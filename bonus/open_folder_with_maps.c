@@ -11,6 +11,24 @@
 #include "../include/struct.h"
 #include "../include/myworld.h"
 
+void set_load_button(char *filename, load_button_t *load_button, beginning_t *begin,
+sfVector2f pos)
+{
+    sfIntRect rect = {0, 0, 3620, 541};
+    sfVector2f scale = {0.2, 0.2};
+
+    load_button->pos = pos;
+    load_button->rect = rect;
+    load_button->sprite = sfSprite_create();
+    load_button->texture = sfTexture_createFromFile(filename, NULL);
+    sfSprite_setScale(load_button->sprite, scale);
+    sfSprite_setTexture(load_button->sprite, load_button->texture, sfFalse);
+    sfSprite_setTextureRect(load_button->sprite, load_button->rect);
+    sfSprite_setPosition(load_button->sprite, load_button->pos);
+    sfSprite_setOrigin(load_button->sprite, (sfVector2f){rect.width
+    / 2, rect.height / 2});
+}
+
 int fc_count_file(void)
 {
     DIR *dp;
@@ -32,24 +50,6 @@ int fc_count_file(void)
     }
     closedir(dp);
     return (len);
-}
-
-void set_load_button(char *filename, load_button_t *load_button, beginning_t *begin,
-sfVector2f pos)
-{
-    sfIntRect rect = {0, 0, 3620, 541};
-    sfVector2f scale = {0.2, 0.2};
-
-    load_button->pos = pos;
-    load_button->rect = rect;
-    load_button->sprite = sfSprite_create();
-    load_button->texture = sfTexture_createFromFile(filename, NULL);
-    sfSprite_setScale(load_button->sprite, scale);
-    sfSprite_setTexture(load_button->sprite, load_button->texture, sfFalse);
-    sfSprite_setTextureRect(load_button->sprite, load_button->rect);
-    sfSprite_setPosition(load_button->sprite, load_button->pos);
-    sfSprite_setOrigin(load_button->sprite, (sfVector2f){rect.width
-    / 2, rect.height / 2});
 }
 
 load_button_t *init_open_folder_maps(beginning_t *begin)

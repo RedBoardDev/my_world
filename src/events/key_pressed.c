@@ -53,6 +53,7 @@ void events_key_pressed_not_letters(beginning_t *begin, sfEvent event,
 events_t *all_events)
 {
     if (sfKeyEscape == event.key.code) {
+        stop_sound(begin->sound.gngngn);
         if (begin->screen.world) {
             begin->screen.world = false;
             begin->screen.main_menu = true;

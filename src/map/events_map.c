@@ -9,21 +9,6 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-void events_rotate_map(events_t *all_events, map_t *maps)
-{
-    if (all_events->left)
-        --maps->angle.x;
-    if (all_events->right)
-        ++maps->angle.x;
-    if (all_events->down)
-        --maps->angle.y;
-    if (all_events->up)
-        ++maps->angle.y;
-    if (all_events->ctrl && all_events->mouse.move_x &&
-    all_events->mouse_wheel.click)
-        maps->angle.x += all_events->mouse.move_x / 2;
-}
-
 void events_zoom_and_selector_map(events_t *all_events, map_t *maps)
 {
     if (all_events->page_down && maps->zoom > 0)
@@ -42,6 +27,39 @@ void events_zoom_and_selector_map(events_t *all_events, map_t *maps)
         maps->radius -= 8;
     if (!all_events->ctrl && all_events->mouse_wheel.up)
         maps->radius += 8;
+}
+
+void events_rotate_map(events_t *all_events, map_t *maps)
+{
+    if (all_events->left)
+        --maps->angle.x;
+    if (all_events->right)
+        ++maps->angle.x;
+    if (all_events->down)
+        --maps->angle.y;
+    if (all_events->up)
+        ++maps->angle.y;
+    if (all_events->ctrl && all_events->mouse.move_x &&
+    all_events->mouse_wheel.click)
+        maps->angle.x += all_events->mouse.move_x / 2;
+}
+
+void events_modify_points_map(events_t *all_events, map_t *maps)
+{
+    bool incidence = true;
+
+    if (all_events->mouse.left)
+        if (maps->painter)
+            increase_decrease_points_zero(maps, all_events->mouse.pos, true);
+        else
+            increase_decrease_points_mouse(maps, all_events->mouse.pos, true);
+    if (all_events->mouse.right)
+        if (maps->painter)
+            increase_decrease_points_zero(maps, all_events->mouse.pos, false);
+        else
+            increase_decrease_points_mouse(maps, all_events->mouse.pos, false);
+    while (incidence)
+        incidence = check_incidence(maps, all_events);
 }
 
 void events_translate_map(events_t *all_events, map_t *maps)
@@ -63,24 +81,6 @@ void events_translate_map(events_t *all_events, map_t *maps)
     if (!backup_events.ctrl && backup_events.mouse.move_y &&
     backup_events.mouse_wheel.click)
         maps->pos.y -= backup_events.mouse.move_y;
-}
-
-void events_modify_points_map(events_t *all_events, map_t *maps)
-{
-    bool incidence = true;
-
-    if (all_events->mouse.left)
-        if (maps->painter)
-            increase_decrease_points_zero(maps, all_events->mouse.pos, true);
-        else
-            increase_decrease_points_mouse(maps, all_events->mouse.pos, true);
-    if (all_events->mouse.right)
-        if (maps->painter)
-            increase_decrease_points_zero(maps, all_events->mouse.pos, false);
-        else
-            increase_decrease_points_mouse(maps, all_events->mouse.pos, false);
-    while (incidence)
-        incidence = check_incidence(maps, all_events);
 }
 
 void exec_events_map(events_t *all_events, map_t *maps)

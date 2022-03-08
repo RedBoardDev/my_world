@@ -48,6 +48,7 @@ SRC_FILES	=	events/events	\
 				myworld	\
 				save_file	\
 				utils	\
+				lib_sound	\
 
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 

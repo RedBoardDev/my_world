@@ -33,20 +33,20 @@ void init_spritesheets_menu(spritesheet_t *spritesheet, beginning_t *begin)
     (init_sprite_t){{WIDTH - 40, 40}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
 
-void init_spritesheets_arrows(spritesheet_t *spritesheet, beginning_t *begin)
+void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
 {
-    set_one_sprite("assets/img/interface_world/arrow_down.png",
-    &spritesheet[S_ARROW_DOWN], begin, (init_sprite_t){{WIDTH - 120,
-    HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/arrow_left.png",
-    &spritesheet[S_ARROW_LEFT], begin,
-    (init_sprite_t){{WIDTH - 190, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/arrow_right.png",
-    &spritesheet[S_ARROW_RIGHT], begin,
-    (init_sprite_t){{WIDTH - 50, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/arrow_up.png",
-    &spritesheet[S_ARROW_UP], begin,
-    (init_sprite_t){{WIDTH - 120, HEIGHT - 120}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/toggle_move.png",
+    &spritesheet[S_TOGGLE_MOVE], begin,
+    (init_sprite_t){{610 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/toggle_rotate.png",
+    &spritesheet[S_TOGGLE_ROTATE], begin,
+    (init_sprite_t){{680 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/rotate_360.png",
+    &spritesheet[S_ROTATE_360], begin,
+    (init_sprite_t){{470 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/change_painter.png",
+    &spritesheet[S_CHANGE_PAINTER], begin,
+    (init_sprite_t){{330 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
 
 void init_spritesheets_rotate(spritesheet_t *spritesheet, beginning_t *begin)
@@ -65,20 +65,20 @@ void init_spritesheets_rotate(spritesheet_t *spritesheet, beginning_t *begin)
     (init_sprite_t){{WIDTH - 120, HEIGHT - 120}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
 
-void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
+void init_spritesheets_arrows(spritesheet_t *spritesheet, beginning_t *begin)
 {
-    set_one_sprite("assets/img/interface_world/toggle_move.png",
-    &spritesheet[S_TOGGLE_MOVE], begin,
-    (init_sprite_t){{610 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/toggle_rotate.png",
-    &spritesheet[S_TOGGLE_ROTATE], begin,
-    (init_sprite_t){{680 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/rotate_360.png",
-    &spritesheet[S_ROTATE_360], begin,
-    (init_sprite_t){{470 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/interface_world/change_painter.png",
-    &spritesheet[S_CHANGE_PAINTER], begin,
-    (init_sprite_t){{330 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/arrow_down.png",
+    &spritesheet[S_ARROW_DOWN], begin, (init_sprite_t){{WIDTH - 120,
+    HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/arrow_left.png",
+    &spritesheet[S_ARROW_LEFT], begin,
+    (init_sprite_t){{WIDTH - 190, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/arrow_right.png",
+    &spritesheet[S_ARROW_RIGHT], begin,
+    (init_sprite_t){{WIDTH - 50, HEIGHT - 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/interface_world/arrow_up.png",
+    &spritesheet[S_ARROW_UP], begin,
+    (init_sprite_t){{WIDTH - 120, HEIGHT - 120}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
 
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin)
