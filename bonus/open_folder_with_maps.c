@@ -37,11 +37,13 @@ int fc_count_file(void)
     struct stat stats;
     load_button_t *load_button;
 
-    if (stat("maps", &stats) == -1) {
-        my_putstr("': No such file or director\n");
-    }
-    stat("maps", &stats);
+    if (stat("maps", &stats) == -1)
+        return (0);
     dp = opendir("maps");
+    if (dp == NULL) {
+        closedir(dp);
+        return (0);
+    }
     dirp = readdir(dp);
     while (dirp != NULL) {
         if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4]))
@@ -62,13 +64,14 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
     sfVector2f pos = {500, 130};
     load_button_t *load_button;
 
-    if (len == 0) {
+    dp = opendir("maps");
+    if (len == 0 || dp == NULL) {
         load_button = malloc(sizeof(load_button_t) * 1);
         load_button[0].count = 0;
+        closedir(dp);
         return (load_button);
     }
     stat("maps", &stats);
-    dp = opendir("maps");
     dirp = readdir(dp);
     while (dirp != NULL) {
         if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4])) {
@@ -81,5 +84,6 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
         }
         dirp = readdir(dp);
     }
+    closedir(dp);
     return (load_button);
 }

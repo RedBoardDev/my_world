@@ -17,7 +17,5 @@ void button_home(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 
 void button_save(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 {
-    save_file("maps/oui.myw", maps);
+    save_file("maps/map.myw", maps);
 }
-
-

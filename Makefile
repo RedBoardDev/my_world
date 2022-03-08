@@ -46,7 +46,6 @@ SRC_FILES	=	events/events	\
 				int_array_utils	\
 				main	\
 				myworld	\
-				save_file	\
 				utils	\
 				lib_sound	\
 
@@ -55,6 +54,7 @@ SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 SRC	+=	bonus/buttons.c	\
 		bonus/open_folder_with_maps.c	\
 		bonus/load_file.c	\
+		bonus/save_file.c	\
 
 # no main
 SRC_FILES_NO_MAIN	=	$(filter-out main, $(SRC_FILES))
