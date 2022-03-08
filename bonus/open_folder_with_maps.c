@@ -60,7 +60,6 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
     int i = 0;
     int len = fc_count_file();
     struct dirent *dirp;
-    struct stat stats;
     sfVector2f pos = {500, 130};
     load_button_t *load_button;
 
@@ -71,11 +70,11 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
         closedir(dp);
         return (load_button);
     }
-    stat("maps", &stats);
+    load_button = malloc(sizeof(load_button_t) * len);
     dirp = readdir(dp);
     while (dirp != NULL) {
         if (dirp->d_name[0] != '.' && !my_strcmp(".myw", &dirp->d_name[my_strlen(dirp->d_name) - 4])) {
-            load_button[i].name_file = dirp->d_name;
+            load_button[i].name_file = my_strdup(dirp->d_name);
             load_button[i].mouse_on = false;
             pos.y = 130 + (150 * i);
             load_button[i].count = len;
