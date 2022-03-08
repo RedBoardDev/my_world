@@ -23,8 +23,8 @@ bool check_click_one_button(world_t *world, int i)
     if (world->spritesheet[i].active) {
         collision = sfSprite_getGlobalBounds(world->spritesheet[i].sprite);
         if (check_mouse_on_one_button(world->all_events.mouse.pos, collision)) {
-            world->begin.screen.largeur = false;
-            world->begin.screen.hauteur = false;
+            world->begin.text.largeur_b = false;
+            world->begin.text.hauteur_b = false;
             (*functions[i])(&world->begin, world->spritesheet, &world->maps);
             world->all_events.mouse.left = false;
             return (true);

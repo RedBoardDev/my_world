@@ -11,13 +11,14 @@
 
 void init_screens(beginning_t *begin, bool init_map_bool)
 {
-    begin->screen.largeur = false;
-    begin->screen.hauteur = false;
+    begin->text.largeur_b = false;
+    begin->text.hauteur_b = false;
+    begin->text.largeur = "";
+    begin->text.hauteur = "";
     begin->screen.main_menu = init_map_bool ? false : true;
     begin->screen.world = init_map_bool ? true : false;
     begin->screen.load_menu = false;
     begin->screen.create_menu = false;
-    begin->screen.hauteur = false;
 }
 
 void init_guiworld(beginning_t *begin)
@@ -57,7 +58,7 @@ events_t init_all_events(void)
     .space = false, .ctrl = false, .tab = false, .enter = false, .mouse =
     {.left = false, .left_released = false, .right = false, .move_x = 0,
     .move_y = 0, .pos = {0, 0}}, .mouse_wheel = {.up = false, .down = false,
-    .click = false}, .largeur = "", .hauteur = ""});
+    .click = false}});
 }
 
 map_t init_maps_begin(sfVector2i size)

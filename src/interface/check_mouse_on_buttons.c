@@ -46,9 +46,9 @@ spritesheet_t *spritesheet, load_button_t *load_button)
 {
     for (int i = 2; i < NBR_SPRITE; ++i)
         check_one_button(begin, all_events, spritesheet, i);
-    if (begin->screen.largeur)
+    if (begin->text.largeur_b)
         spritesheet[S_LARGEUR].rect.top = 541;
-    if (begin->screen.hauteur)
+    if (begin->text.hauteur_b)
         spritesheet[S_HAUTEUR].rect.top = 541;
     if (begin->screen.load_menu)
         for (int i = 0; i < load_button[0].count; ++i)

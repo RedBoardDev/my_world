@@ -20,7 +20,7 @@ void put_text_hauteur(beginning_t *begin, events_t *all_events)
     sfText_setCharacterSize(text, 50);
     sfText_setPosition(text, pos);
     sfText_setColor(text, color);
-    sfText_setString(text, all_events->hauteur);
+    sfText_setString(text, begin->text.hauteur);
     sfRenderWindow_drawText(begin->window, text, NULL);
 }
 
@@ -35,7 +35,7 @@ void put_text_largeur(beginning_t *begin, events_t *all_events)
     sfText_setCharacterSize(text, 50);
     sfText_setPosition(text, pos);
     sfText_setColor(text, color);
-    sfText_setString(text, all_events->largeur);
+    sfText_setString(text, begin->text.largeur);
     sfRenderWindow_drawText(begin->window, text, NULL);
 }
 

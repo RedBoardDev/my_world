@@ -47,7 +47,7 @@ void big_loop(world_t *world)
 {
     if (world->begin.init_map) {
         play_sound(world->begin.sound.launch_maps);
-        init_empty_map_with_size(&world->all_events, &world->maps);
+        init_empty_map_with_size(&world->begin, &world->all_events, &world->maps);
         world->begin.init_map = false;
     }
     clean_window(&world->begin, sfBlack);

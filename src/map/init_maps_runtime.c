@@ -45,10 +45,10 @@ void init_display_folder_with_maps(world_t *world)
     reset_variables_map(&world->maps);
 }
 
-void init_empty_map_with_size(events_t *all_events, map_t *maps)
+void init_empty_map_with_size(beginning_t *begin, events_t *all_events, map_t *maps)
 {
-    sfVector2i size = {my_atoi(all_events->hauteur) + 3,
-    my_atoi(all_events->largeur) + 3};
+    sfVector2i size = {my_atoi(begin->text.hauteur) + 3,
+    my_atoi(begin->text.largeur) + 3};
 
     reset_variables_map(maps);
     maps->size = size;

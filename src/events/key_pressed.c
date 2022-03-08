@@ -63,10 +63,10 @@ events_t *all_events)
     if (sfKeyLControl == event.key.code || sfKeyRControl == event.key.code)
         all_events->ctrl = true;
     if (sfKeyBackspace == event.key.code) {
-        if (begin->screen.hauteur)
-            all_events->hauteur[my_strlen(all_events->hauteur) - 1] = '\0';
-        if (begin->screen.largeur)
-            all_events->largeur[my_strlen(all_events->largeur) - 1] = '\0';
+        if (begin->text.hauteur_b)
+            begin->text.hauteur[my_strlen(begin->text.hauteur) - 1] = '\0';
+        if (begin->text.largeur_b)
+            begin->text.largeur[my_strlen(begin->text.largeur) - 1] = '\0';
     }
     if (sfKeyEnter == event.key.code)
         all_events->enter = true;

@@ -165,7 +165,7 @@ bool check_incidence(map_t *maps, events_t *all_events);
 void increase_decrease_points_mouse(map_t *maps, sfVector2i pos, bool up);
 void increase_decrease_points_zero(map_t *maps, sfVector2i pos_mouse, bool up);
 int get_highest_point(int a, int b, int c, int d);
-void init_empty_map_with_size(events_t *all_events, map_t *maps);
+void init_empty_map_with_size(beginning_t *begin, events_t *all_events, map_t *maps);
 void init_display_folder_with_maps(world_t *world);
 
 // draw simple
@@ -213,7 +213,7 @@ load_button_t *init_open_folder_maps(beginning_t *begin);
 
 // lib sound
 void stop_sound(sfSound *sound);
-void play_sound(sfSound *sound);
+void play_sound(sfSound *sound, float volume);
 void destroy_sound(sfSound *sound);
 sfSound *create_sound(char *filepath);
 

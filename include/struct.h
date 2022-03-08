@@ -30,8 +30,6 @@ typedef struct screen_s {
     bool create_menu;
     bool load_menu;
     bool world;
-    bool hauteur;
-    bool largeur;
 } screen_t;
 
 typedef struct gui_world_s {
@@ -47,6 +45,13 @@ typedef struct sound_s {
     sfSound *gngngn;
 } sound_t;
 
+typedef struct text_runtime_s {
+    char *hauteur;
+    char *largeur;
+    bool hauteur_b;
+    bool largeur_b;
+} text_runtime_t;
+
 typedef struct beginning_s {
     sfRenderWindow *window;
     sfUint8 *framebuffer;
@@ -59,6 +64,7 @@ typedef struct beginning_s {
     bool get_file;
     bool save_file;
     sound_t sound;
+    text_runtime_t text;
 } beginning_t;
 
 typedef struct mouse_s {
@@ -96,8 +102,6 @@ typedef struct events_s {
     bool enter;
     mouse_t mouse;
     mouse_wheel_t mouse_wheel;
-    char *hauteur;
-    char *largeur;
 } events_t;
 
 typedef struct vector_3i_s {
