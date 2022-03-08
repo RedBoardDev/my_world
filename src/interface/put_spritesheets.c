@@ -33,8 +33,6 @@ void draw_buttons_load(beginning_t *begin, load_button_t *load_button)
 
 void toggle_spritesheets_menu(beginning_t *begin, spritesheet_t *spritesheet)
 {
-    for (int i = 0; i < NBR_SPRITE; ++i)
-        spritesheet[i].active = false;
     if (begin->screen.main_menu) {
         spritesheet[S_BACKGROUND].active = true;
         spritesheet[S_CREATE_MAP].active = true;
@@ -75,12 +73,20 @@ void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet)
         spritesheet[S_SAVE].active = true;
         spritesheet[S_TOGGLE_MOVE].active = true;
         spritesheet[S_TOGGLE_ROTATE].active = true;
+        if (begin->save_file) {
+            spritesheet[S_WINDOW_SAVE].active = true;
+            spritesheet[S_SAVE_TEXT_BUTTON].active = true;
+            spritesheet[S_SAVE_CANCEL].active = true;
+            spritesheet[S_SAVE_SAVE].active = true;
+        }
     }
 }
 
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button)
 {
+    for (int i = 0; i < NBR_SPRITE; ++i)
+        spritesheet[i].active = false;
     toggle_spritesheets_menu(begin, spritesheet);
     toggle_spritesheets_world(begin, spritesheet);
     spritesheet[S_SHUTDOWN].active = true;

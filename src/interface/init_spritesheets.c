@@ -81,8 +81,25 @@ void init_spritesheets_arrows(spritesheet_t *spritesheet, beginning_t *begin)
     (init_sprite_t){{WIDTH - 120, HEIGHT - 120}, {0.1, 0.1}, {0, 0, 541, 541}});
 }
 
+void init_save_window(spritesheet_t *spritesheet, beginning_t *begin)
+{
+    set_one_sprite("assets/img/interface_world/window_save.png",
+    &spritesheet[S_WINDOW_SAVE], begin,
+    (init_sprite_t){{WIDTH / 2, HEIGHT / 2}, {0.25, 0.25}, {0, 0, 3620, 1623}});
+    set_one_sprite("assets/img/interface_world/button_name.png",
+    &spritesheet[S_SAVE_TEXT_BUTTON], begin,
+    (init_sprite_t){{WIDTH / 2, HEIGHT / 2}, {0.15, 0.15}, {0, 0, 3620, 541}});
+    set_one_sprite("assets/img/interface_world/cancel.png",
+    &spritesheet[S_SAVE_CANCEL], begin,
+    (init_sprite_t){{(WIDTH / 2) + 200, (HEIGHT / 2) + 150}, {0.1, 0.1}, {0, 0, 1170, 541}});
+    set_one_sprite("assets/img/interface_world/save_button.png",
+    &spritesheet[S_SAVE_SAVE], begin,
+    (init_sprite_t){{(WIDTH / 2) + 350, (HEIGHT / 2) + 150}, {0.1, 0.1}, {0, 0, 1170, 541}});
+}
+
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin)
 {
+    init_save_window(spritesheet, begin);
     init_spritesheets_menu(spritesheet, begin);
     init_spritesheets_arrows(spritesheet, begin);
     init_spritesheets_toggle(spritesheet, begin);

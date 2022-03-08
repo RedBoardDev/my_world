@@ -57,6 +57,7 @@ typedef struct beginning_s {
     bool init_map;
     bool load_map;
     bool get_file;
+    bool save_file;
     sound_t sound;
 } beginning_t;
 

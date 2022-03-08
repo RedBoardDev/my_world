@@ -17,5 +17,6 @@ void button_home(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 
 void button_save(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 {
-    save_file("maps/map.myw", maps);
+    begin->save_file = true;
+    // save_file("maps/map.myw", maps);
 }

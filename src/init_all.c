@@ -39,6 +39,7 @@ bool init_map_bool)
     begin->init_map = false;
     begin->load_map = false;
     begin->get_file = false;
+    begin->save_file = false;
     init_screens(begin, init_map_bool);
     init_guiworld(begin);
     init_csfml(begin);

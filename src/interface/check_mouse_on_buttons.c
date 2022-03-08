@@ -44,7 +44,7 @@ spritesheet_t *spritesheet, int i)
 void check_mouse_on_all_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet, load_button_t *load_button)
 {
-    for (int i = 1; i < NBR_SPRITE; ++i)
+    for (int i = 2; i < NBR_SPRITE; ++i)
         check_one_button(begin, all_events, spritesheet, i);
     if (begin->screen.largeur)
         spritesheet[S_LARGEUR].rect.top = 541;

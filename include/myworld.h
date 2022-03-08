@@ -37,6 +37,7 @@ enum params {
 
 enum sprites {
     S_BACKGROUND,
+    S_WINDOW_SAVE,
     S_BACK_MENU,
     S_EXIT,
     S_CREATE_MAP,
@@ -58,6 +59,9 @@ enum sprites {
     S_ROTATE_RIGHT,
     S_ROTATE_DOWN,
     S_ROTATE_UP,
+    S_SAVE_TEXT_BUTTON,
+    S_SAVE_CANCEL,
+    S_SAVE_SAVE,
     NBR_SPRITE,
 };
 
@@ -120,6 +124,10 @@ map_t *maps);
 void button_rotate_up(beginning_t *begin, spritesheet_t *spritesheet,
 map_t *maps);
 void button_rotate_down(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_cancel_window(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_save_window(beginning_t *begin, spritesheet_t *spritesheet,
 map_t *maps);
 // put menu
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
