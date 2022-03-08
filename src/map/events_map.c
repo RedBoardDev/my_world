@@ -91,14 +91,16 @@ void events_translate_map(events_t *all_events, map_t *maps)
 
 void exec_events_map(events_t *all_events, map_t *maps, beginning_t *begin)
 {
-    if (all_events->ctrl && all_events->s)
-        save_file("maps/map.myw", maps);
-    if (all_events->space) {
-        free_int_array(maps->map_3d, maps->size.x);
-        maps->map_3d = int_array_dup(maps->backup_3d, maps->size);
+    if (!begin->save_file) {
+        if (all_events->ctrl && all_events->s)
+            begin->save_file = true;
+        if (all_events->space) {
+            free_int_array(maps->map_3d, maps->size.x);
+            maps->map_3d = int_array_dup(maps->backup_3d, maps->size);
+        }
+        events_rotate_map(all_events, maps);
+        events_zoom_and_selector_map(all_events, maps);
+        events_modify_points_map(all_events, maps, begin);
+        events_translate_map(all_events, maps);
     }
-    events_rotate_map(all_events, maps);
-    events_zoom_and_selector_map(all_events, maps);
-    events_modify_points_map(all_events, maps, begin);
-    events_translate_map(all_events, maps);
 }

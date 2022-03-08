@@ -49,8 +49,10 @@ typedef struct sound_s {
 typedef struct text_runtime_s {
     char *hauteur;
     char *largeur;
+    char *filename_save;
     bool hauteur_b;
     bool largeur_b;
+    bool filename_save_b;
 } text_runtime_t;
 
 typedef struct beginning_s {

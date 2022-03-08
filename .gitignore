@@ -8,6 +8,7 @@ vgcore*
 test*
 *.a
 *.o
+*.xcf
 .vscode/
 libmy.a
 map.txt

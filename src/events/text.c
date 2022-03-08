@@ -26,3 +26,15 @@ events_t *all_events)
         begin->text.hauteur = my_strcat(begin->text.hauteur,
         my_itoa(event.text.unicode - 48));
 }
+
+void events_write_filename(beginning_t *begin, sfEvent event,
+events_t *all_events)
+{
+    char new_letter[2];
+
+    new_letter[0] = event.text.unicode;
+    new_letter[1] = '\0';
+    if (my_strlen(begin->text.filename_save) < 17)
+        begin->text.filename_save = my_strcat(begin->text.filename_save,
+        new_letter);
+}

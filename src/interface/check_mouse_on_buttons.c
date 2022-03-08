@@ -50,6 +50,8 @@ spritesheet_t *spritesheet, load_button_t *load_button)
         spritesheet[S_LARGEUR].rect.top = 541;
     if (begin->text.hauteur_b)
         spritesheet[S_HAUTEUR].rect.top = 541;
+    if (begin->text.filename_save_b)
+        spritesheet[S_SAVE_TEXT_BUTTON].rect.top = 541;
     if (begin->screen.load_menu)
         for (int i = 0; i < load_button[0].count; ++i)
             check_mouse_on_one_file(begin, all_events, load_button, i);

@@ -13,8 +13,10 @@ void init_screens(beginning_t *begin, bool init_map_bool)
 {
     begin->text.largeur_b = false;
     begin->text.hauteur_b = false;
+    begin->text.filename_save_b = false;
     begin->text.largeur = "";
     begin->text.hauteur = "";
+    begin->text.filename_save = "";
     begin->screen.main_menu = init_map_bool ? false : true;
     begin->screen.world = init_map_bool ? true : false;
     begin->screen.load_menu = false;
