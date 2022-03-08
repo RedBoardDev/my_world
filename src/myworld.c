@@ -27,11 +27,11 @@ void draw_all(world_t *world)
 {
     if (world->begin.screen.world) {
         my_draw_rectangle(world->begin.framebuffer, (sfIntRect){0, 0, 470, 105},
-        (sfColor){150, 150, 150, 150});
+        (sfColor){100, 100, 100, 150});
         if (world->begin.guiworld.toggle_move ||
         world->begin.guiworld.toggle_rotate)
             my_draw_rectangle(world->begin.framebuffer,
-            (sfIntRect){1670, 908, 1920, 1080}, (sfColor){150, 150, 150, 150});
+            (sfIntRect){1670, 908, 1920, 1080}, (sfColor){100, 100, 100, 150});
     }
     sfSprite_setTexture(world->begin.sprite, world->begin.texture, sfFalse);
     sfTexture_updateFromPixels(world->begin.texture,
