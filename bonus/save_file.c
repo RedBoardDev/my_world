@@ -32,7 +32,7 @@ void save_file(char *filepath, map_t *maps)
     int separator = -1000;
 
     if (!try_open_folder())
-        mkdir("maps", 0700);
+        mkdir("maps", 0755);
     fp = fopen (filepath, "w");
     fwrite(&maps->size.x, sizeof(int), 1, fp);
     fwrite(&maps->size.y, sizeof(int), 1, fp);
