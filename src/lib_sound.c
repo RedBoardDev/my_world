@@ -24,9 +24,9 @@ void destroy_sound(sfSound *sound)
     sfSound_destroy(sound);
 }
 
-void play_sound(sfSound *sound)
+void play_sound(sfSound *sound, float volume)
 {
-    sfSound_setVolume(sound, 5);
+    sfSound_setVolume(sound, volume);
     sfSound_play(sound);
 }
 

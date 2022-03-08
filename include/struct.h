@@ -43,6 +43,7 @@ typedef struct sound_s {
     sfSound *click;
     sfSound *launch_maps;
     sfSound *gngngn;
+    float volume;
 } sound_t;
 
 typedef struct text_runtime_s {

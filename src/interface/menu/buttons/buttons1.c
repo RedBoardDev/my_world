@@ -37,7 +37,7 @@ void button_exit(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 {
     sfSound *sound = create_sound("assets/sounds/exit.ogg");
 
-    play_sound(sound);
+    play_sound(sound, begin->sound.volume);
     usleep(800000);
     destroy_sound(sound);
     sfRenderWindow_close(begin->window);

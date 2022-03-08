@@ -35,7 +35,7 @@ events_t *all_events)
     switch (event.type) {
         case sfEvtMouseButtonPressed:
             if (!begin->screen.world)
-                play_sound(begin->sound.click);
+                play_sound(begin->sound.click, begin->sound.volume);
             events_mouse_pressed(begin, event, all_events);
             break;
         case sfEvtMouseButtonReleased:
