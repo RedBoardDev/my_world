@@ -17,7 +17,8 @@ void my_draw_rectangle(sfUint8 *framebuffer, sfIntRect rect, sfColor color)
 
 void my_clear_framebuffer(sfUint8 *framebuffer, sfColor color)
 {
-    my_draw_rectangle(framebuffer, (sfIntRect){0, 0, WIDTH, HEIGHT}, sfTransparent);
+    my_draw_rectangle(framebuffer, (sfIntRect){0, 0, WIDTH, HEIGHT},
+    sfTransparent);
 }
 
 void clean_window(beginning_t *begin, sfColor color)

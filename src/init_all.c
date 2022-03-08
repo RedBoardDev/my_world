@@ -31,8 +31,6 @@ void init_guiworld(beginning_t *begin)
 void init_all(beginning_t *begin, map_t *maps, spritesheet_t *spritesheet,
 bool init_map_bool)
 {
-    // sfSound *sound;
-
     init_spritesheets(spritesheet, begin);
     spritesheet[S_CREATE_MAP].active = init_map_bool ? false : true;
     spritesheet[S_LOAD_MAP].active = init_map_bool ? false : true;
@@ -63,7 +61,7 @@ events_t init_all_events(void)
 
 map_t init_maps_begin(sfVector2i size)
 {
-    return ((map_t){.map_2d = NULL, .backup_2d = NULL, .map_3d = NULL, .backup_3d = NULL,
-    .size = size, .angle = {0, 0}, .pos = {POS_X, POS_Y},
+    return ((map_t){.map_2d = NULL, .backup_2d = NULL, .map_3d = NULL,
+    .backup_3d = NULL, .size = size, .angle = {0, 0}, .pos = {POS_X, POS_Y},
     .zoom = ZOOM, .radius = 50, .painter = false});
 }

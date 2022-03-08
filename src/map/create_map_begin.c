@@ -24,14 +24,3 @@ void create_3d_map(map_t *maps, sfVector2i size)
     }
     maps->map_3d = res;
 }
-
-int **malloc_int_array(map_t *maps)
-{
-    int **res = malloc(sizeof(int *) * (maps->size.x + 1));
-    int i_alloc = 0;
-
-    for (; i_alloc < maps->size.x; ++i_alloc)
-        res[i_alloc] = malloc(sizeof(int) * maps->size.y);
-    res[i_alloc] = NULL;
-    return (res);
-}

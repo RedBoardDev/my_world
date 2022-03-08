@@ -77,26 +77,46 @@ events_t *all_events);
 
 // INTERFACE
 // functions pointers
-void button_create_map(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_load_map(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_exit(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void nothing(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_largeur(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_arrow_down(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_arrow_left(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_arrow_right(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_arrow_up(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_painter(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_home(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_rotate_360(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_save(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_toggle_move(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_toggle_rotate(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
-void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps);
+void button_create_map(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_load_map(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_exit(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void nothing(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_largeur(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_arrow_down(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_arrow_left(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_arrow_right(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_arrow_up(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_painter(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_home(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_rotate_360(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_save(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_toggle_move(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_toggle_rotate(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
 void button_rotate_up(beginning_t *begin, spritesheet_t *spritesheet,
 map_t *maps);
 void button_rotate_down(beginning_t *begin, spritesheet_t *spritesheet,
@@ -111,8 +131,8 @@ spritesheet_t *spritesheet, load_button_t *load_button);
 // init spritesheets
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
 // utils spritesheets
-void set_one_sprite(char *filename, spritesheet_t *spritesheet, beginning_t *begin,
-init_sprite_t init_sprite);
+void set_one_sprite(char *filename, spritesheet_t *spritesheet,
+beginning_t *begin, init_sprite_t init_sprite);
 
 // MAP
 // create map begin

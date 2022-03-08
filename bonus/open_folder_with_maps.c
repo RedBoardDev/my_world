@@ -62,7 +62,11 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
     sfVector2f pos = {500, 130};
     load_button_t *load_button;
 
-    load_button = malloc(sizeof(load_button_t) * len);
+    if (len == 0) {
+        load_button = malloc(sizeof(load_button_t) * 1);
+        load_button[0].count = 0;
+        return (load_button);
+    }
     stat("maps", &stats);
     dp = opendir("maps");
     dirp = readdir(dp);

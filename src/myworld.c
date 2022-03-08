@@ -18,7 +18,6 @@ void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
     }
     exec_events_map(all_events, maps);
     create_2d_map(maps, maps->size);
-    // maps->map_2d[maps->size.x - 2][0].iso.x = WIDTH;
     draw_2d_map(begin, maps);
     my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius,
     (sfColor){0, 0, 0, 100});
@@ -26,6 +25,14 @@ void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
 
 void draw_all(world_t *world)
 {
+    if (world->begin.screen.world) {
+        my_draw_rectangle(world->begin.framebuffer, (sfIntRect){0, 0, 470, 105},
+        (sfColor){150, 150, 150, 150});
+        if (world->begin.guiworld.toggle_move ||
+        world->begin.guiworld.toggle_rotate)
+            my_draw_rectangle(world->begin.framebuffer,
+            (sfIntRect){1670, 908, 1920, 1080}, (sfColor){150, 150, 150, 150});
+    }
     sfSprite_setTexture(world->begin.sprite, world->begin.texture, sfFalse);
     sfTexture_updateFromPixels(world->begin.texture,
     world->begin.framebuffer, WIDTH, HEIGHT, 0, 0);
@@ -50,12 +57,8 @@ void big_loop(world_t *world)
     check_click_buttons(world);
     if (world->begin.get_file)
         init_display_folder_with_maps(world);
-    check_mouse_on_all_buttons(&world->begin, &world->all_events, world->spritesheet, world->load_button);
-    if (world->begin.screen.world) {
-        my_draw_rectangle(world->begin.framebuffer, (sfIntRect){0, 0, 470, 105}, (sfColor){150, 150, 150, 150});
-        if (world->begin.guiworld.toggle_move || world->begin.guiworld.toggle_rotate)
-            my_draw_rectangle(world->begin.framebuffer, (sfIntRect){1670, 908, 1920, 1080}, (sfColor){150, 150, 150, 150});
-    }
+    check_mouse_on_all_buttons(&world->begin, &world->all_events,
+    world->spritesheet, world->load_button);
     draw_all(world);
 }
 
@@ -65,7 +68,8 @@ void my_world(bool map, sfVector2i size, char *filepath)
     .spritesheet = malloc(sizeof(spritesheet_t) * NBR_SPRITE),
     .load_button = NULL};
 
-    init_all(&world.begin, &world.maps, world.spritesheet, (size.x == -1 && size.y == -1) ? false : true);
+    init_all(&world.begin, &world.maps, world.spritesheet,
+    (size.x == -1 && size.y == -1) ? false : true);
     if (!world.begin.window || !world.begin.framebuffer)
         exit(84);
     sfWindow_setFramerateLimit((sfWindow *)world.begin.window, 60);
