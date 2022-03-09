@@ -23,3 +23,11 @@ void button_largeur(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
 {
     begin->text.largeur_b = true;
 }
+
+void button_sound(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+{
+    if (begin->screen.soundbox)
+        begin->screen.soundbox = false;
+    else
+        begin->screen.soundbox = true;
+}

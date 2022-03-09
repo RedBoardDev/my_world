@@ -62,6 +62,8 @@ enum sprites {
     S_SAVE_TEXT_BUTTON,
     S_SAVE_CANCEL,
     S_SAVE_SAVE,
+    S_SOUND,
+    S_SOUND_POTENTIO,
     NBR_SPRITE,
 };
 
@@ -128,6 +130,10 @@ map_t *maps);
 void button_cancel_window(beginning_t *begin, spritesheet_t *spritesheet,
 map_t *maps);
 void button_save_window(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_write_filename(beginning_t *begin, spritesheet_t *spritesheet,
+map_t *maps);
+void button_sound(beginning_t *begin, spritesheet_t *spritesheet,
 map_t *maps);
 // put menu
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,

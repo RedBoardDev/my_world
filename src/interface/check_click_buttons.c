@@ -8,8 +8,6 @@
 #include "../../include/my.h"
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
-void button_write_filename(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
 
 bool check_click_one_button(world_t *world, int i)
 {
@@ -20,7 +18,8 @@ bool check_click_one_button(world_t *world, int i)
     button_painter, button_home, button_rotate_360, button_save,
     button_toggle_move, button_toggle_rotate, button_rotate_left,
     button_rotate_right, button_rotate_down, button_rotate_up,
-    button_write_filename, button_cancel_window, button_save_window};
+    button_write_filename, button_cancel_window, button_save_window,
+    button_sound, nothing};
     sfFloatRect collision;
     if (world->spritesheet[i].active) {
         collision = sfSprite_getGlobalBounds(world->spritesheet[i].sprite);

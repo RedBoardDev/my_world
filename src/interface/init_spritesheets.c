@@ -47,6 +47,14 @@ void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
     set_one_sprite("assets/img/interface_world/change_painter.png",
     &spritesheet[S_CHANGE_PAINTER], begin,
     (init_sprite_t){{470 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
+
+    set_one_sprite("assets/img/sound.png",
+    &spritesheet[S_SOUND], begin, (init_sprite_t){{WIDTH - 120,
+    40}, {0.1, 0.1}, {0, 0, 541, 541}});
+
+    set_one_sprite("assets/img/sound_potentio.png",
+    &spritesheet[S_SOUND_POTENTIO], begin,
+    (init_sprite_t){{WIDTH - 275, 100}, {0.1, 0.1}, {0, 0, 3620, 541}});
 }
 
 void init_spritesheets_rotate(spritesheet_t *spritesheet, beginning_t *begin)

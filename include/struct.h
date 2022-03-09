@@ -30,6 +30,7 @@ typedef struct screen_s {
     bool create_menu;
     bool load_menu;
     bool world;
+    bool soundbox;
 } screen_t;
 
 typedef struct gui_world_s {

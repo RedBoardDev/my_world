@@ -45,7 +45,6 @@ void draw_all(world_t *world)
 
 void big_loop(world_t *world)
 {
-    printf("world = %d\n", world->begin.text.filename_save_b);
     if (world->begin.init_map) {
         play_sound(world->begin.sound.launch_maps, world->begin.sound.volume);
         init_empty_map_with_size(&world->begin, &world->all_events, &world->maps);

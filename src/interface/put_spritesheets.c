@@ -80,6 +80,9 @@ void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet)
             spritesheet[S_SAVE_SAVE].active = true;
         }
     }
+    spritesheet[S_SOUND].active = true;
+    if (begin->screen.soundbox)
+        spritesheet[S_SOUND_POTENTIO].active = true;
 }
 
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
