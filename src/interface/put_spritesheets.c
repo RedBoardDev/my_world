@@ -31,62 +31,6 @@ void draw_buttons_load(beginning_t *begin, load_button_t *load_button)
     }
 }
 
-void toggle_spritesheets_menu(beginning_t *begin, spritesheet_t *spritesheet)
-{
-    if (begin->screen.main_menu) {
-        spritesheet[S_BACKGROUND].active = true;
-        spritesheet[S_CREATE_MAP].active = true;
-        spritesheet[S_LOAD_MAP].active = true;
-        spritesheet[S_EXIT].active = true;
-    }
-    if (begin->screen.create_menu) {
-        spritesheet[S_BACKGROUND].active = true;
-        spritesheet[S_CREATE_MAP].active = true;
-        spritesheet[S_HAUTEUR].active = true;
-        spritesheet[S_LARGEUR].active = true;
-        spritesheet[S_BACK_MENU].active = true;
-    }
-    if (begin->screen.load_menu) {
-        spritesheet[S_BACKGROUND].active = true;
-        spritesheet[S_BACK_MENU].active = true;
-    }
-}
-
-void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet)
-{
-    if (begin->screen.world) {
-        if (begin->guiworld.toggle_move) {
-            spritesheet[S_ARROW_DOWN].active = true;
-            spritesheet[S_ARROW_LEFT].active = true;
-            spritesheet[S_ARROW_RIGHT].active = true;
-            spritesheet[S_ARROW_UP].active = true;
-        }
-        if (begin->guiworld.toggle_rotate) {
-            spritesheet[S_ROTATE_LEFT].active = true;
-            spritesheet[S_ROTATE_RIGHT].active = true;
-            spritesheet[S_ROTATE_DOWN].active = true;
-            spritesheet[S_ROTATE_UP].active = true;
-        }
-        spritesheet[S_CHANGE_PAINTER].active = true;
-        spritesheet[S_HOME].active = true;
-        spritesheet[S_ROTATE_360].active = true;
-        spritesheet[S_SAVE].active = true;
-        spritesheet[S_TOGGLE_MOVE].active = true;
-        spritesheet[S_TOGGLE_ROTATE].active = true;
-        if (begin->save_file) {
-            spritesheet[S_WINDOW_SAVE].active = true;
-            spritesheet[S_SAVE_TEXT_BUTTON].active = true;
-            spritesheet[S_SAVE_CANCEL].active = true;
-            spritesheet[S_SAVE_SAVE].active = true;
-        }
-    }
-    spritesheet[S_SOUND].active = true;
-    if (begin->screen.soundbox) {
-        spritesheet[S_SOUND_POTENTIO].active = true;
-        spritesheet[S_SOUND_SELECT].active = true;
-    }
-}
-
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button)
 {
@@ -94,6 +38,7 @@ load_button_t *load_button)
         spritesheet[i].active = false;
     toggle_spritesheets_menu(begin, spritesheet);
     toggle_spritesheets_world(begin, spritesheet);
+    toggle_spritesheets_sound(begin, spritesheet);
     spritesheet[S_SHUTDOWN].active = true;
     draw_buttons_spritesheets(begin, spritesheet);
     if (begin->screen.load_menu)

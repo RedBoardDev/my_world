@@ -11,16 +11,9 @@
 
 bool check_click_one_button(world_t *world, int i)
 {
-    static const void (*functions[])(world_t *) =
-    {nothing, nothing, button_back_to_menu, button_exit, button_create_map,
-    button_load_map, button_hauteur, button_largeur, button_shutdown,
-    button_arrow_down, button_arrow_left, button_arrow_right, button_arrow_up,
-    button_painter, button_home, button_rotate_360, button_save,
-    button_toggle_move, button_toggle_rotate, button_rotate_left,
-    button_rotate_right, button_rotate_down, button_rotate_up,
-    button_write_filename, button_cancel_window, button_save_window,
-    button_sound, nothing, nothing};
+    static const void (*functions[])(world_t *) = FUNCTIONS_BUTTONS;
     sfFloatRect collision;
+
     if (world->spritesheet[i].active) {
         collision = sfSprite_getGlobalBounds(world->spritesheet[i].sprite);
         if (check_mouse_on_one_button(world->all_events.mouse.pos, collision)) {

@@ -18,5 +18,4 @@ void button_home(world_t *world)
 void button_save(world_t *world)
 {
     world->begin.save_file = true;
-    // save_file("maps/map.myw", maps);
 }

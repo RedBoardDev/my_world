@@ -9,30 +9,6 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
-void init_spritesheets_menu(spritesheet_t *spritesheet, beginning_t *begin)
-{
-    set_one_sprite("assets/img/menu/background.png", &spritesheet[S_BACKGROUND],
-    begin,
-    (init_sprite_t){{WIDTH / 2, HEIGHT / 2}, {1, 1}, {0, 0, 1920, 1080}});
-    set_one_sprite("assets/img/menu/back_to_menu.png",
-    &spritesheet[S_BACK_MENU], begin, (init_sprite_t){{1400, (HEIGHT / 4) * 3},
-    {0.2, 0.2}, {0, 0, 1170, 541}});
-    set_one_sprite("assets/img/menu/exit.png", &spritesheet[S_EXIT], begin,
-    (init_sprite_t){{1400, (HEIGHT / 4) * 3}, {0.2, 0.2}, {0, 0, 1170, 541}});
-    set_one_sprite("assets/img/menu/create_map.png", &spritesheet[S_CREATE_MAP],
-    begin, (init_sprite_t){{1400, HEIGHT / 4}, {0.2, 0.2}, {0, 0, 1783, 541}});
-    set_one_sprite("assets/img/menu/load_map.png", &spritesheet[S_LOAD_MAP],
-    begin, (init_sprite_t){{1400, HEIGHT / 2}, {0.2, 0.2}, {0, 0, 1783, 541}});
-    set_one_sprite("assets/img/menu/hauteur.png", &spritesheet[S_HAUTEUR],
-    begin, (init_sprite_t){{1400, (HEIGHT / 4) * 2.3}, {0.2, 0.2},
-    {0, 0, 2000, 541}});
-    set_one_sprite("assets/img/menu/largeur.png", &spritesheet[S_LARGEUR],
-    begin, (init_sprite_t){{1400, (HEIGHT / 4) * 1.7}, {0.2, 0.2},
-    {0, 0, 2000, 541}});
-    set_one_sprite("assets/img/shutdown.png", &spritesheet[S_SHUTDOWN], begin,
-    (init_sprite_t){{WIDTH - 40, 40}, {0.1, 0.1}, {0, 0, 541, 541}});
-}
-
 void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
 {
     set_one_sprite("assets/img/interface_world/toggle_move.png",
@@ -47,9 +23,8 @@ void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
     set_one_sprite("assets/img/interface_world/change_painter.png",
     &spritesheet[S_CHANGE_PAINTER], begin,
     (init_sprite_t){{470 - 280, 50}, {0.1, 0.1}, {0, 0, 541, 541}});
-    set_one_sprite("assets/img/sound.png",
-    &spritesheet[S_SOUND], begin, (init_sprite_t){{WIDTH - 120,
-    40}, {0.1, 0.1}, {0, 0, 541, 541}});
+    set_one_sprite("assets/img/sound.png", &spritesheet[S_SOUND], begin,
+    (init_sprite_t){{WIDTH - 120, 40}, {0.1, 0.1}, {0, 0, 541, 541}});
     set_one_sprite("assets/img/sound_potentio.png",
     &spritesheet[S_SOUND_POTENTIO], begin,
     (init_sprite_t){{WIDTH - 275, 100}, {0.1, 0.1}, {0, 0, 3620, 541}});
@@ -100,10 +75,12 @@ void init_save_window(spritesheet_t *spritesheet, beginning_t *begin)
     (init_sprite_t){{WIDTH / 2, HEIGHT / 2}, {0.15, 0.15}, {0, 0, 3620, 541}});
     set_one_sprite("assets/img/interface_world/cancel.png",
     &spritesheet[S_SAVE_CANCEL], begin,
-    (init_sprite_t){{(WIDTH / 2) + 200, (HEIGHT / 2) + 150}, {0.1, 0.1}, {0, 0, 1170, 541}});
+    (init_sprite_t){{(WIDTH / 2) + 200, (HEIGHT / 2) + 150}, {0.1, 0.1},
+    {0, 0, 1170, 541}});
     set_one_sprite("assets/img/interface_world/save_button.png",
     &spritesheet[S_SAVE_SAVE], begin,
-    (init_sprite_t){{(WIDTH / 2) + 350, (HEIGHT / 2) + 150}, {0.1, 0.1}, {0, 0, 1170, 541}});
+    (init_sprite_t){{(WIDTH / 2) + 350, (HEIGHT / 2) + 150}, {0.1, 0.1},
+    {0, 0, 1170, 541}});
 }
 
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin)

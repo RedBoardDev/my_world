@@ -25,9 +25,11 @@ SRC_FILES	=	events/events	\
 				interface/world/buttons/toggle	\
 				interface/check_click_buttons	\
 				interface/check_mouse_on_buttons	\
+				interface/init_spritesheets_menu	\
 				interface/init_spritesheets	\
 				interface/put_spritesheets	\
 				interface/text_input_load_map	\
+				interface/toggle_spritesheets	\
 				interface/utils_sprites	\
 				map/transform_map/check_incidence	\
 				map/transform_map/transform_map	\
@@ -36,6 +38,7 @@ SRC_FILES	=	events/events	\
 				map/create_quad	\
 				map/draw_map	\
 				map/events_map	\
+				map/exec_events_map	\
 				map/get_color_with_z	\
 				map/get_color	\
 				map/get_highest_point	\

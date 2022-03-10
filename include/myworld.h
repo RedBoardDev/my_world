@@ -115,12 +115,19 @@ void button_soundbox_select(world_t *world);
 // put menu
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button);
+// toggle spritesheets
+void toggle_spritesheets_sound(beginning_t *begin, spritesheet_t *spritesheet);
+void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet);
+void toggle_spritesheets_toggle_world(beginning_t *begin,
+spritesheet_t *spritesheet);
+void toggle_spritesheets_menu(beginning_t *begin, spritesheet_t *spritesheet);
 // check click button
 void check_click_buttons(world_t *world);
 void check_mouse_on_all_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet, load_button_t *load_button);
 // init spritesheets
 void init_spritesheets(spritesheet_t *spritesheet, beginning_t *begin);
+void init_spritesheets_menu(spritesheet_t *spritesheet, beginning_t *begin);
 // utils spritesheets
 void set_one_sprite(char *filename, spritesheet_t *spritesheet,
 beginning_t *begin, init_sprite_t init_sprite);
@@ -138,6 +145,11 @@ void create_quad(beginning_t *begin, my_quad_t quad, int angle);
 void draw_2d_map(beginning_t *begin, map_t *maps);
 // events map
 void exec_events_map(events_t *all_events, map_t *maps, beginning_t *begin);
+void events_zoom_and_selector_map(events_t *all_events, map_t *maps);
+void events_rotate_map(events_t *all_events, map_t *maps);
+void events_modify_points_map(events_t *all_events, map_t *maps,
+beginning_t *begin);
+void events_translate_map(events_t backup_events, map_t *maps);
 // get color
 sfColor get_color(my_quad_t quad, int angle);
 sfColor get_color_with_z(int z);
@@ -148,7 +160,8 @@ bool check_incidence(map_t *maps, events_t *all_events);
 void increase_decrease_points_mouse(map_t *maps, sfVector2i pos, bool up);
 void increase_decrease_points_zero(map_t *maps, sfVector2i pos_mouse, bool up);
 int get_highest_point(int a, int b, int c, int d);
-void init_empty_map_with_size(beginning_t *begin, events_t *all_events, map_t *maps);
+void init_empty_map_with_size(beginning_t *begin, events_t *all_events,
+map_t *maps);
 void init_display_folder_with_maps(world_t *world);
 
 // draw simple
@@ -201,5 +214,14 @@ void stop_sound(sfSound *sound);
 void play_sound(sfSound *sound, float volume);
 void destroy_sound(sfSound *sound);
 sfSound *create_sound(char *filepath);
+
+#define FUNCTIONS_BUTTONS {nothing, nothing, button_back_to_menu, button_exit, \
+    button_create_map, button_load_map, button_hauteur, button_largeur, \
+    button_shutdown, button_arrow_down, button_arrow_left, button_arrow_right, \
+    button_arrow_up, button_painter, button_home, button_rotate_360, \
+    button_save, button_toggle_move, button_toggle_rotate, button_rotate_left, \
+    button_rotate_right, button_rotate_down, button_rotate_up, \
+    button_write_filename, button_cancel_window, button_save_window, \
+    button_sound, nothing, nothing}
 
 #endif

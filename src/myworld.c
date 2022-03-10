@@ -14,12 +14,12 @@ void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
     float delta = sfClock_getElapsedTime(begin->fps.clock).microseconds / 1000;
     float timer = begin->fps.timer + delta;
 
-    while (timer >= 8) {
+    while (timer >= 16) {
         if (begin->guiworld.rotate_360)
             ++maps->angle.x;
         else
             play_sound(begin->sound.gngngn, begin->sound.volume);
-        timer -= 8;
+        timer -= 16;
     }
     exec_events_map(all_events, maps, begin);
     begin->fps.timer = timer;
@@ -66,7 +66,8 @@ void big_loop(world_t *world)
 {
     if (world->begin.init_map) {
         play_sound(world->begin.sound.launch_maps, world->begin.sound.volume);
-        init_empty_map_with_size(&world->begin, &world->all_events, &world->maps);
+        init_empty_map_with_size(&world->begin, &world->all_events,
+        &world->maps);
         world->begin.init_map = false;
     }
     clean_window(&world->begin, sfBlack);
