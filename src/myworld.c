@@ -11,11 +11,11 @@
 
 void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
 {
-    if (begin->guiworld.rotate_360) {
+    printf("sdf: %f\n", begin->sound.volume);
+    if (begin->guiworld.rotate_360)
         ++maps->angle.x;
-    } else {
+    else
         play_sound(begin->sound.gngngn, begin->sound.volume);
-    }
     exec_events_map(all_events, maps, begin);
     create_2d_map(maps, maps->size);
     draw_2d_map(begin, maps);
@@ -43,6 +43,18 @@ void draw_all(world_t *world)
     sfRenderWindow_display(world->begin.window);
 }
 
+void move_sound_box(world_t *world)
+{
+    int pos_x = world->all_events.mouse.pos.x;
+
+    if (world->begin.screen.soundbox != 2)
+        return;
+    if (pos_x >= WIDTH - 380 && pos_x <= WIDTH - 120) {
+        world->spritesheet[S_SOUND_SELECT].pos.x = pos_x;
+        world->begin.sound.volume = (pos_x - (WIDTH - 380)) / 2.6;
+    }
+}
+
 void big_loop(world_t *world)
 {
     if (world->begin.init_map) {
@@ -60,6 +72,7 @@ void big_loop(world_t *world)
     check_mouse_on_all_buttons(&world->begin, &world->all_events,
     world->spritesheet, world->load_button);
     draw_all(world);
+    move_sound_box(world);
 }
 
 void my_world(bool map, sfVector2i size, char *filepath)

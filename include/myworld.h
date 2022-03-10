@@ -64,6 +64,7 @@ enum sprites {
     S_SAVE_SAVE,
     S_SOUND,
     S_SOUND_POTENTIO,
+    S_SOUND_SELECT,
     NBR_SPRITE,
 };
 
@@ -83,58 +84,34 @@ events_t *all_events);
 
 // INTERFACE
 // functions pointers
-void button_create_map(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_load_map(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_exit(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void nothing(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_shutdown(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_largeur(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_arrow_down(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_arrow_left(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_arrow_right(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_arrow_up(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_painter(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_home(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_rotate_360(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_save(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_toggle_move(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_toggle_rotate(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_rotate_up(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_rotate_down(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_cancel_window(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_save_window(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_write_filename(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
-void button_sound(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps);
+void button_create_map(world_t *world);
+void button_load_map(world_t *world);
+void button_exit(world_t *world);
+void button_back_to_menu(world_t *world);
+void nothing(world_t *world);
+void button_shutdown(world_t *world);
+void button_hauteur(world_t *world);
+void button_largeur(world_t *world);
+void button_arrow_down(world_t *world);
+void button_arrow_left(world_t *world);
+void button_arrow_right(world_t *world);
+void button_arrow_up(world_t *world);
+void button_painter(world_t *world);
+void button_home(world_t *world);
+void button_rotate_360(world_t *world);
+void button_save(world_t *world);
+void button_toggle_move(world_t *world);
+void button_toggle_rotate(world_t *world);
+void button_rotate_left(world_t *world);
+void button_rotate_right(world_t *world);
+void button_rotate_up(world_t *world);
+void button_rotate_down(world_t *world);
+void button_cancel_window(world_t *world);
+void button_save_window(world_t *world);
+void button_write_filename(world_t *world);
+void button_sound(world_t *world);
+void button_soundbox(world_t *world);
+void button_soundbox_select(world_t *world);
 // put menu
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button);
@@ -216,6 +193,8 @@ void write_text(beginning_t *begin, text_t struct_text);
 void events_write_hauteur(beginning_t *begin, sfEvent event,
 events_t *all_events);
 load_button_t *init_open_folder_maps(beginning_t *begin);
+void events_write_filename(beginning_t *begin, sfEvent event,
+events_t *all_events);
 
 // lib sound
 void stop_sound(sfSound *sound);

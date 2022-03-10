@@ -33,6 +33,8 @@ events_t *all_events)
         all_events->mouse.left = false;
         all_events->mouse.left_released = true;
         all_events->mouse.pos = sfMouse_getPositionRenderWindow(begin->window);
+        if (begin->screen.soundbox == 2)
+                begin->screen.soundbox = 1;
     }
     if (sfMouseRight == event.key.code) {
         all_events->mouse.right = false;

@@ -9,45 +9,42 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void button_create_map(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_create_map(world_t *world)
 {
-    if (begin->screen.main_menu) {
-        begin->screen.main_menu = false;
-        begin->screen.create_menu = true;
+    if (world->begin.screen.main_menu) {
+        world->begin.screen.main_menu = false;
+        world->begin.screen.create_menu = true;
         return;
-    } else if (begin->screen.create_menu) {
-        begin->screen.create_menu = false;
-        begin->screen.world = true;
-        begin->init_map = true;
+    } else if (world->begin.screen.create_menu) {
+        world->begin.screen.create_menu = false;
+        world->begin.screen.world = true;
+        world->begin.init_map = true;
     }
 }
 
-void button_load_map(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_load_map(world_t *world)
 {
-    if (begin->screen.main_menu) {
-        begin->screen.main_menu = false;
-        begin->screen.load_menu = true;
-        begin->get_file = true;
+    if (world->begin.screen.main_menu) {
+        world->begin.screen.main_menu = false;
+        world->begin.screen.load_menu = true;
+        world->begin.get_file = true;
     }
 }
 
-void button_exit(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_exit(world_t *world)
 {
     sfSound *sound = create_sound("assets/sounds/exit.ogg");
 
-    play_sound(sound, begin->sound.volume);
+    play_sound(sound, world->begin.sound.volume);
     usleep(800000);
     destroy_sound(sound);
-    sfRenderWindow_close(begin->window);
+    sfRenderWindow_close(world->begin.window);
 }
 
-void button_back_to_menu(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_back_to_menu(world_t *world)
 {
-    begin->screen.create_menu = false;
-    begin->screen.load_menu = false;
-    begin->screen.world = false;
-    begin->screen.main_menu = true;
+    world->begin.screen.create_menu = false;
+    world->begin.screen.load_menu = false;
+    world->begin.screen.world = false;
+    world->begin.screen.main_menu = true;
 }

@@ -9,25 +9,22 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void button_write_filename(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_write_filename(world_t *world)
 {
-    begin->text.filename_save_b = begin->text.filename_save_b ? false : true;
+    world->begin.text.filename_save_b = world->begin.text.filename_save_b ? false : true;
 }
 
-void button_save_window(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_save_window(world_t *world)
 {
-    char *filename = my_strcat(my_strcat("maps/", begin->text.filename_save),
+    char *filename = my_strcat(my_strcat("maps/", world->begin.text.filename_save),
     ".myw");
-    begin->text.filename_save_b = false;
-    begin->save_file = false;
-    save_file(filename, maps);
+    world->begin.text.filename_save_b = false;
+    world->begin.save_file = false;
+    save_file(filename, &world->maps);
 }
 
-void button_cancel_window(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_cancel_window(world_t *world)
 {
-    begin->text.filename_save_b = false;
-    begin->save_file = false;
+    world->begin.text.filename_save_b = false;
+    world->begin.save_file = false;
 }

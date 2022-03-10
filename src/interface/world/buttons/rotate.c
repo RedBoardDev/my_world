@@ -9,26 +9,22 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void button_rotate_left(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_rotate_left(world_t *world)
 {
-    maps->angle.x += 5;
+    world->maps.angle.x += 5;
 }
 
-void button_rotate_right(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_rotate_right(world_t *world)
 {
-    maps->angle.x -= 5;
+    world->maps.angle.x -= 5;
 }
 
-void button_rotate_down(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_rotate_down(world_t *world)
 {
-    maps->angle.y -= 5;
+    world->maps.angle.y -= 5;
 }
 
-void button_rotate_up(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_rotate_up(world_t *world)
 {
-    maps->angle.y += 5;
+    world->maps.angle.y += 5;
 }

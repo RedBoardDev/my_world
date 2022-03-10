@@ -9,26 +9,22 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void button_arrow_down(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_arrow_down(world_t *world)
 {
-    maps->pos.y += 10;
+    world->maps.pos.y += 10;
 }
 
-void button_arrow_left(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_arrow_left(world_t *world)
 {
-    maps->pos.x -= 10;
+    world->maps.pos.x -= 10;
 }
 
-void button_arrow_right(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_arrow_right(world_t *world)
 {
-    maps->pos.x += 10;
+    world->maps.pos.x += 10;
 }
 
-void button_arrow_up(beginning_t *begin, spritesheet_t *spritesheet,
-map_t *maps)
+void button_arrow_up(world_t *world)
 {
-    maps->pos.y -= 10;
+    world->maps.pos.y -= 10;
 }

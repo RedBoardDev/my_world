@@ -15,7 +15,7 @@ sfSound *create_sound(char *filepath)
     sound_buffer = sfSoundBuffer_createFromFile(filepath);
     sound = sfSound_create();
     sfSound_setBuffer(sound, sound_buffer);
-    sfSound_setVolume(sound, 5);
+    sfSound_setVolume(sound, 0);
     return (sound);
 }
 

@@ -9,25 +9,26 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void nothing(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void nothing(world_t *world)
 {
     return;
 }
 
-void button_hauteur(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_hauteur(world_t *world)
 {
-    begin->text.hauteur_b = true;
+    world->begin.text.hauteur_b = true;
 }
 
-void button_largeur(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_largeur(world_t *world)
 {
-    begin->text.largeur_b = true;
+    world->begin.text.largeur_b = true;
 }
 
-void button_sound(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_sound(world_t *world)
 {
-    if (begin->screen.soundbox)
-        begin->screen.soundbox = false;
+    if (world->begin.screen.soundbox)
+        world->begin.screen.soundbox = 0;
     else
-        begin->screen.soundbox = true;
+        world->begin.screen.soundbox = 1;
 }
+

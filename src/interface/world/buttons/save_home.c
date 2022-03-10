@@ -9,14 +9,14 @@
 #include "../../../../include/struct.h"
 #include "../../../../include/myworld.h"
 
-void button_home(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_home(world_t *world)
 {
-    begin->screen.world = false;
-    begin->screen.main_menu = true;
+    world->begin.screen.world = false;
+    world->begin.screen.main_menu = true;
 }
 
-void button_save(beginning_t *begin, spritesheet_t *spritesheet, map_t *maps)
+void button_save(world_t *world)
 {
-    begin->save_file = true;
+    world->begin.save_file = true;
     // save_file("maps/map.myw", maps);
 }
