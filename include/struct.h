@@ -56,6 +56,11 @@ typedef struct text_runtime_s {
     bool filename_save_b;
 } text_runtime_t;
 
+typedef struct fps_s {
+    sfClock *clock;
+    float timer;
+} fps_t;
+
 typedef struct beginning_s {
     sfRenderWindow *window;
     sfUint8 *framebuffer;
@@ -69,6 +74,7 @@ typedef struct beginning_s {
     bool save_file;
     sound_t sound;
     text_runtime_t text;
+    fps_t fps;
 } beginning_t;
 
 typedef struct mouse_s {

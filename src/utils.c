@@ -25,6 +25,7 @@ void init_csfml(beginning_t *begin)
 
 void destroy_all(beginning_t *begin)
 {
+    sfClock_destroy(begin->fps.clock);
     free(begin->framebuffer);
     sfRenderWindow_destroy(begin->window);
 }

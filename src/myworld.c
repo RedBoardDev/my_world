@@ -11,12 +11,19 @@
 
 void draw_map_all(beginning_t *begin, events_t *all_events, map_t *maps)
 {
-    printf("sdf: %f\n", begin->sound.volume);
-    if (begin->guiworld.rotate_360)
-        ++maps->angle.x;
-    else
-        play_sound(begin->sound.gngngn, begin->sound.volume);
+    float delta = sfClock_getElapsedTime(begin->fps.clock).microseconds / 1000;
+    float timer = begin->fps.timer + delta;
+
+    while (timer >= 8) {
+        if (begin->guiworld.rotate_360)
+            ++maps->angle.x;
+        else
+            play_sound(begin->sound.gngngn, begin->sound.volume);
+        timer -= 8;
+    }
     exec_events_map(all_events, maps, begin);
+    begin->fps.timer = timer;
+    sfClock_restart(begin->fps.clock);
     create_2d_map(maps, maps->size);
     draw_2d_map(begin, maps);
     my_draw_circle(begin->framebuffer, all_events->mouse.pos, maps->radius,
@@ -81,11 +88,13 @@ void my_world(bool map, sfVector2i size, char *filepath)
     .spritesheet = malloc(sizeof(spritesheet_t) * NBR_SPRITE),
     .load_button = NULL};
 
+    world.begin.fps.timer = 0;
     init_all(&world.begin, &world.maps, world.spritesheet,
     (size.x == -1 && size.y == -1) ? false : true);
     if (!world.begin.window || !world.begin.framebuffer)
         exit(84);
-    sfWindow_setFramerateLimit((sfWindow *)world.begin.window, 60);
+    sfWindow_setFramerateLimit((sfWindow *)world.begin.window, 120);
+    world.begin.fps.clock = sfClock_create();
     while (sfRenderWindow_isOpen(world.begin.window))
         big_loop(&world);
     destroy_all(&world.begin);
