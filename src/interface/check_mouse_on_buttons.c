@@ -57,10 +57,6 @@ void toggle_all_toggles(beginning_t *begin, spritesheet_t *spritesheet)
         spritesheet[S_TOGGLE_MOVE].rect.top = 541;
     if (begin->guiworld.toggle_rotate)
         spritesheet[S_TOGGLE_ROTATE].rect.top = 541;
-    if (begin->sound.volume)
-        spritesheet[S_SOUND].rect.left = 541;
-    else
-        spritesheet[S_SOUND].rect.left = 0;
 }
 
 void check_mouse_on_all_buttons(beginning_t *begin, events_t *all_events,
@@ -72,4 +68,11 @@ spritesheet_t *spritesheet, load_button_t *load_button)
         for (int i = 0; i < load_button[0].count; ++i)
             check_mouse_on_one_file(begin, all_events, load_button, i);
     toggle_all_toggles(begin, spritesheet);
+    if (begin->sound.volume) {
+        spritesheet[S_SOUND].rect.left = 541;
+        spritesheet[S_SOUND_POTENTIO].rect.left = 0;
+    } else {
+        spritesheet[S_SOUND].rect.left = 0;
+        spritesheet[S_SOUND_POTENTIO].rect.left = 3620;
+    }
 }

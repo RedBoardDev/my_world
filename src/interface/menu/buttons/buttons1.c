@@ -35,9 +35,11 @@ void button_exit(world_t *world)
 {
     sfSound *sound = create_sound("assets/sounds/exit.ogg");
 
-    play_sound(sound, world->begin.sound.volume);
-    usleep(800000);
-    destroy_sound(sound);
+    if (world->begin.sound.volume) {
+        play_sound(sound, world->begin.sound.volume);
+        usleep(800000);
+        destroy_sound(sound);
+    }
     sfRenderWindow_close(world->begin.window);
 }
 

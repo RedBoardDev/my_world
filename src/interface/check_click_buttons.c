@@ -52,24 +52,12 @@ bool check_click_load_buttons(world_t *world, int i)
     return (false);
 }
 
-void check_click_soundbox(world_t *world)
-{
-    sfFloatRect collision =
-    sfSprite_getGlobalBounds(world->spritesheet[S_SOUND_SELECT].sprite);
-
-    if (check_mouse_on_one_button(world->all_events.mouse.pos, collision)) {
-        world->begin.screen.soundbox = 2;
-        world->all_events.mouse.left = false;
-    }
-}
-
 void check_click_buttons(world_t *world)
 {
-    if (!world->all_events.mouse.left_released) {
-        if (world->all_events.mouse.left && world->begin.screen.soundbox)
-            check_click_soundbox(world);
+    if (world->all_events.mouse.left && world->begin.screen.soundbox)
+        check_click_soundbox(world);
+    if (!world->all_events.mouse.left_released)
         return;
-    }
     for (int i = 2; i < NBR_SPRITE; ++i)
         if (check_click_one_button(world, i))
             return;

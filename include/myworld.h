@@ -125,6 +125,7 @@ spritesheet_t *spritesheet);
 void toggle_spritesheets_menu(beginning_t *begin, spritesheet_t *spritesheet);
 // check click button
 void check_click_buttons(world_t *world);
+void check_click_soundbox(world_t *world);
 void check_mouse_on_all_buttons(beginning_t *begin, events_t *all_events,
 spritesheet_t *spritesheet, load_button_t *load_button);
 // init spritesheets

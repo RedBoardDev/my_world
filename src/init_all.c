@@ -50,6 +50,7 @@ bool init_map_bool)
     begin->sound.launch_maps = create_sound("assets/sounds/launch_map.ogg");
     begin->sound.gngngn = create_sound("assets/sounds/gngngn.ogg");
     begin->sound.volume = 0.00;
+    begin->sound.volume_backup = 0.00;
     sfSound_setLoop(begin->sound.gngngn, sfTrue);
 }
 

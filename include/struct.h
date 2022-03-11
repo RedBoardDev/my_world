@@ -45,6 +45,7 @@ typedef struct sound_s {
     sfSound *launch_maps;
     sfSound *gngngn;
     float volume;
+    float volume_backup;
 } sound_t;
 
 typedef struct text_runtime_s {
