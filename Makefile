@@ -18,6 +18,7 @@ SRC_FILES	=	events/events	\
 				events/text	\
 				interface/menu/buttons/buttons1	\
 				interface/menu/buttons/buttons2	\
+				interface/menu/events_menu	\
 				interface/world/buttons/arrows	\
 				interface/world/buttons/rotate	\
 				interface/world/buttons/save_home	\

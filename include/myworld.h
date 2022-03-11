@@ -115,6 +115,8 @@ void button_soundbox_select(world_t *world);
 // put menu
 void put_all_spritesheets(beginning_t *begin, spritesheet_t *spritesheet,
 load_button_t *load_button);
+void events_menu(beginning_t *begin, events_t *all_events,
+load_button_t *load_button);
 // toggle spritesheets
 void toggle_spritesheets_sound(beginning_t *begin, spritesheet_t *spritesheet);
 void toggle_spritesheets_world(beginning_t *begin, spritesheet_t *spritesheet);

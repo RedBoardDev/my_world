@@ -34,7 +34,8 @@ events_t *all_events)
 
     new_letter[0] = event.text.unicode;
     new_letter[1] = '\0';
-    if (my_strlen(begin->text.filename_save) < 17)
+    if (event.text.unicode >= 32 && event.text.unicode <= 126 &&
+    my_strlen(begin->text.filename_save) < 17)
         begin->text.filename_save = my_strcat(begin->text.filename_save,
         new_letter);
 }

@@ -67,6 +67,9 @@ events_t *all_events)
             begin->text.hauteur[my_strlen(begin->text.hauteur) - 1] = '\0';
         if (begin->text.largeur_b)
             begin->text.largeur[my_strlen(begin->text.largeur) - 1] = '\0';
+        if (begin->text.filename_save_b)
+            begin->text.filename_save[my_strlen(begin->text.filename_save) - 1]
+            = '\0';
     }
     if (sfKeyEnter == event.key.code)
         all_events->enter = true;

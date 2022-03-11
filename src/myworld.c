@@ -77,6 +77,7 @@ void big_loop(world_t *world)
     check_click_buttons(world);
     if (world->begin.get_file)
         init_display_folder_with_maps(world);
+    events_menu(&world->begin, &world->all_events, world->load_button);
     check_mouse_on_all_buttons(&world->begin, &world->all_events,
     world->spritesheet, world->load_button);
     draw_all(world);
