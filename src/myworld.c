@@ -58,8 +58,9 @@ void move_sound_box(world_t *world)
         return;
     if (pos_x >= WIDTH - 380 && pos_x <= WIDTH - 120) {
         world->spritesheet[S_SOUND_SELECT].pos.x = pos_x;
-        world->begin.sound.volume = (pos_x - (WIDTH - 380)) / 2.6;
+        world->begin.sound.volume = (pos_x - (WIDTH - 378)) / 2.6;
     }
+    world->begin.sound.volume < 0 ? world->begin.sound.volume = 0 : 0;
 }
 
 void big_loop(world_t *world)
