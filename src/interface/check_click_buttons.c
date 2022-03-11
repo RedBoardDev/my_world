@@ -9,6 +9,12 @@
 #include "../../include/struct.h"
 #include "../../include/myworld.h"
 
+void music_click(int i, sound_t sound)
+{
+    if (i != S_EXIT && i != S_SHUTDOWN)
+        play_sound(sound.click, sound.volume);
+}
+
 bool check_click_one_button(world_t *world, int i)
 {
     static const void (*functions[])(world_t *) = FUNCTIONS_BUTTONS;
@@ -17,6 +23,7 @@ bool check_click_one_button(world_t *world, int i)
     if (world->spritesheet[i].active) {
         collision = sfSprite_getGlobalBounds(world->spritesheet[i].sprite);
         if (check_mouse_on_one_button(world->all_events.mouse.pos, collision)) {
+            music_click(i, world->begin.sound);
             world->begin.text.largeur_b = false;
             world->begin.text.hauteur_b = false;
             (*functions[i])(world);
