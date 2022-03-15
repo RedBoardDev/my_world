@@ -17,7 +17,11 @@ void button_write_filename(world_t *world)
 
 void button_save_window(world_t *world)
 {
-    char *filename = my_strcat(my_strcat("maps/",
+    char *filename;
+
+    if (world->begin.text.filename_save[0] == '\0')
+        return;
+    filename = my_strcat(my_strcat("maps/",
     world->begin.text.filename_save), ".myw");
     world->begin.text.filename_save_b = false;
     world->begin.save_file = false;
