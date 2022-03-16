@@ -32,7 +32,3 @@ void button_sound(world_t *world)
         world->begin.screen.soundbox = 1;
 }
 
-void button_shutdown(world_t *world)
-{
-    sfRenderWindow_close(world->begin.window);
-}

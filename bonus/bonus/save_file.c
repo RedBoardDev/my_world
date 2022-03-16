@@ -5,9 +5,9 @@
 ** save_file.c
 */
 
-#include "../include/my.h"
-#include "../include/struct.h"
-#include "../include/myworld.h"
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 #include <sys/types.h>
 #include <dirent.h>
 
@@ -16,7 +16,7 @@ bool try_open_folder(void)
     DIR *dp;
     struct dirent *dirp;
 
-    dp = opendir("maps");
+    dp = opendir("../maps");
     if (dp == NULL) {
         closedir(dp);
         return (false);
@@ -32,7 +32,7 @@ void save_file(char *filepath, map_t *maps)
     int separator = -1000;
 
     if (!try_open_folder())
-        mkdir("maps", 0755);
+        mkdir("../maps", 0755);
     fp = fopen (filepath, "w");
     fwrite(&maps->size.x, sizeof(int), 1, fp);
     fwrite(&maps->size.y, sizeof(int), 1, fp);

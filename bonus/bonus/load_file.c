@@ -5,9 +5,9 @@
 ** load_file.c
 */
 
-#include "../include/my.h"
-#include "../include/struct.h"
-#include "../include/myworld.h"
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 
 sfVector2i get_size_int_array(int *file)
 {

@@ -95,7 +95,7 @@ void my_world(bool map, sfVector2i size, char *filepath)
     init_all(&world.begin, &world.maps, world.spritesheet,
     (size.x == -1 && size.y == -1) ? false : true);
     if (!world.begin.window || !world.begin.framebuffer)
-        return;
+        exit(84);
     sfWindow_setFramerateLimit((sfWindow *)world.begin.window, 120);
     world.begin.fps.clock = sfClock_create();
     while (sfRenderWindow_isOpen(world.begin.window))

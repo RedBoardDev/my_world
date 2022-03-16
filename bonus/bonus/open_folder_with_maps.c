@@ -7,9 +7,9 @@
 
 #include <sys/types.h>
 #include <dirent.h>
-#include "../include/my.h"
-#include "../include/struct.h"
-#include "../include/myworld.h"
+#include "../../include/my.h"
+#include "../../include/struct.h"
+#include "../../include/myworld.h"
 
 void set_load_button(char *filename, load_button_t *load_button, beginning_t *begin,
 sfVector2f pos)
@@ -37,9 +37,9 @@ int fc_count_file(void)
     struct stat stats;
     load_button_t *load_button;
 
-    if (stat("maps", &stats) == -1)
+    if (stat("../maps", &stats) == -1)
         return (0);
-    dp = opendir("maps");
+    dp = opendir("../maps");
     if (dp == NULL) {
         closedir(dp);
         return (0);
@@ -63,7 +63,7 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
     sfVector2f pos = {500, 130};
     load_button_t *load_button;
 
-    dp = opendir("maps");
+    dp = opendir("../maps");
     if (len == 0 || dp == NULL) {
         load_button = malloc(sizeof(load_button_t) * 1);
         load_button[0].count = 0;
@@ -78,7 +78,7 @@ load_button_t *init_open_folder_maps(beginning_t *begin)
             load_button[i].mouse_on = false;
             pos.y = 130 + (150 * i);
             load_button[i].count = len;
-            set_load_button("assets/img/menu/maps_list.png", &load_button[i], begin, pos);
+            set_load_button("../assets/img/menu/maps_list.png", &load_button[i], begin, pos);
             ++i;
         }
         dirp = readdir(dp);

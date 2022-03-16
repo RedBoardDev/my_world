@@ -8,7 +8,7 @@
 NAME	=	my_world
 
 # src
-SRC_DIR	=	src/
+SRC_DIR	=	./
 EXTENSION	=	.c
 
 SRC_FILES	=	events/events	\
@@ -54,12 +54,13 @@ SRC_FILES	=	events/events	\
 				myworld	\
 				utils	\
 				lib_sound	\
-				bonus/open_folder_with_maps	\
-				bonus/load_file	\
-				bonus/save_file	\
 
 SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 
+SRC	+=	bonus/buttons.c	\
+		bonus/open_folder_with_maps.c	\
+		bonus/load_file.c	\
+		bonus/save_file.c	\
 
 # no main
 SRC_FILES_NO_MAIN	=	$(filter-out main, $(SRC_FILES))
@@ -86,7 +87,7 @@ BIN	=	vgcore*	\
 
 # flags
 FLAGS	=	-I./include	\
-		-L./lib	\
+		-L../lib	\
 		-lmy	\
 		-g	\
 
@@ -108,7 +109,7 @@ all:	$(NAME)
 $(NAME):	$(OBJ)
 	@echo -e "\033[1;34m\n============== Files compilation ok =============="
 	@echo -e "\033[0m"
-	make -C lib/my
+	make -C ../lib/my
 	$(CC) -o $(NAME) $(OBJ) $(FLAGS) $(CSFML_FLAGS)
 	@echo -e "\033[1;32m\n================= Compilation done ================="
 	@echo -e "\033[0m"
@@ -116,13 +117,13 @@ $(NAME):	$(OBJ)
 clean:
 	rm -f $(BIN)
 	rm -f $(OBJ)
-	make -C lib/my clean
+	make -C ../lib/my clean
 	@echo -e "\033[1;33m\n=============== Cleaning done ==============="
 	@echo -e "\033[0m"
 
 fclean:	clean
 	rm -f $(NAME)
-	make -C lib/my fclean
+	make -C ../lib/my fclean
 	@echo -e "\033[1;33m\n=============== Full cleaning done ==============="
 	@echo -e "\033[0m"
 
@@ -139,7 +140,7 @@ gcovr:
 		gcovr --exclude tests --branches
 
 tests_run:	fclean
-		make -C lib/my
+		make -C ../lib/my
 		gcc -o $(NAME_TESTS) $(SRC_NO_MAIN) $(TESTS) $(TESTS_FLAGS) $(FLAGS)
 		./$(NAME_TESTS)
 

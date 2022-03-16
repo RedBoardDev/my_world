@@ -20,12 +20,14 @@ bool str_isnum(char *str)
 
 void help(void)
 {
-    char *filepath = "assets/help.txt";
-    char *buff = malloc(sizeof(char) * 992);
+    char *filepath = "../assets/help.txt";
+    struct stat stat_buff;
+    int s = stat(filepath, &stat_buff);
+    char *buff = malloc(sizeof(char) * stat_buff.st_size);
     int fd = open(filepath, O_RDONLY);
-    int r = read(fd, buff, 992);
+    int r = read(fd, buff, stat_buff.st_size);
 
-    buff[991] = '\0';
+    buff[stat_buff.st_size - 1] = '\0';
     my_putstr(buff);
     my_putchar('\n');
     close(fd);
