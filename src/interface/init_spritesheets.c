@@ -30,7 +30,7 @@ void init_spritesheets_toggle(spritesheet_t *spritesheet, beginning_t *begin)
     (init_sprite_t){{WIDTH - 275, 100}, {0.1, 0.1}, {0, 0, 3620, 541}});
     set_one_sprite("assets/img/soundbox_select.png",
     &spritesheet[S_SOUND_SELECT], begin,
-    (init_sprite_t){{WIDTH - 380, 100}, {0.06, 0.06}, {0, 0, 541, 541}});
+    (init_sprite_t){{WIDTH - 312, 100}, {0.06, 0.06}, {0, 0, 541, 541}});
 }
 
 void init_spritesheets_rotate(spritesheet_t *spritesheet, beginning_t *begin)
