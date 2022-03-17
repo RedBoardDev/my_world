@@ -14,7 +14,7 @@ int my_atoi(char const *src)
     for (int i = 0; src[i] != '\0'; ++i) {
         if (!isnum(src[i])) {
             my_putstr("Invalid argument\n");
-            exit (84);
+            return (0);
         }
         dest *= 10;
         dest += src[i] - 48;
