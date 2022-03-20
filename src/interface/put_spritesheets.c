@@ -23,7 +23,7 @@ void draw_buttons_load(beginning_t *begin, load_button_t *load_button)
 
     for (int i = 0; i < load_button[0].count; ++i) {
         draw_one_sprite(begin, load_button[i].sprite, load_button[i].rect,
-            load_button[i].pos);
+        load_button[i].pos);
         pos.x = load_button[i].pos.x - 200;
         pos.y = load_button[i].pos.y - 18;
         write_text(begin, (text_t){load_button[i].name_file, 30, pos,
