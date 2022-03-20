@@ -34,9 +34,9 @@ spritesheet_t *spritesheet, int i)
 
     if (spritesheet[i].active) {
         collision = sfSprite_getGlobalBounds(spritesheet[i].sprite);
-        if (check_mouse_on_one_button(all_events->mouse.pos, collision)) {
+        if (check_mouse_on_one_button(all_events->mouse.pos, collision))
             spritesheet[i].rect.top = (all_events->mouse.left) ? (1082) : 541;
-        } else
+        else
             spritesheet[i].rect.top = 0;
     }
 }

@@ -49,7 +49,7 @@ point_t project_iso_point(int x, int y, int z, map_t *maps)
 
 void create_2d_map(map_t *maps, sfVector2i size)
 {
-    for (int i = 0; i < size.x; ++i) {
+    for (int i = 0; i < size.x; ++i)
         for (int j = 0; j < size.y; ++j) {
             maps->map_2d[i][j] =
             project_iso_point(i, j, maps->map_3d[i][j], maps);
@@ -64,5 +64,4 @@ void create_2d_map(map_t *maps, sfVector2i size)
             maps->backup_2d[i][j].iso.x += maps->pos.x;
             maps->backup_2d[i][j].iso.y += maps->pos.y;
         }
-    }
 }

@@ -30,15 +30,13 @@ sfColor color)
     int xi = 0;
     int yi = 0;
 
-    for (unsigned int i = center.x - radius; i < center.x + radius * 2; ++i) {
+    for (unsigned int i = center.x - radius; i < center.x + radius * 2; ++i)
         for (unsigned int j = center.y - radius;
         j < center.y + radius * 2; ++j) {
             xi = (i - center.x) * (i - center.x);
             yi = (j - center.y) * (j - center.y);
-            if (sqrt(xi + yi) < radius)
-                my_putpixel(i, j, framebuffer, color);
+            sqrt(xi + yi) < radius ? my_putpixel(i, j, framebuffer, color) : 0;
         }
-    }
 }
 
 void my_draw_line(sfUint8 *framebuffer, sfVector2i point_a, sfVector2i point_b,

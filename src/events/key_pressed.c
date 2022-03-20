@@ -71,13 +71,13 @@ events_t *all_events)
             begin->text.filename_save[my_strlen(begin->text.filename_save) - 1]
             = '\0';
     }
-    if (sfKeyEnter == event.key.code)
-        all_events->enter = true;
 }
 
 void events_key_pressed(beginning_t *begin, sfEvent event, events_t *all_events)
 {
     events_key_pressed_not_letters(begin, event, all_events);
+    if (sfKeyEnter == event.key.code)
+        all_events->enter = true;
     events_key_pressed_arrows(begin, event, all_events);
     events_key_pressed_letters(begin, event, all_events);
 }

@@ -64,7 +64,8 @@ SRC	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES)))
 # no main
 SRC_FILES_NO_MAIN	=	$(filter-out main, $(SRC_FILES))
 
-SRC_NO_MAIN	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), $(SRC_FILES_NO_MAIN)))
+SRC_NO_MAIN	=	$(addprefix $(SRC_DIR), $(addsuffix $(EXTENSION), \
+$(SRC_FILES_NO_MAIN)))
 
 # tests
 TESTS_DIR	=	tests/

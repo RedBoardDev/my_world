@@ -33,17 +33,11 @@ void help(void)
 
 int main(int ac, char **av)
 {
-    map_t maps;
-
-    if (ac == 2) {
-        if (!my_strcmp("-h", av[1]))
-            help();
-        else
-            my_world(true, (sfVector2i){0, 0}, av[1]);
-    } else if (ac == 4 && !my_strcmp("-d", av[1]))
-        my_world(false, (sfVector2i){my_atoi(av[2]) + 3,
-        my_atoi(av[3]) + 3}, "");
-    else
-        my_world(false, (sfVector2i){-1, -1}, "");
+    if (ac == 2 && !my_strcmp("-h", av[1])) {
+        help();
+        return (0);
+    } else if (ac != 1)
+        return (84);
+    my_world(false, (sfVector2i){-1, -1}, "");
     return (0);
 }

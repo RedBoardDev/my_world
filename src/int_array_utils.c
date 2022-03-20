@@ -33,9 +33,8 @@ int **int_array_dup(int **arr, sfVector2i size)
 void print_int_array(int **arr, sfVector2i size)
 {
     for (int i = 0; i < size.x; ++i) {
-        for (int j = 0; j < size.y; ++j) {
+        for (int j = 0; j < size.y; ++j)
             my_put_nbr(arr[i][j]);
-        }
         my_putchar('\n');
     }
 }
