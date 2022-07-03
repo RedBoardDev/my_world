@@ -32,12 +32,10 @@ git clone https://github.com/Mazettt/my_world.git ; cd my_world ; make
 👤 **Thomas Ott**
 
 * Github: [@RedboardDev](https://github.com/RedboardDev)
-* LinkedIn: [@thomas--ott](https://linkedin.com/in/thomas--ott)
 
 👤 **Martin d'Hérouville**
 
 * Github: [@Mazettt](https://github.com/Mazettt)
-* LinkedIn: [@martin-d-herouville](https://linkedin.com/in/martin-d-herouville)
 ## Show your support
 
 Give a ⭐️ if this project helped you!
